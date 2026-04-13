@@ -13,12 +13,12 @@
     }
 
     :root {
-      --bg: #f8f9fa;
-      --card: #ffffff;
-      --accent: #2563eb;
-      --text-primary: #1a1a2e;
-      --text-secondary: #6b7280;
-      --border: #e5e7eb;
+      --bg: #000000;
+      --card: #111111;
+      --accent: #ffffff;
+      --text-primary: #ffffff;
+      --text-secondary: #888888;
+      --border: #333333;
     }
 
     body {
@@ -71,7 +71,8 @@
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: #fff;
+      text-decoration: underline;
     }
 
     /* Hero Section */
@@ -118,12 +119,12 @@
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: white;
+      background: #fff;
+      color: #000;
     }
 
     .btn-primary:hover {
-      background: #1d4ed8;
+      background: #e0e0e0;
       transform: translateY(-1px);
     }
 
@@ -131,7 +132,7 @@
     .marquee-section {
       padding: 40px 0;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--bg) 0%, #fff 50%, var(--bg) 100%);
+      background: linear-gradient(180deg, var(--bg) 0%, #111 50%, var(--bg) 100%);
     }
 
     .marquee-container {
@@ -186,13 +187,14 @@
       border-radius: 16px;
       overflow: hidden;
       background: var(--card);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .marquee-item:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 30px rgba(255,255,255,0.1);
     }
 
     .marquee-item img {
@@ -221,8 +223,9 @@
     }
 
     .marquee-item:nth-child(even) .placeholder {
-      background: #000000;
+      background: #111111;
       color: #ffffff;
+      border: 2px solid #333;
     }
 
     @media (max-width: 768px) {
@@ -274,7 +277,8 @@
 
     .service-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+      border-color: #444;
     }
 
     .service-icon {
@@ -348,7 +352,7 @@
 
     .form-group input::placeholder,
     .form-group textarea::placeholder {
-      color: #9ca3af;
+      color: #666;
     }
 
     .form-submit {
@@ -364,6 +368,7 @@
       padding: 40px 24px;
       text-align: center;
       border-top: 1px solid var(--border);
+      background: #0a0a0a;
     }
 
     footer p {
@@ -386,7 +391,8 @@
     }
 
     .social-links a:hover {
-      color: var(--accent);
+      color: #fff;
+      text-decoration: underline;
     }
 
     /* Mobile Responsive */
@@ -488,10 +494,10 @@
         <div class="service-icon">✦</div>
         <h3>Logo Design</h3>
         <p>Custom logos that capture your brand essence and make a lasting impression.</p>
-        <div style="margin-top: 15px; padding: 15px; background: var(--gray-50); border-radius: 8px;">
+        <div style="margin-top: 15px; padding: 15px; background: #0a0a0a; border: 1px solid #222; border-radius: 8px;">
           <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
             <span style="font-size: 14px; font-weight: 600;">Main Logo</span>
-            <span style="font-size: 18px; font-weight: 700; color: var(--accent);">$99</span>
+            <span style="font-size: 18px; font-weight: 700; color: #fff;">$99</span>
           </div>
           <ul style="font-size: 12px; color: var(--text-secondary); margin: 10px 0; padding-left: 16px; line-height: 1.8;">
             <li>Master Logo</li>
@@ -500,7 +506,7 @@
           </ul>
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <span style="font-size: 14px; font-weight: 600;">Logo System</span>
-            <span style="font-size: 18px; font-weight: 700; color: var(--accent);">$250</span>
+            <span style="font-size: 18px; font-weight: 700; color: #fff;">$250</span>
           </div>
           <ul style="font-size: 12px; color: var(--text-secondary); margin-top: 10px; padding-left: 16px; line-height: 1.8;">
             <li>Master Logo</li>
@@ -533,8 +539,8 @@
         <h3>Website + Landing Pages</h3>
         <p>Professional websites and conversion-focused landing pages that you own and control.</p>
       </div>
-      <div class="service-card" style="border:2px solid #fbbf24;position:relative;">
-        <span style="position:absolute;top:-12px;left:16px;background:#000;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:0.5px;">NEW 2026 SERVICE</span>
+      <div class="service-card" style="border:2px solid #fff;position:relative;">
+        <span style="position:absolute;top:-12px;left:16px;background:#fff;color:#000;font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:0.5px;">NEW 2026 SERVICE</span>
         <div class="service-icon">✨</div>
         <h3>AI Design Correction</h3>
         <p>Already have an AI-generated design? We professionally refine, clean up, and prepare it for print ~ so your brand looks polished, not synthetic.</p>
