@@ -407,6 +407,103 @@
       width: 100%;
     }
 
+    /* Tracker Section */
+    .tracker-section {
+      padding: 100px 24px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tracker-header-section {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .tracker-subtitle {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .tracker-desc {
+      color: var(--muted);
+      max-width: 500px;
+      margin: 12px auto 0;
+      font-size: 14px;
+    }
+
+    .tracker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .tracker-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .tracker-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 4px;
+    }
+
+    .tracker-client {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .tracker-amount {
+      font-weight: 700;
+      color: #00cc88;
+      font-size: 16px;
+    }
+
+    .tracker-service {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .tracker-stages {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .ts {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      letter-spacing: 0.3px;
+    }
+
+    .ts.done {
+      background: rgba(0,204,136,0.12);
+      color: #00cc88;
+    }
+
+    .ts.active {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .tracker-section {
+        padding: 60px 20px;
+      }
+      .tracker-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Footer */
     footer {
       padding: 40px 24px;
@@ -528,7 +625,7 @@
       <div class="nav-links" id="navLinks">
         <a href="#services" onclick="closeMenu()">Services</a>
         <a href="#contact" onclick="closeMenu()">Contact</a>
-        <a href="https://innergclaw.github.io/shopnasgfx-tracker/" onclick="closeMenu()">Tracker</a>
+        <a href="#tracker" onclick="closeMenu()">Tracker</a>
       </div>
     </div>
   </nav>
@@ -727,13 +824,66 @@
     </div>
   </section>
 
+  <!-- Tracker Section -->
+  <section id="tracker" class="tracker-section">
+    <div class="tracker-header-section">
+      <p class="tracker-subtitle">PROJECT STATUS</p>
+      <h2>Client Tracker</h2>
+      <p class="tracker-desc">Every project, every stage. Full transparency.</p>
+    </div>
+    <div class="tracker-grid">
+      <div class="tracker-card">
+        <div class="tracker-card-top">
+          <span class="tracker-client">Jamal / Hybrid Human</span>
+          <span class="tracker-amount">$350</span>
+        </div>
+        <p class="tracker-service">Logo + Brand Identity</p>
+        <div class="tracker-stages">
+          <span class="ts done">Paid</span>
+          <span class="ts done">Received</span>
+          <span class="ts active">Design</span>
+          <span class="ts">Review</span>
+          <span class="ts">Launch</span>
+        </div>
+      </div>
+      <div class="tracker-card">
+        <div class="tracker-card-top">
+          <span class="tracker-client">Helena / Honey & Friends</span>
+          <span class="tracker-amount">$175</span>
+        </div>
+        <p class="tracker-service">Logo + Branding</p>
+        <div class="tracker-stages">
+          <span class="ts done">Paid</span>
+          <span class="ts done">Design</span>
+          <span class="ts active">Review</span>
+          <span class="ts">Revision</span>
+          <span class="ts">Launch</span>
+        </div>
+      </div>
+      <div class="tracker-card">
+        <div class="tracker-card-top">
+          <span class="tracker-client">Vivian Royster / Miikko.Inc</span>
+          <span class="tracker-amount">$115</span>
+        </div>
+        <p class="tracker-service">New Logo Design</p>
+        <div class="tracker-stages">
+          <span class="ts done">Paid</span>
+          <span class="ts done">Received</span>
+          <span class="ts active">Design</span>
+          <span class="ts">Review</span>
+          <span class="ts">Launch</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="social-links">
       <a href="https://instagram.com/shopnasgfx" target="_blank">INSTAGRAM</a>
       <a href="mailto:shopnasgfx@gmail.com">EMAIL</a>
       <a href="https://www.behance.net/nasgfx" target="_blank">MY WORK</a>
-      <a href="https://innergclaw.github.io/shopnasgfx-tracker/" target="_blank">TRACKER</a>
+      <a href="#tracker">TRACKER</a>
     </div>
     <p>ShopNasGFX © 2026</p>
   </footer>
