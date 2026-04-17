@@ -438,10 +438,54 @@
       text-decoration: underline;
     }
 
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1001;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
     /* Mobile Responsive */
     @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
       .nav-links {
         display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 24px;
+        color: #fff;
       }
 
       .hero {
@@ -472,10 +516,15 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="logo">SHOPNASGFX</a>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a href="https://innergclaw.github.io/shopnasgfx-tracker/">Tracker</a>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+        <a href="https://innergclaw.github.io/shopnasgfx-tracker/" onclick="closeMenu()">Tracker</a>
       </div>
     </div>
   </nav>
@@ -685,6 +734,14 @@
   </footer>
 
   <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+    function closeMenu() {
+      document.getElementById('navLinks').classList.remove('active');
+    }
+
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
