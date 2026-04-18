@@ -13,12 +13,12 @@
     }
 
     :root {
-      --bg: #000000;
-      --card: #111111;
-      --accent: #ffffff;
-      --text-primary: #ffffff;
-      --text-secondary: #888888;
-      --border: #333333;
+      --bg: #ffffff;
+      --card: #f5f5f7;
+      --accent: #000000;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b6b8a;
+      --border: #e0e0e0;
     }
 
     body {
@@ -68,7 +68,9 @@
       top: 0;
       left: 0;
       right: 0;
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
     }
@@ -105,7 +107,7 @@
     }
 
     .nav-links a:hover {
-      color: #fff;
+      color: #000;
       text-decoration: underline;
     }
 
@@ -153,12 +155,12 @@
     }
 
     .btn-primary {
-      background: #fff;
-      color: #000;
+      background: #000;
+      color: #fff;
     }
 
     .btn-primary:hover {
-      background: #e0e0e0;
+      background: #333;
       transform: translateY(-1px);
     }
 
@@ -166,7 +168,7 @@
     .marquee-section {
       padding: 16px 0 40px;
       overflow: hidden;
-      background: linear-gradient(180deg, var(--bg) 0%, #111 50%, var(--bg) 100%);
+      background: linear-gradient(180deg, var(--bg) 0%, #f0f0f2 50%, var(--bg) 100%);
     }
 
     .marquee-container {
@@ -221,7 +223,7 @@
       border-radius: 16px;
       overflow: hidden;
       background: var(--card);
-      box-shadow: 0 4px 20px rgba(255,255,255,0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
@@ -230,7 +232,7 @@
 
     .marquee-item:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(255,255,255,0.1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
     }
 
     .marquee-item img {
@@ -257,16 +259,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffffff;
-      color: #000000;
+      background: #000000;
+      color: #ffffff;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.5px;
     }
 
     .marquee-item:nth-child(even) .placeholder {
-      background: #111111;
-      color: #ffffff;
+      background: #f5f5f7;
+      color: #000000;
     }
 
     @media (max-width: 768px) {
@@ -315,14 +317,14 @@
       background: var(--card);
       border-radius: 12px;
       padding: 32px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .service-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255,255,255,0.05);
-      border-color: #444;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-color: #ccc;
     }
 
     .service-icon {
@@ -353,7 +355,7 @@
       background: var(--card);
       border-radius: 12px;
       padding: 48px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
     .form-group {
@@ -377,7 +379,7 @@
       border-radius: 8px;
       font-size: 15px;
       font-family: inherit;
-      background: var(--card);
+      background: #fff;
       color: var(--text-primary);
       transition: border-color 0.2s ease;
     }
@@ -396,7 +398,7 @@
 
     .form-group input::placeholder,
     .form-group textarea::placeholder {
-      color: #666;
+      color: #999;
     }
 
     .form-submit {
@@ -406,6 +408,16 @@
     .form-submit .btn {
       width: 100%;
     }
+
+    .form-status {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .form-status.success { color: #009966; }
+    .form-status.error { color: #cc0000; }
 
     /* Tracker Section */
     .tracker-section {
@@ -422,12 +434,12 @@
     .tracker-subtitle {
       font-size: 11px;
       letter-spacing: 3px;
-      color: var(--muted);
+      color: var(--text-secondary);
       margin-bottom: 12px;
     }
 
     .tracker-desc {
-      color: var(--muted);
+      color: var(--text-secondary);
       max-width: 500px;
       margin: 12px auto 0;
       font-size: 14px;
@@ -460,12 +472,12 @@
 
     .tracker-amount {
       font-weight: 700;
-      color: #00cc88;
+      color: #009966;
       font-size: 16px;
     }
 
     .tracker-service {
-      color: var(--muted);
+      color: var(--text-secondary);
       font-size: 13px;
       margin-bottom: 20px;
     }
@@ -480,19 +492,19 @@
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 100px;
-      background: rgba(255,255,255,0.06);
-      color: var(--muted);
+      background: rgba(0,0,0,0.05);
+      color: var(--text-secondary);
       letter-spacing: 0.3px;
     }
 
     .ts.done {
-      background: rgba(0,204,136,0.12);
-      color: #00cc88;
+      background: rgba(0,153,102,0.12);
+      color: #009966;
     }
 
     .ts.active {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
+      background: rgba(0,0,0,0.08);
+      color: #000;
     }
 
     @media (max-width: 768px) {
@@ -509,7 +521,7 @@
       padding: 40px 24px;
       text-align: center;
       border-top: 1px solid var(--border);
-      background: #0a0a0a;
+      background: #f5f5f7;
     }
 
     footer p {
@@ -532,7 +544,7 @@
     }
 
     .social-links a:hover {
-      color: #fff;
+      color: #000;
       text-decoration: underline;
     }
 
@@ -551,7 +563,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: #fff;
+      background: #000;
       transition: all 0.3s ease;
       border-radius: 2px;
     }
@@ -572,7 +584,7 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.97);
+        background: rgba(255, 255, 255, 0.97);
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -586,7 +598,7 @@
 
       .nav-links a {
         font-size: 24px;
-        color: #fff;
+        color: #000;
       }
 
       .hero {
@@ -633,7 +645,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1><span style="color:rgb(255,0,0);font-family:'Urban Haze',cursive;">Creative</span> <span style="color:rgb(0,0,255);font-family:'Riverflows',cursive;">Branding</span> <span style="color:rgb(0,255,0);font-family:'Aveline Eleganza',cursive;">SERVICES</span> & <span style="color:rgb(255,255,0);font-family:'Typo Draft',cursive;">SOLUTIONS</span></h1>
+      <h1><span style="color:rgb(200,0,0);font-family:'Urban Haze',cursive;">Creative</span> <span style="color:rgb(0,0,180);font-family:'Riverflows',cursive;">Branding</span> <span style="color:rgb(0,160,0);font-family:'Aveline Eleganza',cursive;">SERVICES</span> & <span style="color:rgb(180,180,0);font-family:'Typo Draft',cursive;">SOLUTIONS</span></h1>
       <p>Professional graphic design, logos, branding, and digital assets for businesses that want to stand out. Clean aesthetics, strategic thinking, results that speak.</p>
       <a href="#contact" class="btn btn-primary">Get Started</a>
     </div>
@@ -733,10 +745,10 @@
         <div class="service-icon">✦</div>
         <h3>Logo Design</h3>
         <p>Custom logos that capture your brand essence and make a lasting impression.</p>
-        <div style="margin-top: 15px; padding: 15px; background: #0a0a0a; border: 1px solid #222; border-radius: 8px;">
+        <div style="margin-top: 15px; padding: 15px; background: #ffffff; border: 1px solid #ddd; border-radius: 8px;">
           <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
             <span style="font-size: 14px; font-weight: 600;">Main Logo</span>
-            <span style="font-size: 18px; font-weight: 700; color: #fff;">$99</span>
+            <span style="font-size: 18px; font-weight: 700; color: #000;">$99</span>
           </div>
           <ul style="font-size: 12px; color: var(--text-secondary); margin: 10px 0; padding-left: 16px; line-height: 1.8;">
             <li>Master Logo</li>
@@ -745,7 +757,7 @@
           </ul>
           <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
             <span style="font-size: 14px; font-weight: 600;">Logo System</span>
-            <span style="font-size: 18px; font-weight: 700; color: #fff;">$250</span>
+            <span style="font-size: 18px; font-weight: 700; color: #000;">$250</span>
           </div>
           <ul style="font-size: 12px; color: var(--text-secondary); margin-top: 10px; padding-left: 16px; line-height: 1.8;">
             <li>Master Logo</li>
@@ -778,8 +790,8 @@
         <h3>Website + Landing Pages</h3>
         <p>Professional websites and conversion-focused landing pages that you own and control.</p>
       </div>
-      <div class="service-card" style="border:2px solid #fff;position:relative;">
-        <span style="position:absolute;top:-12px;left:16px;background:#fff;color:#000;font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:0.5px;">NEW 2026 SERVICE</span>
+      <div class="service-card" style="border:2px solid #000;position:relative;">
+        <span style="position:absolute;top:-12px;left:16px;background:#000;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:0.5px;">NEW 2026 SERVICE</span>
         <div class="service-icon">✨</div>
         <h3>AI Design Correction</h3>
         <p>Already have an AI-generated design? We professionally refine, clean up, and prepare it for print ~ so your brand looks polished, not synthetic.</p>
@@ -794,7 +806,7 @@
       <p>Have a project in mind? Let's talk about how we can bring your vision to life.</p>
     </div>
     <div class="form-container">
-      <form action="https://formspree.io/f/mreaqkdr" method="POST">
+      <form id="contactForm">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -820,6 +832,7 @@
         <div class="form-submit">
           <button type="submit" class="btn btn-primary">Send Message</button>
         </div>
+        <div id="formStatus" class="form-status"></div>
       </form>
     </div>
   </section>
@@ -858,6 +871,48 @@
       });
     });
 
+    // Form submission — Formspree + ntfy notification
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const status = document.getElementById('formStatus');
+      const data = new FormData(form);
+      const name = data.get('name');
+      const email = data.get('email');
+      const service = data.get('service');
+      const message = data.get('message');
+
+      // Submit to Formspree
+      fetch('https://formspree.io/f/mreaqkdr', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          status.textContent = '✓ Message sent! We\'ll be in touch.';
+          status.className = 'form-status success';
+          form.reset();
+
+          // Ping ntfy for Neo notification
+          fetch('https://ntfy.sh/shopnasgfx-contact', {
+            method: 'POST',
+            headers: {
+              'Title': 'New ShopNasGFX Lead: ' + name,
+              'Priority': 'high',
+              'Tags': 'email,incoming'
+            },
+            body: 'From: ' + name + ' (' + email + ')\nService: ' + service + '\nMessage: ' + message
+          }).catch(() => {});
+        } else {
+          status.textContent = '✗ Something went wrong. Try again or email us directly.';
+          status.className = 'form-status error';
+        }
+      }).catch(() => {
+        status.textContent = '✗ Network error. Check your connection and try again.';
+        status.className = 'form-status error';
+      });
+    });
+
     // Momentum-based Infinite Marquee
     const marquee = document.getElementById('marquee');
     const track = marquee.querySelector('.marquee-track');
@@ -891,10 +946,8 @@
       lastX = startX;
       lastTime = Date.now();
       
-      // Pause animation
       track.style.animationPlayState = 'paused';
       
-      // Get current transform
       const style = window.getComputedStyle(track);
       const matrix = new WebKitCSSMatrix(style.transform);
       translateX = matrix.m41;
@@ -912,7 +965,6 @@
       const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
       const deltaX = x - startX;
       
-      // Calculate velocity
       const now = Date.now();
       const dt = now - lastTime;
       if (dt > 0) {
@@ -921,10 +973,8 @@
       lastX = x;
       lastTime = now;
       
-      // Apply movement
       track.style.transform = `translateX(${translateX + deltaX}px)`;
       
-      // Determine direction for momentum effect
       if (velocity < -0.5) {
         isReversed = false;
       } else if (velocity > 0.5) {
@@ -938,22 +988,19 @@
       isDragging = false;
       marquee.classList.remove('dragging');
       
-      // Apply momentum
       const momentum = velocity * 100;
       let currentTranslate = translateX + (lastX - startX);
       
       function momentumLoop() {
         if (Math.abs(velocity) > 0.01) {
-          velocity *= 0.95; // friction
+          velocity *= 0.95;
           currentTranslate += velocity * 16;
           track.style.transform = `translateX(${currentTranslate}px)`;
           animationId = requestAnimationFrame(momentumLoop);
         } else {
-          // Resume normal animation
           track.style.transform = '';
           track.style.animationPlayState = 'running';
           
-          // Apply reverse if dragged that way
           if (isReversed) {
             marquee.classList.add('reverse');
           } else {
@@ -965,7 +1012,6 @@
       momentumLoop();
     }
 
-    // Reset on mouse leave
     marquee.addEventListener('mouseleave', () => {
       if (isDragging) {
         handleEnd();
