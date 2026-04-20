@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ & Refund Policy — SHOPNASGFX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #ffffff; --bg-soft: #f5f5f7; --text: #1a1a1a; --muted: #6b6b8a; --border: #e0e0e0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #000; }
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; background: none; border: none; padding: 4px; z-index: 1001; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: #000; border-radius: 2px; }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 120px 24px 80px; }
+    h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+    .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 48px; }
+
+    h2 { font-size: 22px; font-weight: 700; margin-top: 56px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--text); }
+
+    .faq-item { margin-bottom: 24px; }
+    .faq-q { font-weight: 600; font-size: 16px; margin-bottom: 6px; }
+    .faq-a { color: var(--muted); font-size: 15px; line-height: 1.8; }
+
+    .policy-section { margin-bottom: 20px; }
+    .policy-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .policy-section p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .policy-section ul { color: var(--muted); font-size: 15px; padding-left: 20px; line-height: 1.9; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; transition: all 0.25s; border: none; cursor: pointer; }
+    .btn-black { background: #000; color: #fff; }
+    .btn-black:hover { background: #222; transform: translateY(-2px); }
+
+    footer { padding: 40px 24px; text-align: center; border-top: 1px solid var(--border); background: var(--bg-soft); }
+    footer p { font-size: 13px; color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; position: absolute; top: 16px; right: 24px; }
+      .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255,255,255,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 32px; z-index: 1000; }
+      .nav-links.active { display: flex; }
+      .nav-links a { font-size: 22px; color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">SHOPNASGFX</a>
+      <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="https://innergclaw.github.io/shopnasgfx-tracker/" target="_blank">Tracker</a>
+        <a href="faq.html">FAQ</a>
+        <a href="index.html#contact">Start Project</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+    <h1>Frequently Asked Questions</h1>
+    <p class="subtitle">Everything you need to know before working with us.</p>
+
+    <h2>General</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I start a project?</div>
+      <div class="faq-a">Fill out the contact form on our homepage with your name, email, service you're interested in, and a brief description of your project. We'll respond within 24 hours.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's included in the $150 Logo Design?</div>
+      <div class="faq-a">One custom master logo with unlimited revisions. You receive all final files in PNG, JPEG, PDF, and AI/PSD formats. Full ownership included.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's included in the $300 Brand Identity Package?</div>
+      <div class="faq-a">Master logo, secondary logo, wordmark, brandmark, and submark — all with unlimited revisions. Full file package (PNG, JPEG, PDF, AI/PSD). Plus 100 business cards printed and shipped to you.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How long does a project take?</div>
+      <div class="faq-a">Logo designs typically take 3-5 business days. Brand identity packages take 5-7 business days. Websites and full setups vary — we'll give you a timeline after reviewing your project.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I own the final designs?</div>
+      <div class="faq-a">Yes. 100% ownership transferred to you upon final delivery. No watermarks, no licensing restrictions, no ongoing fees.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How many revisions do I get?</div>
+      <div class="faq-a">Unlimited revisions until you're satisfied. We don't stop until it's right.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if I already have an AI-generated design?</div>
+      <div class="faq-a">We offer AI Design Correction — we professionally refine, clean up, and prepare your AI design for print so it looks polished, not synthetic.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I track my project status?</div>
+      <div class="faq-a">Yes. Every client gets access to a personal project tracker where you can see real-time updates, previews, and stage changes. <a href="https://innergclaw.github.io/shopnasgfx-tracker/" style="color:var(--text);text-decoration:underline;">View tracker →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What payment methods do you accept?</div>
+      <div class="faq-a">We accept all major payment methods including Cash App, PayPal, and Stripe. A deposit is required before work begins.</div>
+    </div>
+
+    <h2>Refund Policy</h2>
+
+    <div class="policy-section">
+      <h3>Deposits</h3>
+      <p>All projects require a deposit before work begins. Deposits are <strong>non-refundable</strong> as they secure your project slot and cover initial design work.</p>
+    </div>
+
+    <div class="policy-section">
+      <h3>Before Design Work Begins</h3>
+      <p>If you cancel before we start any design work, a full refund (minus the deposit) will be issued within 5-7 business days.</p>
+    </div>
+
+    <div class="policy-section">
+      <h3>During the Design Process</h3>
+      <ul>
+        <li>If you cancel after initial concepts have been delivered, a partial refund may be issued at our discretion based on work completed.</li>
+        <li>We offer unlimited revisions — if you're unhappy with the direction, tell us and we'll adjust until it's right.</li>
+        <li>Refunds will not be issued simply because of a change of mind after work has been completed.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h3>After Final Delivery</h3>
+      <p>Once final files have been delivered and approved, the project is considered complete. No refunds will be issued after final delivery and acceptance.</p>
+    </div>
+
+    <div class="policy-section">
+      <h3>Business Cards & Printed Materials</h3>
+      <p>Printed business cards included in the Brand Identity Package are custom-made for your brand. Once sent to print, cancellations are not possible. If there's a printing defect, we will reprint at no additional cost.</p>
+    </div>
+
+    <div class="policy-section">
+      <h3>How to Request a Refund</h3>
+      <p>Email <a href="mailto:shopnasgfx@gmail.com" style="color:var(--text);text-decoration:underline;">shopnasgfx@gmail.com</a> or text "REFUND" to <a href="sms:2674730397" style="color:var(--text);text-decoration:underline;">267-473-0397</a> with your name and project details. We'll respond within 24 hours.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:64px;">
+      <a href="index.html#contact" class="btn btn-black">Start Your Project</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>ShopNasGFX © 2026 — Build Your Brand The Right Way</p>
+  </footer>
+</body>
+</html>
