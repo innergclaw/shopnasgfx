@@ -90,6 +90,26 @@
     .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
     .service-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
 
+    /* Prebuilt sites */
+    .prebuilt-wrap { margin-top: 56px; text-align: left; }
+    .prebuilt-intro { max-width: 760px; margin: 0 auto 28px; text-align: center; }
+    .prebuilt-intro p { color: var(--muted); font-size: 16px; }
+    .prebuilt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; margin-top: 32px; }
+    .prebuilt-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    .prebuilt-card:hover { transform: translateY(-6px); border-color: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .prebuilt-media { aspect-ratio: 16 / 10; background: linear-gradient(135deg, #f8f8f8, #ececf1); display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .prebuilt-media img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
+    .prebuilt-body { padding: 28px; }
+    .prebuilt-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,0.06); margin-bottom: 14px; }
+    .prebuilt-card h3 { font-size: 24px; line-height: 1.2; margin-bottom: 10px; }
+    .prebuilt-card p { font-size: 15px; color: var(--muted); margin-bottom: 18px; }
+    .prebuilt-price { font-size: 28px; font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; }
+    .prebuilt-list { list-style: none; margin: 0 0 24px; padding: 0; }
+    .prebuilt-list li { position: relative; padding-left: 18px; margin-bottom: 10px; color: var(--muted); font-size: 14px; }
+    .prebuilt-list li::before { content: '•'; position: absolute; left: 0; color: #000; font-weight: 700; }
+    .prebuilt-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .prebuilt-note { margin-top: 24px; padding: 18px 20px; background: #fff; border: 1px solid var(--border); border-radius: 14px; font-size: 14px; color: var(--muted); }
+
     /* 3.5 Portfolio Marquee */
     .portfolio { padding: 60px 0; overflow: hidden; background: var(--bg); }
     .marquee-track { display: flex; width: max-content; animation: scroll 20s linear infinite; }
@@ -162,6 +182,7 @@
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
         <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#prebuilt-sites" onclick="closeMenu()">Prebuilt Sites</a>
         <a href="#work" onclick="closeMenu()">Work</a>
         <a href="https://innergclaw.github.io/shopnasgfx-tracker/" onclick="closeMenu()">Tracker</a>
         <a href="faq.html" onclick="closeMenu()">FAQ</a>
@@ -250,6 +271,70 @@
     </div>
   </section>
 
+  <section id="prebuilt-sites" class="text-center" style="background:var(--bg-soft);">
+    <div class="container">
+      <span class="section-label">Ready-made websites</span>
+      <h2 class="section-title">Buy a Prebuilt Site<br>and launch faster</h2>
+      <div class="prebuilt-intro fade">
+        <p>If you need a clean, professional website without waiting on a full custom build, grab a prebuilt and make it yours. These are built to convert, then customized with your business info, colors, photos, and contact details.</p>
+      </div>
+
+      <div class="prebuilt-wrap">
+        <div class="prebuilt-grid">
+          <article class="prebuilt-card fade">
+            <div class="prebuilt-media">
+              <img src="logo-bloom-grow.png" alt="ChildsPlay daycare prebuilt website">
+            </div>
+            <div class="prebuilt-body">
+              <span class="prebuilt-badge">Available Now</span>
+              <h3>CHILDSPLAY</h3>
+              <p>A daycare and childcare website built to make parents feel safe, informed, and ready to book a tour.</p>
+              <div class="prebuilt-price">Starting at $350</div>
+              <ul class="prebuilt-list">
+                <li>Homepage sections already structured for conversions</li>
+                <li>Customized with your brand colors, photos, and business info</li>
+                <li>Mobile-ready layout for parents browsing on their phone</li>
+                <li>Contact and enrollment-focused calls to action</li>
+                <li>Fast turnaround compared to full custom design</li>
+              </ul>
+              <div class="prebuilt-actions">
+                <a href="#contact" class="btn btn-black">Claim This Site</a>
+                <a href="https://innergclaw.github.io/castle-kids-academy/" target="_blank" class="btn btn-outline">View Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="prebuilt-card fade">
+            <div class="prebuilt-media">
+              <div style="text-align:center;">
+                <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">More coming</div>
+                <div style="font-size:30px;font-weight:800;letter-spacing:-1px;">Next prebuilt drops soon</div>
+              </div>
+            </div>
+            <div class="prebuilt-body">
+              <span class="prebuilt-badge">Join the waitlist</span>
+              <h3>Need another industry?</h3>
+              <p>Restaurants, salons, personal brands, events, and service businesses are next. Get on the list and we’ll send you first access when new prebuilt sites drop.</p>
+              <div class="prebuilt-price">By request</div>
+              <ul class="prebuilt-list">
+                <li>Early access to new website drops</li>
+                <li>Priority customization slots</li>
+                <li>Option to request your industry first</li>
+              </ul>
+              <div class="prebuilt-actions">
+                <a href="#contact" class="btn btn-black">Join Waitlist</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="prebuilt-note fade">
+          <strong>How this works:</strong> You’re not buying a generic template dump. You’re buying a professionally structured site that gets tailored to your business, then delivered ready to use.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 3.5 PORTFOLIO -->
   <section id="work" class="portfolio">
     <div style="text-align:center;padding:0 24px 40px;">
@@ -290,9 +375,9 @@
           <a href="#contact" class="btn btn-black">Fill Out Form</a>
         </div>
         <div class="path-card fade">
-          <h3>View Pricing</h3>
-          <p>Know what you need? See our packages and pick what fits.</p>
-          <a href="#services" class="btn btn-outline">View Pricing</a>
+          <h3>Buy a Prebuilt Site</h3>
+          <p>Need to move fast? Start with a conversion-ready website and customize it to your brand.</p>
+          <a href="#prebuilt-sites" class="btn btn-outline">See Prebuilt Options</a>
         </div>
       </div>
     </div>
@@ -376,13 +461,15 @@
               <option value="Brand Identity ($300)">Brand Identity — $300</option>
               <option value="Social Media Graphics">Social Media Graphics</option>
               <option value="Website">Website</option>
+              <option value="Prebuilt Website - CHILDSPLAY">Prebuilt Website - CHILDSPLAY</option>
+              <option value="Prebuilt Website Waitlist">Prebuilt Website Waitlist</option>
               <option value="Full Setup">Full Brand Setup</option>
               <option value="AI Design Correction">AI Design Correction</option>
               <option value="Custom Package">Custom Package</option>
             </select>
           </div>
           <div style="margin-bottom:20px;">
-            <textarea name="message" placeholder="Tell us about your project..." required style="width:100%;padding:14px 18px;border:1px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--text);min-height:120px;resize:vertical;"></textarea>
+            <textarea name="message" placeholder="Tell us what business this is for, what prebuilt you want, and what customizations you need..." required style="width:100%;padding:14px 18px;border:1px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--text);min-height:120px;resize:vertical;"></textarea>
           </div>
           <button type="submit" class="btn btn-black" style="width:100%;">Start Your Project</button>
           <div id="formStatus" style="text-align:center;margin-top:14px;font-size:14px;font-weight:500;"></div>
