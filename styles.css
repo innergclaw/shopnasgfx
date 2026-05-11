@@ -123,9 +123,11 @@ h2 {
   transition: transform .16s ease, box-shadow .16s ease;
 }
 
-.logo-card:nth-child(1) { background: var(--ink); }
-.logo-card:nth-child(2) { background: var(--white); }
-.logo-card:nth-child(3) { background: #efe3d2; }
+.logo-card:nth-child(5n + 1) { background: var(--ink); }
+.logo-card:nth-child(5n + 2) { background: var(--white); }
+.logo-card:nth-child(5n + 3) { background: #efe3d2; }
+.logo-card:nth-child(5n + 4) { background: #101010; }
+.logo-card:nth-child(5n + 5) { background: #f1e4cf; }
 
 .logo-card:hover {
   transform: translate(4px, 4px);
