@@ -54,11 +54,11 @@ if (contactForm) {
         }
       });
 
-      if (!response.ok) throw new Error('SHOPNASGFX intake request failed');
+      if (!response.ok) throw new Error('ShopNasGraphics intake request failed');
 
       contactForm.reset();
       formNote.className = 'form-note success';
-      formNote.textContent = 'Inquiry sent. SHOPNASGFX will follow up with your next step.';
+      formNote.textContent = 'Inquiry sent. ShopNasGraphics will follow up with your next step.';
     } catch (error) {
       formNote.className = 'form-note error';
       formNote.textContent = 'Could not send the inquiry right now. Please try again or email directly.';
