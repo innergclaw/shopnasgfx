@@ -290,9 +290,10 @@
         <p>Send the name, industry, colors, references, and deadline. SHOPNASGRAPHICS turns the idea into a visual identity.</p>
       </div>
 
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xykdkzly" method="POST">
+      <form class="contact-form" id="contactForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST">
         <input type="hidden" name="_subject" value="New SHOPNASGRAPHICS Logo Inquiry">
-        <input type="hidden" name="source" value="SHOPNASGRAPHICS Logo Showcase">
+        <input type="hidden" name="source" value="SHOPNASGFX Contact Form">
+        <input type="hidden" name="source_page" value="SHOPNASGFX Contact Form">
         <div class="field-row">
           <label>
             <span>Name</span>
@@ -318,7 +319,7 @@
           <textarea name="message" rows="5" placeholder="Brand name, industry, colors, references, deadline, and anything else I should know." required></textarea>
         </label>
         <button class="btn primary" type="submit">Send project inquiry</button>
-        <p class="form-note" id="formNote">Submits through the connected Formspree inbox.</p>
+        <p class="form-note" id="formNote">Send the project details and I’ll follow up with the next step.</p>
       </form>
     </section>
   </main>
