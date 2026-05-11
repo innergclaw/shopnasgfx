@@ -311,11 +311,15 @@ footer {
   }
 
   .logo-showcase {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .logo-card {
-    min-height: 250px;
+    min-height: 0;
+    padding: 8px;
+    box-shadow: 4px 4px 0 var(--line);
+    border-width: 2px;
   }
 
   .field-row {
