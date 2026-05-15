@@ -141,7 +141,8 @@ h2 {
   display: block;
 }
 
-.offer-panel {
+.offer-panel,
+.paid-panel {
   display: grid;
   grid-template-columns: minmax(0, .92fr) minmax(360px, 1.08fr);
   gap: 18px;
@@ -149,6 +150,7 @@ h2 {
 }
 
 .offer-copy,
+.paid-copy,
 .contact-form {
   border: 3px solid var(--line);
   background: var(--white);
@@ -162,11 +164,47 @@ h2 {
     var(--white);
 }
 
+.paid-panel {
+  grid-template-columns: minmax(360px, 1.04fr) minmax(0, .96fr);
+}
+
+.paid-copy {
+  padding: clamp(22px, 4vw, 38px);
+  background:
+    linear-gradient(135deg, rgba(255,79,50,.72) 0 24%, transparent 24% 100%),
+    linear-gradient(315deg, rgba(200,255,46,.58) 0 22%, transparent 22% 100%),
+    var(--white);
+}
+
 .offer-copy p {
   margin: 18px 0 0;
   color: var(--muted);
   font-weight: 750;
   line-height: 1.6;
+}
+
+.paid-copy p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.paid-steps {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.paid-steps span {
+  border: 3px solid var(--line);
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: 5px 5px 0 var(--gold);
+  padding: 12px 14px;
+  font-size: .84rem;
+  font-weight: 1000;
+  text-transform: uppercase;
 }
 
 .disclaimer {
@@ -295,7 +333,8 @@ footer {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .offer-panel {
+  .offer-panel,
+  .paid-panel {
     grid-template-columns: 1fr;
   }
 }

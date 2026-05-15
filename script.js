@@ -31,23 +31,26 @@ if (modal && modalImg && modalTitle && modalType && closeBtn) {
   });
 }
 
-const contactForm = document.getElementById('contactForm');
-const formNote = document.getElementById('formNote');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', async (event) => {
+document.querySelectorAll('.js-intake-form').forEach((form) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const button = contactForm.querySelector('button[type="submit"]');
+    const button = form.querySelector('button[type="submit"]');
+    const formNote = document.getElementById(form.dataset.noteId);
     const originalText = button.textContent;
     button.disabled = true;
     button.textContent = 'Sending...';
-    formNote.className = 'form-note';
-    formNote.textContent = 'Sending your inquiry...';
+    if (formNote) {
+      formNote.className = 'form-note';
+      formNote.textContent = form.dataset.sending || 'Sending...';
+    }
 
     try {
-      const formData = new FormData(contactForm);
+      const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
-      const response = await fetch(contactForm.action, {
+      payload.submitted_at = new Date().toISOString();
+      payload.page_url = window.location.href;
+
+      const response = await fetch(form.action, {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: {
@@ -58,15 +61,19 @@ if (contactForm) {
 
       if (!response.ok) throw new Error('ShopNasGraphics intake request failed');
 
-      contactForm.reset();
-      formNote.className = 'form-note success';
-      formNote.textContent = 'Inquiry sent. ShopNasGraphics will follow up with your next step.';
+      form.reset();
+      if (formNote) {
+        formNote.className = 'form-note success';
+        formNote.textContent = form.dataset.success || 'Sent. ShopNasGraphics will follow up with your next step.';
+      }
     } catch (error) {
-      formNote.className = 'form-note error';
-      formNote.textContent = 'Could not send the inquiry right now. Please try again or email directly.';
+      if (formNote) {
+        formNote.className = 'form-note error';
+        formNote.textContent = 'Could not send the inquiry right now. Please try again or email directly.';
+      }
     } finally {
       button.disabled = false;
       button.textContent = originalText;
     }
   });
-}
+});

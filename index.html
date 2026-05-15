@@ -77,11 +77,12 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST">
+      <form class="contact-form js-intake-form" id="contactForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="formNote" data-sending="Sending your inquiry..." data-success="Inquiry sent. ShopNasGraphics will follow up with your next step.">
         <input type="hidden" name="_subject" value="New ShopNasGraphics Name Your Price Inquiry">
         <input type="hidden" name="source" value="ShopNasGraphics Name Your Price Form">
         <input type="hidden" name="source_page" value="ShopNasGraphics Name Your Price Form">
         <input type="hidden" name="project_type" value="Name Your Price Logo Offer">
+        <input type="hidden" name="intake_lane" value="name_your_price">
 
         <div class="field-row">
           <label>
@@ -117,6 +118,88 @@
 
         <button class="btn primary" type="submit">Submit Offer</button>
         <p class="form-note" id="formNote">Your offer goes to the ShopNasGraphics review queue.</p>
+      </form>
+    </section>
+
+    <section class="paid-panel" id="paid">
+      <div class="paid-copy">
+        <p class="eyebrow">Paid already?</p>
+        <h2>Send the info for your order.</h2>
+        <p>If you already paid, drop your project details here so everything can be matched, organized, and moved into the design queue.</p>
+        <div class="paid-steps" aria-label="Paid customer intake steps">
+          <span>01 Payment matched</span>
+          <span>02 Details organized</span>
+          <span>03 Project queued</span>
+        </div>
+      </div>
+
+      <form class="contact-form paid-form js-intake-form" id="paidInfoForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="paidFormNote" data-sending="Saving your paid order details..." data-success="Got it. Your paid order details were sent to the ShopNasGraphics queue.">
+        <input type="hidden" name="_subject" value="Paid ShopNasGraphics Customer Info">
+        <input type="hidden" name="source" value="ShopNasGraphics Paid Already Form">
+        <input type="hidden" name="source_page" value="ShopNasGraphics Paid Already Section">
+        <input type="hidden" name="intake_lane" value="paid_customer_info">
+        <input type="hidden" name="paid_status" value="paid_already">
+        <input type="hidden" name="priority" value="paid_customer">
+        <input type="hidden" name="budget_range" value="Paid Already">
+
+        <div class="field-row">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your name" required>
+          </label>
+          <label>
+            <span>Email used to pay</span>
+            <input type="email" name="email" placeholder="payment@email.com" required>
+          </label>
+        </div>
+
+        <div class="field-row">
+          <label>
+            <span>Phone / Text</span>
+            <input type="tel" name="phone" placeholder="Best number to text">
+          </label>
+          <label>
+            <span>Payment name / ID</span>
+            <input type="text" name="payment_reference" placeholder="Cash App, Stripe, invoice, or order ID">
+          </label>
+        </div>
+
+        <label>
+          <span>Business / Brand Name</span>
+          <input type="text" name="business_name" placeholder="What name goes on the design?" required>
+        </label>
+
+        <div class="field-row">
+          <label>
+            <span>What did you pay for?</span>
+            <select name="project_type" required>
+              <option value="">Choose one</option>
+              <option>Logo Design</option>
+              <option>Flyer / Promo Graphic</option>
+              <option>Brand Identity</option>
+              <option>Website / Landing Page</option>
+              <option>Social Media Graphics</option>
+              <option>Other Design Service</option>
+            </select>
+          </label>
+          <label>
+            <span>Amount Paid</span>
+            <input type="text" name="amount_paid" placeholder="$200, $500, etc.">
+          </label>
+        </div>
+
+        <label>
+          <span>Links / Files / References</span>
+          <textarea name="reference_links" rows="4" placeholder="Paste Google Drive links, Instagram pages, websites, colors, references, or file links here."></textarea>
+        </label>
+
+        <label>
+          <span>Project Details</span>
+          <textarea name="message" rows="5" placeholder="Tell me what you need, deadline, colors, style, wording, file types, and anything already discussed." required></textarea>
+        </label>
+
+        <button class="btn primary" type="submit">Send Paid Order Info</button>
+        <p class="form-note" id="paidFormNote">Paid orders go straight into the ShopNasGraphics organization queue.</p>
       </form>
     </section>
   </main>
