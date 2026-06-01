@@ -141,6 +141,18 @@ h2 {
   display: block;
 }
 
+.review-embed {
+  border: 3px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 9px 9px 0 var(--line);
+  overflow: hidden;
+}
+
+.review-embed iframe {
+  display: block;
+}
+
 .offer-panel,
 .paid-panel {
   display: grid;
