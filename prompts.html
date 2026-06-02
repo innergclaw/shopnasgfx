@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopNasGraphics | 50 Prompt Drops</title>
+  <meta name="description" content="Daily prompt drops from ShopNasGraphics. Unlock one new prompt each day from the 50-prompt collection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0c0c0f;
+      --paper: #f7f0e8;
+      --white: #fffdf8;
+      --muted: #70655e;
+      --line: #171717;
+      --gold: #d59f38;
+      --gold-soft: #efdcaa;
+      --lime: #cbff2d;
+      --coral: #ff5230;
+      --cyan: #26d7ff;
+      --violet: #6255ff;
+      --shadow: 10px 10px 0 var(--line);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(12,12,15,.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(12,12,15,.045) 1px, transparent 1px),
+        radial-gradient(circle at 14% 12%, rgba(213,159,56,.24), transparent 24%),
+        radial-gradient(circle at 88% 22%, rgba(38,215,255,.14), transparent 22%),
+        var(--paper);
+      background-size: 34px 34px, 34px 34px, auto, auto, auto;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    h1, h2, p { margin: 0; }
+
+    .page-shell {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 54px 0 42px;
+      display: grid;
+      gap: 26px;
+    }
+
+    .hero,
+    .tip-panel,
+    .drop-list,
+    .notes-panel {
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: clamp(24px, 5vw, 48px);
+      background:
+        linear-gradient(135deg, rgba(203,255,45,.76) 0 22%, transparent 22% 100%),
+        linear-gradient(315deg, rgba(38,215,255,.14) 0 18%, transparent 18% 100%),
+        var(--white);
+    }
+
+    .eyebrow,
+    .pill,
+    .drop-day,
+    .drop-status {
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .03em;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 5px 5px 0 var(--line);
+      padding: 9px 12px;
+      font-size: .78rem;
+    }
+
+    h1,
+    h2 {
+      font-family: Anton, Impact, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      line-height: .9;
+    }
+
+    h1 {
+      margin-top: 18px;
+      max-width: 860px;
+      font-size: clamp(3.5rem, 11vw, 8rem);
+      text-shadow: 6px 6px 0 var(--gold-soft);
+    }
+
+    .lead {
+      margin-top: 16px;
+      max-width: 730px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .drop-list {
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .tip-panel {
+      padding: 18px 20px;
+      display: grid;
+      gap: 10px;
+      background:
+        linear-gradient(135deg, rgba(255,82,48,.16), rgba(203,255,45,.3)),
+        var(--white);
+    }
+
+    .tip-panel strong {
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .tip-panel code {
+      width: fit-content;
+      max-width: 100%;
+      border: 3px solid var(--line);
+      padding: 10px 12px;
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--line);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .drop-item {
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 6px 6px 0 var(--line);
+      overflow: hidden;
+    }
+
+    .drop-item summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .drop-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .drop-head {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 18px 16px;
+    }
+
+    .drop-day {
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    .drop-copy strong {
+      display: block;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.2;
+    }
+
+    .drop-copy span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .drop-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 118px;
+      border: 3px solid var(--line);
+      padding: 10px 12px;
+      background: var(--lime);
+      box-shadow: 4px 4px 0 var(--line);
+      font-size: .78rem;
+    }
+
+    .drop-body {
+      padding: 0 18px 18px;
+      border-top: 3px solid rgba(23,23,23,.08);
+      display: grid;
+      gap: 12px;
+    }
+
+    .prompt-preview,
+    .prompt-note {
+      border: 3px solid var(--line);
+      background: #fff8ef;
+      box-shadow: 4px 4px 0 var(--line);
+      padding: 14px;
+    }
+
+    .preview-panel {
+      display: grid;
+      gap: 12px;
+    }
+
+    .preview-panel h3 {
+      margin: 0;
+      font-family: Anton, Impact, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: .01em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .preview-card {
+      margin: 0;
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 4px 4px 0 var(--line);
+      overflow: hidden;
+    }
+
+    .preview-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .preview-card figcaption {
+      padding: 9px 10px;
+      border-top: 3px solid var(--line);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .prompt-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .copy-btn {
+      border: 3px solid var(--line);
+      background: var(--lime);
+      box-shadow: 4px 4px 0 var(--line);
+      padding: 8px 12px;
+      font-size: .78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .copy-btn.copied {
+      background: var(--cyan);
+    }
+
+    .prompt-preview code {
+      display: block;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+
+    .prompt-note {
+      background: #111;
+      color: var(--white);
+      font-size: .92rem;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+
+    .drop-item.upcoming .drop-head,
+    .drop-item.upcoming .drop-body {
+      filter: blur(10px);
+      opacity: .55;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .drop-item.upcoming {
+      position: relative;
+      background: linear-gradient(135deg, rgba(98,85,255,.08), rgba(38,215,255,.04));
+    }
+
+    .drop-item.upcoming::after {
+      content: "Upcoming drop";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 6px 6px 0 var(--line);
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      z-index: 2;
+    }
+
+    .drop-item.upcoming[open] {
+      pointer-events: none;
+    }
+
+    .drop-item.upcoming .drop-status {
+      background: #ece8ff;
+    }
+
+    .notes-panel {
+      padding: 22px;
+      display: grid;
+      gap: 12px;
+      background:
+        linear-gradient(135deg, rgba(255,82,48,.76) 0 18%, transparent 18% 100%),
+        var(--white);
+    }
+
+    .notes-panel p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .drop-head {
+        grid-template-columns: 1fr;
+      }
+
+      .drop-status {
+        width: fit-content;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 14vw, 5rem);
+        line-height: .95;
+        text-shadow: 4px 4px 0 var(--gold-soft);
+      }
+
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-label="Prompt collection intro">
+      <p class="eyebrow">ShopNasGraphics Prompt Link</p>
+      <h1>50 Prompt Drops</h1>
+      <p class="lead">One new prompt every day.</p>
+      <p class="lead">Copy and paste into your image model ( ChatGPT, Gemini .. )</p>
+    </section>
+
+    <section class="tip-panel" aria-label="Prompt customization tip">
+      <p class="eyebrow">Tip before all prompts</p>
+      <strong>Add this to the end of the prompt:</strong>
+      <code>"replace all BRAND NAME with [YOUR BRAND NAME]"</code>
+    </section>
+
+    <section class="drop-list" id="dropList" aria-label="Prompt drops list"></section>
+
+    <section class="notes-panel">
+      <p class="eyebrow">How to update</p>
+      <h2>Easy daily edit flow</h2>
+      <p>Open this file, replace the placeholder prompt text for the next day, and switch that item from upcoming to released. Everything below it stays blurred until the next update.</p>
+    </section>
+  </main>
+
+  <script>
+    const releasedCount = 1;
+
+    const prompts = Array.from({ length: 50 }, (_, index) => ({
+      day: index + 1,
+      title: `Prompt ${String(index + 1).padStart(2, "0")}`,
+      description:
+        index === 0
+          ? "Brand-adaptive highway billboard prompt with brand color logic, layered graffiti letters, sky, structure, and lighting phases."
+          : "Upcoming daily drop. Replace this placeholder with the real prompt description when that day unlocks.",
+      prompt:
+        index === 0
+          ? `[PROMPT][01][[BRAND NAME]
+
+Act as a photographer shooting a real highway billboard with a 35mm film camera during late afternoon. The image is a real photograph — visible film grain throughout, natural daylight, clean and simple.
+
+PHASE 0: BRAND INTELLIGENCE
+
+Identify [BRAND NAME]'s primary brand color — this becomes the main fill of the bubble letters. Identify [BRAND NAME]'s secondary brand color — this becomes the outer base layer of the letters. Identify a real short descriptor or product category associated with [BRAND NAME] — this goes on the highway sign panel. Identify a real sub-brand, founder name, or secondary identifier — this goes in the small pill badge inside the letters.
+
+PHASE 1: SKY
+
+Clear blue sky — natural daylight, late afternoon. Gradient from slightly deeper blue at the top of the frame to lighter blue-grey near the horizon. No dramatic clouds, no storm, no golden hour. Just a clean American highway sky with natural color. Subtle film grain visible throughout the sky — the kind that appears when shooting on Kodak Portra 400 in daylight. The sky fills the upper 55 to 60% of the frame.
+
+PHASE 2: BUBBLE LETTERS — THREE PHYSICAL LAYERS
+
+The [BRAND NAME] name as massive three-dimensional bubble letters mounted directly on the billboard frame structure — NO white billboard face panel behind the letters. The letters sit against the open sky.
+
+THREE PHYSICAL LAYERS: outer base — [BRAND NAME]'s secondary brand color, the thickest and largest layer, protruding approximately 30 to 40cm from the frame. This is the outermost shadow base — it forms the bottom cloud-like mass connecting all letters. White outline layer — a clean white or cream stripe 3 to 5cm thick between the base and the main letter body. Creates a visible ridge separating the two color zones. Main front face — [BRAND NAME]'s primary brand color. The surface has subtle paint texture — not perfectly smooth, slight brush quality. A very gentle highlight zone in the upper-center of each letter body — as if the natural daylight catches the convex surface.
+
+Letter style: authentic 1970s graffiti bubble letters — extremely rounded and inflated, each letter appears pneumatic, filled with air. Terminals curl and loop organically. Letters connect at their bases through the outer layer creating one continuous flowing cloud-like mass along the bottom. The wordmark reads as a single organic connected form — not separate letters standing independently. This is hand-lettered bubble style — organic and alive, not a computer font.
+
+PHASE 3: BILLBOARD STRUCTURE
+
+The letters are mounted on a standard open metal frame billboard structure — visible horizontal and vertical metal crossbars behind and below the letters. NO solid white panel. The structure is clean grey painted steel — no rust, no weathering, no damage. Two vertical support columns symmetrically placed, visible below the letter structure, extending to the bottom of the frame. The catwalk along the bottom of the letter frame: narrow metal catwalk with railing, a few floodlight fixtures mounted facing upward, currently off since it is daytime.
+
+PHASE 4: SECONDARY ELEMENTS
+
+Small pill badge: a small rounded rectangle badge embedded within one of the main letters, slightly overlapping neighboring letters. Color: yellow or a contrasting brand accent color. Inside the badge: the secondary identifier from PHASE 0 in small sans-serif text. Clean and simple.
+
+Highway sign: mounted adjacent to the rightmost letter, slightly overlapping it, on a short metal post. Standard US highway sign format — green background (#006747), white border, white text in Highway Gothic font. Contains the real brand descriptor from PHASE 0. No arrow. Clean retroreflective surface.
+
+PHASE 5: LIGHTING
+Natural daylight — the sun is in front and slightly to the right at approximately 30 to 40° elevation. This creates: direct light on the front faces of the letters — the primary brand color is bright and vivid. A soft shadow on the left-facing sides of the letters. The outer base layer casts a shadow on the billboard frame behind it. The underside of the outer base layer is in slight shadow. No artificial lights active — pure natural daylight. The letters are bright, saturated, and clearly visible against the blue sky.
+
+PHASE 6: CAMERA — STRICTLY FRONTAL
+
+CRITICAL NON-NEGOTIABLE: camera axis is exactly perpendicular to the billboard face — ZERO horizontal rotation, ZERO 3/4 angle, ZERO side perspective. The two support columns must be perfectly symmetrical — equal distance from center. If columns are asymmetrical the angle is wrong. The only permitted perspective is a slight upward vertical tilt of 10 to 15° — we look slightly up at the billboard but perfectly straight at it horizontally. Camera height: ground level, 2 to 3 meters. The letters fill approximately 70 to 75% of the frame width. Sky visible above. Column bases visible below. Aspect ratio: 1:1 square.
+
+PHASE 7: FILM GRAIN
+
+Visible film grain throughout the entire image — consistent with Kodak Portra 400 shot in daylight at ISO 400. The grain is present but not overwhelming — clearly visible in the sky zones, visible on the letter surfaces, present on the billboard structure. This grain is what separates a real photograph from a CGI render. Uniform across the entire frame. Slightly more visible in the darker upper sky zone.
+
+FINAL CHECK — MANDATORY: (1) Is the camera PERFECTLY FRONTAL — columns symmetrical, zero 3/4 angle? If any side angle — WRONG, regenerate. (2) Is there NO white billboard face panel — letters against open sky and frame structure? If a white panel exists — WRONG, regenerate. (3) Is the sky natural blue daylight — not dark, not stormy, not golden hour? If wrong sky — regenerate. (4) Is film grain clearly visible throughout? If it looks like a clean render — regenerate. (5) Are the bubble letters authentic 1970s graffiti style — organic, inflated, connected at the base? If they look like a computer font — regenerate.]`
+          : `[PROMPT][${String(index + 1).padStart(2, "0")}][Add the real prompt here when this day goes live.]`,
+      note:
+        index === 0
+          ? ""
+          : "Blur stays on until you update this day.",
+      previews:
+        index === 0
+          ? [
+              { src: "assets/prompt-previews/billboard-brand-mcdonalds.jpg", label: "McDonald's preview" },
+              { src: "assets/prompt-previews/billboard-brand-nike.jpg", label: "Nike preview" },
+              { src: "assets/prompt-previews/billboard-brand-shopnasgfx.jpg", label: "ShopNasGFX preview" },
+              { src: "assets/prompt-previews/billboard-brand-joes.jpg", label: "Joe's preview" }
+            ]
+          : []
+    }));
+
+    const dropList = document.getElementById("dropList");
+
+    prompts.forEach((item, index) => {
+      const details = document.createElement("details");
+      details.className = "drop-item";
+
+      if (index + 1 > releasedCount) {
+        details.classList.add("upcoming");
+      } else if (index === 0) {
+        details.open = true;
+      }
+
+      details.innerHTML = `
+        <summary>
+          <div class="drop-head">
+            <div class="drop-day">Day ${String(item.day).padStart(2, "0")}</div>
+            <div class="drop-copy">
+              <strong>${index === 0 ? "BILLBOARD BRAND NAME" : `[PROMPT][${String(item.day).padStart(2, "0")}][DESCRIPTION]`}</strong>
+              <span>${item.description}</span>
+            </div>
+            <div class="drop-status">${index + 1 <= releasedCount ? "Released" : "Locked"}</div>
+          </div>
+        </summary>
+        <div class="drop-body">
+          ${item.previews.length ? `
+            <section class="preview-panel" aria-label="Prompt preview results">
+              <h3>Preview results</h3>
+              <div class="preview-grid">
+                ${item.previews.map((preview) => `
+                  <figure class="preview-card">
+                    <img src="${preview.src}" alt="${preview.label}" loading="lazy">
+                    <figcaption>${preview.label}</figcaption>
+                  </figure>
+                `).join("")}
+              </div>
+            </section>
+          ` : ""}
+          <div class="prompt-preview">
+            <div class="prompt-toolbar">
+              <button class="copy-btn" type="button" data-copy-text="${item.prompt.replace(/"/g, '&quot;')}">Copy</button>
+            </div>
+            <code>${item.prompt}</code>
+          </div>
+          ${item.note ? `<div class="prompt-note">${item.note}</div>` : ""}
+        </div>
+      `;
+
+      dropList.appendChild(details);
+    });
+
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const text = button.getAttribute("data-copy-text") || "";
+        try {
+          await navigator.clipboard.writeText(text);
+          const original = button.textContent;
+          button.textContent = "Copied";
+          button.classList.add("copied");
+          setTimeout(() => {
+            button.textContent = original;
+            button.classList.remove("copied");
+          }, 1200);
+        } catch (error) {
+          button.textContent = "Copy failed";
+          setTimeout(() => {
+            button.textContent = "Copy";
+          }, 1200);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
