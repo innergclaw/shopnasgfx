@@ -129,6 +129,10 @@ h2 {
 .logo-card:nth-child(5n + 4) { background: #101010; }
 .logo-card:nth-child(5n + 5) { background: #f1e4cf; }
 
+.logo-card.client-logo-card {
+  background: var(--white);
+}
+
 .logo-card:hover {
   transform: translate(4px, 4px);
   box-shadow: 4px 4px 0 var(--line);
