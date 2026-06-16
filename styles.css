@@ -157,32 +157,104 @@ h2 {
   display: block;
 }
 
-.included-panel {
+.dropdown-section,
+.content-dropdown {
   display: grid;
-  grid-template-columns: minmax(280px, .88fr) minmax(0, 1.12fr);
-  gap: 18px;
-  align-items: stretch;
 }
 
-.included-copy,
+.content-dropdown,
 .included-card {
   border: 3px solid var(--line);
   background: var(--white);
   box-shadow: 9px 9px 0 var(--line);
 }
 
-.included-copy {
+.content-dropdown {
+  overflow: hidden;
+}
+
+.content-dropdown summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
   padding: clamp(22px, 4vw, 38px);
+  cursor: pointer;
+  list-style: none;
+}
+
+.content-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.included-dropdown summary {
   background:
     linear-gradient(135deg, rgba(255,196,0,.68) 0 24%, transparent 24% 100%),
     var(--white);
 }
 
-.included-copy p {
+.pricing-dropdown summary {
+  background:
+    linear-gradient(135deg, rgba(41,215,255,.68) 0 24%, transparent 24% 100%),
+    var(--white);
+}
+
+.content-dropdown[open] summary {
+  border-bottom: 3px solid var(--line);
+}
+
+.dropdown-title {
+  display: block;
+  max-width: 820px;
+  font-family: Anton, Impact, sans-serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: .9;
+  text-transform: uppercase;
+}
+
+.dropdown-copy {
+  display: block;
+  max-width: 720px;
   margin: 18px 0 0;
   color: var(--muted);
   font-weight: 750;
   line-height: 1.6;
+}
+
+.dropdown-icon {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border: 3px solid var(--line);
+  background: var(--ink);
+  box-shadow: 5px 5px 0 var(--gold);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.dropdown-icon::before,
+.dropdown-icon::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 4px;
+  background: var(--white);
+  transition: transform .18s ease;
+}
+
+.dropdown-icon::after {
+  transform: rotate(90deg);
+}
+
+.content-dropdown[open] .dropdown-icon::after {
+  transform: rotate(0deg);
+}
+
+.dropdown-body {
+  padding: clamp(18px, 3vw, 28px);
 }
 
 .included-grid {
@@ -207,37 +279,10 @@ h2 {
   line-height: 1.55;
 }
 
-.pricing-panel {
-  display: grid;
-  gap: 18px;
-}
-
-.pricing-head,
 .pricing-card {
   border: 3px solid var(--line);
   background: var(--white);
   box-shadow: 9px 9px 0 var(--line);
-}
-
-.pricing-head {
-  padding: clamp(22px, 4vw, 38px);
-  background:
-    linear-gradient(135deg, rgba(41,215,255,.68) 0 24%, transparent 24% 100%),
-    var(--white);
-  text-align: center;
-}
-
-.pricing-head .eyebrow {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.pricing-head p:not(.eyebrow) {
-  max-width: 760px;
-  margin: 18px auto 0;
-  color: var(--muted);
-  font-weight: 750;
-  line-height: 1.6;
 }
 
 .pricing-grid {
@@ -499,7 +544,6 @@ footer {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .included-panel,
   .offer-panel,
   .paid-panel {
     grid-template-columns: 1fr;
@@ -538,6 +582,20 @@ footer {
 
   .field-row {
     grid-template-columns: 1fr;
+  }
+
+  .content-dropdown summary {
+    grid-template-columns: 1fr;
+  }
+
+  .dropdown-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .dropdown-icon::before,
+  .dropdown-icon::after {
+    width: 18px;
   }
 
   .pricing-grid {
