@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShopNasGraphics | Name Your Price Logo Offer</title>
-  <meta name="description" content="ShopNasGraphics limited-time Name Your Price logo and brand design offer. Submit your idea, price range, and project details for review." />
+  <title>ShopNasGraphics | Logo, Brand, and Visual Design</title>
+  <meta name="description" content="Book ShopNasGraphics for custom logos, brand identity, promo graphics, websites, and visual design projects with clear next steps." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,11 +12,11 @@
 </head>
 <body>
   <main class="page-shell" id="top">
-    <section class="brand-hero" aria-label="ShopNasGraphics name your price offer">
+    <section class="brand-hero" aria-label="ShopNasGraphics design services">
       <p class="eyebrow">ShopNasGraphics</p>
       <a class="eyebrow" href="https://instagram.com/shopnasgfx" target="_blank" rel="noopener noreferrer">Instagram @shopnasgfx</a>
-      <h1>Name Your Price</h1>
-      <p class="lead">Limited-time logo and visual identity offer. Send the idea, pick your price range, and I’ll review if the project can be accepted at that number.</p>
+      <h1>Book Your Design</h1>
+      <p class="lead">Custom logos, brand visuals, promo graphics, and web design built with clear scope, clean files, and a straightforward project flow.</p>
     </section>
 
     <section class="logo-showcase" aria-label="Selected ShopNasGraphics logo work">
@@ -141,21 +141,21 @@
 
     <section class="offer-panel" id="contact">
       <div class="offer-copy">
-        <p class="eyebrow">Limited time</p>
-        <h2>Make an offer for your logo.</h2>
-        <p>Choose the range that fits your budget and explain what you need. If the idea, timeline, and scope make sense, I’ll accept it and send the next step.</p>
+        <p class="eyebrow">Start here</p>
+        <h2>Tell me what you need built.</h2>
+        <p>Send the project details, brand name, timeline, and the service you need. ShopNasGraphics will follow up with pricing, payment steps, and what happens next.</p>
         <div class="disclaimer">
           <strong>Quick note:</strong>
-          <span>Not all prices will be approved. Final approval depends on the idea, revision needs, deadline, and how much design work the project requires.</span>
+          <span>Clear details help the project get organized faster, especially deadlines, references, colors, wording, and file needs.</span>
         </div>
       </div>
 
       <form class="contact-form js-intake-form" id="contactForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="formNote" data-sending="Sending your inquiry..." data-success="Inquiry sent. ShopNasGraphics will follow up with your next step.">
-        <input type="hidden" name="_subject" value="New ShopNasGraphics Name Your Price Inquiry">
-        <input type="hidden" name="source" value="ShopNasGraphics Name Your Price Form">
-        <input type="hidden" name="source_page" value="ShopNasGraphics Name Your Price Form">
-        <input type="hidden" name="project_type" value="Name Your Price Logo Offer">
-        <input type="hidden" name="intake_lane" value="name_your_price">
+        <input type="hidden" name="_subject" value="New ShopNasGraphics Project Inquiry">
+        <input type="hidden" name="source" value="ShopNasGraphics Project Inquiry Form">
+        <input type="hidden" name="source_page" value="ShopNasGraphics Project Inquiry Form">
+        <input type="hidden" name="intake_lane" value="project_inquiry">
+        <input type="hidden" name="budget_range" value="Standard Inquiry">
 
         <div class="field-row">
           <label>
@@ -175,27 +175,29 @@
 
         <label>
           <span>Business / Brand Name</span>
-          <input type="text" name="business_name" placeholder="What name goes on the logo?" required>
+          <input type="text" name="business_name" placeholder="What name goes on the design?" required>
         </label>
 
         <label>
-          <span>Name Your Price Range</span>
-          <select name="budget_range" required>
-            <option value="">Choose your offer range</option>
-            <option>$50 - $100</option>
-            <option>$100 - $250</option>
-            <option>$250 - $500</option>
-            <option>$500+</option>
+          <span>Project Type</span>
+          <select name="project_type" required>
+            <option value="">Choose one</option>
+            <option>Logo Design</option>
+            <option>Brand Identity</option>
+            <option>Flyer / Promo Graphic</option>
+            <option>Website / Landing Page</option>
+            <option>Social Media Graphics</option>
+            <option>Other Design Service</option>
           </select>
         </label>
 
         <label>
-          <span>Logo Idea / Details</span>
-          <textarea name="message" rows="5" placeholder="Tell me the style, industry, colors, references, deadline, and what the logo should feel like." required></textarea>
+          <span>Project Details</span>
+          <textarea name="message" rows="5" placeholder="Tell me the style, industry, colors, references, deadline, wording, and what the final design should feel like." required></textarea>
         </label>
 
-        <button class="btn primary" type="submit">Submit Offer</button>
-        <p class="form-note" id="formNote">Your offer goes to the ShopNasGraphics review queue.</p>
+        <button class="btn primary" type="submit">Send Inquiry</button>
+        <p class="form-note" id="formNote">Your inquiry goes to the ShopNasGraphics project queue.</p>
       </form>
     </section>
 
