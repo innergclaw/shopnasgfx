@@ -341,6 +341,7 @@ h2 {
 
 .pricing-card a {
   width: fit-content;
+  max-width: 100%;
   margin-top: 6px;
   border: 3px solid var(--line);
   background: var(--ink);
@@ -349,6 +350,8 @@ h2 {
   padding: 10px 12px;
   font-size: .8rem;
   font-weight: 1000;
+  line-height: 1.2;
+  text-wrap: balance;
   text-transform: uppercase;
 }
 
