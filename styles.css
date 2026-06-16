@@ -207,6 +207,106 @@ h2 {
   line-height: 1.55;
 }
 
+.pricing-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.pricing-head,
+.pricing-card {
+  border: 3px solid var(--line);
+  background: var(--white);
+  box-shadow: 9px 9px 0 var(--line);
+}
+
+.pricing-head {
+  padding: clamp(22px, 4vw, 38px);
+  background:
+    linear-gradient(135deg, rgba(41,215,255,.68) 0 24%, transparent 24% 100%),
+    var(--white);
+  text-align: center;
+}
+
+.pricing-head .eyebrow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing-head p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.pricing-card {
+  min-height: 100%;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 22px;
+}
+
+.pricing-card span {
+  width: fit-content;
+  border: 3px solid var(--line);
+  background: var(--lime);
+  box-shadow: 4px 4px 0 var(--line);
+  padding: 6px 9px;
+  font-size: .7rem;
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+
+.pricing-card h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+  line-height: 1.05;
+}
+
+.pricing-card strong {
+  font-family: Anton, Impact, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: .9;
+}
+
+.pricing-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.pricing-card a {
+  width: fit-content;
+  margin-top: 6px;
+  border: 3px solid var(--line);
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: 5px 5px 0 var(--gold);
+  padding: 10px 12px;
+  font-size: .8rem;
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+
+.pricing-note {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 750;
+  line-height: 1.55;
+  text-align: center;
+}
+
 .offer-panel,
 .paid-panel {
   display: grid;
@@ -408,6 +508,10 @@ footer {
   .included-grid {
     grid-template-columns: 1fr;
   }
+
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
@@ -433,6 +537,10 @@ footer {
   }
 
   .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-grid {
     grid-template-columns: 1fr;
   }
 
