@@ -103,6 +103,75 @@ h2 {
   line-height: 1.55;
 }
 
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.hero-actions .btn {
+  width: auto;
+  min-width: 190px;
+}
+
+.btn.secondary {
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 8px 8px 0 var(--cyan);
+}
+
+.btn.secondary:hover {
+  box-shadow: 4px 4px 0 var(--cyan);
+}
+
+.path-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.path-choice-grid article {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  border: 3px solid var(--line);
+  background: var(--white);
+  box-shadow: 9px 9px 0 var(--line);
+  padding: clamp(22px, 4vw, 38px);
+}
+
+.path-choice-grid article:first-child {
+  background:
+    linear-gradient(135deg, rgba(200,255,46,.72) 0 28%, transparent 28% 100%),
+    var(--white);
+}
+
+.path-choice-grid article:last-child {
+  background:
+    linear-gradient(135deg, rgba(41,215,255,.64) 0 28%, transparent 28% 100%),
+    var(--white);
+}
+
+.path-choice-grid h2 {
+  max-width: 560px;
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+}
+
+.path-choice-grid p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+.path-choice-grid .btn {
+  width: fit-content;
+  max-width: 100%;
+  padding-inline: 18px;
+}
+
 .logo-showcase {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -430,6 +499,30 @@ h2 {
   text-transform: uppercase;
 }
 
+.payment-link-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.payment-link-list a {
+  border: 3px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 5px 5px 0 var(--lime);
+  padding: 12px 14px;
+  font-size: .84rem;
+  font-weight: 1000;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.payment-link-list a:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--lime);
+}
+
 .disclaimer {
   display: grid;
   gap: 8px;
@@ -557,7 +650,8 @@ footer {
   }
 
   .offer-panel,
-  .paid-panel {
+  .paid-panel,
+  .path-choice-grid {
     grid-template-columns: 1fr;
   }
 

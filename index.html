@@ -15,8 +15,27 @@
     <section class="brand-hero" aria-label="ShopNasGraphics design services">
       <p class="eyebrow">ShopNasGraphics</p>
       <a class="eyebrow" href="https://instagram.com/shopnasgfx" target="_blank" rel="noopener noreferrer">Instagram @shopnasgfx</a>
-      <h1>Book Your Design</h1>
-      <p class="lead">Custom logos, brand visuals, promo graphics, and web design built with clear scope, clean files, and a straightforward project flow.</p>
+      <h1>Order Ready? Have Questions?</h1>
+      <p class="lead">Choose the lane that matches where you are. If you are ready, send your order details and pay the matching deposit. If you need clarity first, send the question and ShopNasGraphics will follow up.</p>
+      <div class="hero-actions" aria-label="Choose how to start">
+        <a class="btn hero-btn" href="#order-ready">Order Ready</a>
+        <a class="btn hero-btn secondary" href="#questions">Have Questions</a>
+      </div>
+    </section>
+
+    <section class="path-choice-grid" aria-label="ShopNasGraphics funnel options">
+      <article>
+        <p class="eyebrow">Ready to order</p>
+        <h2>Send info. Pay deposit. Get contacted.</h2>
+        <p>Use this if you already know you want a logo, brand kit, web intro, launch system, or OwnerStack build.</p>
+        <a class="btn" href="#order-ready">Go to order screen</a>
+      </article>
+      <article>
+        <p class="eyebrow">Need answers first</p>
+        <h2>Ask before you pay.</h2>
+        <p>Use this if you need help choosing a package, confirming turnaround, asking about files, or explaining a custom request.</p>
+        <a class="btn secondary" href="#questions">Go to question form</a>
+      </article>
     </section>
 
     <section class="logo-showcase" aria-label="Selected ShopNasGraphics logo work">
@@ -213,23 +232,23 @@
       </details>
     </section>
 
-    <section class="offer-panel" id="contact">
+    <section class="offer-panel" id="questions">
       <div class="offer-copy">
-        <p class="eyebrow">Start here</p>
-        <h2>Tell me what you need built.</h2>
-        <p>Send the project details, brand name, timeline, and the service you need. ShopNasGraphics will follow up with pricing, payment steps, and what happens next.</p>
+        <p class="eyebrow">Have questions?</p>
+        <h2>Ask first. Then we contact you.</h2>
+        <p>Send your question, project idea, brand name, timeline, or budget concern. ShopNasGraphics will follow up with the right package, pricing, and next steps.</p>
         <div class="disclaimer">
           <strong>Quick note:</strong>
-          <span>All services require 50% upfront to secure the project, cover the initial 30-minute intro call, and set up your project dashboard URL.</span>
+          <span>This lane is for questions before payment. If you already know what you want, use the Order Ready section.</span>
         </div>
       </div>
 
-      <form class="contact-form js-intake-form" id="contactForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="formNote" data-sending="Sending your inquiry..." data-success="Inquiry sent. ShopNasGraphics will follow up with your next step.">
-        <input type="hidden" name="_subject" value="New ShopNasGraphics Project Inquiry">
-        <input type="hidden" name="source" value="ShopNasGraphics Project Inquiry Form">
-        <input type="hidden" name="source_page" value="ShopNasGraphics Project Inquiry Form">
-        <input type="hidden" name="intake_lane" value="project_inquiry">
-        <input type="hidden" name="budget_range" value="Standard Inquiry">
+      <form class="contact-form js-intake-form" id="questionForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="formNote" data-sending="Sending your question..." data-success="Question sent. ShopNasGraphics will contact you soon.">
+        <input type="hidden" name="_subject" value="New ShopNasGraphics Question">
+        <input type="hidden" name="source" value="ShopNasGraphics Questions Form">
+        <input type="hidden" name="source_page" value="ShopNasGraphics Questions Section">
+        <input type="hidden" name="intake_lane" value="question_before_payment">
+        <input type="hidden" name="budget_range" value="Question Before Payment">
 
         <div class="field-row">
           <label>
@@ -253,48 +272,55 @@
         </label>
 
         <label>
-          <span>Project Type</span>
+          <span>Question Topic</span>
           <select name="project_type" required>
             <option value="">Choose one</option>
-            <option>Starter Logo - $250</option>
-            <option>Logo Suite Pack - $500</option>
-            <option>Brand Kit + Landing Page Intro - $750</option>
-            <option>Launch-Ready Brand System - $1,000</option>
-            <option>OwnerStack Infrastructure - $2,500</option>
+            <option>Which package should I choose?</option>
+            <option>Pricing / Deposit</option>
+            <option>Turnaround Time</option>
+            <option>Files / Ownership</option>
+            <option>Website / Landing Page</option>
             <option>Custom Graphic Design Project</option>
           </select>
         </label>
 
         <label>
-          <span>Project Details</span>
-          <textarea name="message" rows="5" placeholder="Tell me the style, industry, colors, references, deadline, wording, and what the final design should feel like." required></textarea>
+          <span>Your Question</span>
+          <textarea name="message" rows="5" placeholder="Ask your question or explain what you are trying to build." required></textarea>
         </label>
 
-        <button class="btn primary" type="submit">Send Inquiry</button>
-        <p class="form-note" id="formNote">Your inquiry goes to the ShopNasGraphics project queue.</p>
+        <button class="btn primary" type="submit">Send Question</button>
+        <p class="form-note" id="formNote">Your question goes to the ShopNasGraphics queue.</p>
       </form>
     </section>
 
-    <section class="paid-panel" id="paid">
+    <section class="paid-panel" id="order-ready">
       <div class="paid-copy">
-        <p class="eyebrow">Paid already?</p>
-        <h2>Send the info for your order.</h2>
-        <p>If you already paid, drop your project details here so everything can be matched, organized, and moved into the design queue.</p>
+        <p class="eyebrow">Order ready?</p>
+        <h2>Send order info and pay your deposit.</h2>
+        <p>Submit your details first so the project can be matched to your payment. Then use the matching deposit link below to secure the slot.</p>
         <div class="paid-steps" aria-label="Paid customer intake steps">
-          <span>01 Payment matched</span>
-          <span>02 Details organized</span>
-          <span>03 Project queued</span>
+          <span>01 Submit project info</span>
+          <span>02 Pay matching deposit</span>
+          <span>03 ShopNasGraphics contacts you</span>
+        </div>
+        <div class="payment-link-list" aria-label="Deposit payment links">
+          <a href="https://buy.stripe.com/8x228t1FR7yhaho2XFao817" target="_blank" rel="noopener">Starter Logo Deposit - $125</a>
+          <a href="https://buy.stripe.com/7sYaEZ4S34m5cpwaq7ao818" target="_blank" rel="noopener">Logo Suite Deposit - $250</a>
+          <a href="https://buy.stripe.com/9B600lgAL5q91KS7dVao819" target="_blank" rel="noopener">Brand + Landing Deposit - $375</a>
+          <a href="https://buy.stripe.com/28E00lbgrcSBfBIgOvao81a" target="_blank" rel="noopener">Launch System Deposit - $500</a>
+          <a href="https://buy.stripe.com/9B6fZjbgrbOx75c0Pxao81b" target="_blank" rel="noopener">OwnerStack Deposit - $1,250</a>
         </div>
       </div>
 
-      <form class="contact-form paid-form js-intake-form" id="paidInfoForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="paidFormNote" data-sending="Saving your paid order details..." data-success="Got it. Your paid order details were sent to the ShopNasGraphics queue.">
-        <input type="hidden" name="_subject" value="Paid ShopNasGraphics Customer Info">
-        <input type="hidden" name="source" value="ShopNasGraphics Paid Already Form">
-        <input type="hidden" name="source_page" value="ShopNasGraphics Paid Already Section">
-        <input type="hidden" name="intake_lane" value="paid_customer_info">
-        <input type="hidden" name="paid_status" value="paid_already">
-        <input type="hidden" name="priority" value="paid_customer">
-        <input type="hidden" name="budget_range" value="Paid Already">
+      <form class="contact-form paid-form js-intake-form" id="orderReadyForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="paidFormNote" data-sending="Saving your order details..." data-success="Order info sent. Now pay the matching deposit to lock in your slot.">
+        <input type="hidden" name="_subject" value="Order Ready ShopNasGraphics Intake">
+        <input type="hidden" name="source" value="ShopNasGraphics Order Ready Form">
+        <input type="hidden" name="source_page" value="ShopNasGraphics Order Ready Section">
+        <input type="hidden" name="intake_lane" value="order_ready_before_payment">
+        <input type="hidden" name="paid_status" value="deposit_pending">
+        <input type="hidden" name="priority" value="order_ready">
+        <input type="hidden" name="budget_range" value="Deposit Pending">
 
         <div class="field-row">
           <label>
@@ -302,8 +328,8 @@
             <input type="text" name="name" placeholder="Your name" required>
           </label>
           <label>
-            <span>Email used to pay</span>
-            <input type="email" name="email" placeholder="payment@email.com" required>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required>
           </label>
         </div>
 
@@ -313,8 +339,8 @@
             <input type="tel" name="phone" placeholder="Best number to text" autocomplete="tel" required>
           </label>
           <label>
-            <span>Payment name / ID</span>
-            <input type="text" name="payment_reference" placeholder="Cash App, Stripe, invoice, or order ID">
+            <span>Instagram / Website</span>
+            <input type="text" name="payment_reference" placeholder="@handle or website link">
           </label>
         </div>
 
@@ -325,7 +351,7 @@
 
         <div class="field-row">
           <label>
-            <span>What did you pay for?</span>
+            <span>What are you ordering?</span>
             <select name="project_type" required>
               <option value="">Choose one</option>
               <option>Starter Logo - $250</option>
@@ -337,8 +363,8 @@
             </select>
           </label>
           <label>
-            <span>Amount Paid</span>
-            <input type="text" name="amount_paid" placeholder="$250, $500, $1,000, etc.">
+            <span>Deposit You Plan To Pay</span>
+            <input type="text" name="amount_paid" placeholder="$125, $250, $375, $500, etc.">
           </label>
         </div>
 
@@ -352,8 +378,8 @@
           <textarea name="message" rows="5" placeholder="Tell me what you need, deadline, colors, style, wording, file types, and anything already discussed." required></textarea>
         </label>
 
-        <button class="btn primary" type="submit">Send Paid Order Info</button>
-        <p class="form-note" id="paidFormNote">Paid orders go straight into the ShopNasGraphics organization queue.</p>
+        <button class="btn primary" type="submit">Send Order Info</button>
+        <p class="form-note" id="paidFormNote">After sending, use the matching deposit link to complete your order.</p>
       </form>
     </section>
   </main>
