@@ -17,26 +17,19 @@
         <section class="brand-hero" aria-label="ShopNasGraphics design services">
           <p class="eyebrow">ShopNasGraphics</p>
           <a class="eyebrow" href="https://instagram.com/shopnasgfx" target="_blank" rel="noopener noreferrer">Instagram @shopnasgfx</a>
-          <h1>Order Ready? Have Questions?</h1>
-          <p class="lead">Choose the lane that matches where you are. If you are ready, send your order details and pay the matching deposit. If you need clarity first, send the question and ShopNasGraphics will follow up.</p>
+          <h1>Start Your Project</h1>
+          <p class="lead">Submit your project info and contact details. ShopNasGraphics will review the request, then contact you directly with the right deposit link and confirmation.</p>
           <div class="hero-actions" aria-label="Choose how to start">
-            <a class="btn hero-btn" href="#order-ready">Order Ready</a>
-            <a class="btn hero-btn secondary" href="#questions">Have Questions</a>
+            <a class="btn hero-btn" href="#order-ready">Submit Project Info</a>
           </div>
         </section>
 
         <section class="path-choice-grid" aria-label="ShopNasGraphics funnel options">
           <article>
-            <p class="eyebrow">Ready to order</p>
-            <h2>Send info. Pay deposit. Get contacted.</h2>
-            <p>Use this if you already know you want a logo, brand kit, web intro, or launch system.</p>
-            <a class="btn" href="#order-ready">Go to order screen</a>
-          </article>
-          <article>
-            <p class="eyebrow">Need answers first</p>
-            <h2>Ask before you pay.</h2>
-            <p>Use this if you need help choosing a package, confirming turnaround, asking about files, or explaining a custom request.</p>
-            <a class="btn secondary" href="#questions">Go to question form</a>
+            <p class="eyebrow">One form</p>
+            <h2>Send info. Get contacted.</h2>
+            <p>Use this for logos, brand kits, landing page intros, launch systems, or custom graphic design requests.</p>
+            <a class="btn" href="#order-ready">Go to project form</a>
           </article>
         </section>
       </div>
@@ -221,68 +214,6 @@
           <p class="pricing-note">Final scope and pricing may adjust based on project goals, integrations, content volume, and timeline. Each project begins with a confirmed scope before work starts.</p>
         </div>
       </details>
-    </section>
-
-    <section class="offer-panel" id="questions">
-      <div class="offer-copy">
-        <p class="eyebrow">Have questions?</p>
-        <h2>Ask first. Then we contact you.</h2>
-        <p>Send your question, project idea, brand name, timeline, or budget concern. ShopNasGraphics will follow up with the right package, pricing, and next steps.</p>
-        <div class="disclaimer">
-          <strong>Quick note:</strong>
-          <span>This lane is for questions before payment. If you already know what you want, use the Order Ready section.</span>
-        </div>
-      </div>
-
-      <form class="contact-form js-intake-form" id="questionForm" action="https://zkyhhoxcrjkhywblzehr.supabase.co/functions/v1/shopnasgfx-intake" method="POST" data-note-id="formNote" data-sending="Sending your question..." data-success="Question sent. ShopNasGraphics will contact you soon.">
-        <input type="hidden" name="_subject" value="New ShopNasGraphics Question">
-        <input type="hidden" name="source" value="ShopNasGraphics Questions Form">
-        <input type="hidden" name="source_page" value="ShopNasGraphics Questions Section">
-        <input type="hidden" name="intake_lane" value="question_before_payment">
-        <input type="hidden" name="budget_range" value="Question Before Payment">
-
-        <div class="field-row">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" placeholder="Your name" required>
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" placeholder="you@example.com" required>
-          </label>
-        </div>
-
-        <label>
-          <span>Phone / Text</span>
-          <input type="tel" name="phone" placeholder="Best number to text" autocomplete="tel" required>
-        </label>
-
-        <label>
-          <span>Business / Brand Name</span>
-          <input type="text" name="business_name" placeholder="What name goes on the design?" required>
-        </label>
-
-        <label>
-          <span>Question Topic</span>
-          <select name="project_type" required>
-            <option value="">Choose one</option>
-            <option>Which package should I choose?</option>
-            <option>Pricing / Deposit</option>
-            <option>Turnaround Time</option>
-            <option>Files / Ownership</option>
-            <option>Website / Landing Page</option>
-            <option>Custom Graphic Design Project</option>
-          </select>
-        </label>
-
-        <label>
-          <span>Your Question</span>
-          <textarea name="message" rows="5" placeholder="Ask your question or explain what you are trying to build." required></textarea>
-        </label>
-
-        <button class="btn primary" type="submit">Send Question</button>
-        <p class="form-note" id="formNote">Your question goes to the ShopNasGraphics queue.</p>
-      </form>
     </section>
 
     <section class="paid-panel" id="order-ready">
