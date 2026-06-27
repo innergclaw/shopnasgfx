@@ -54,10 +54,55 @@ textarea {
   gap: clamp(24px, 4vw, 42px);
 }
 
+.site-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, .82fr) minmax(0, 1.68fr);
+  gap: 18px;
+  align-items: stretch;
+  min-height: min(760px, calc(100vh - 120px));
+}
+
+.site-info-panel,
+.site-work-panel {
+  border: 3px solid var(--line);
+  background: rgba(255, 253, 248, .82);
+  box-shadow: 9px 9px 0 var(--line);
+}
+
+.site-info-panel {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: clamp(18px, 2.6vw, 28px);
+}
+
+.site-work-panel {
+  min-width: 0;
+  padding: clamp(18px, 2.6vw, 28px);
+  overflow: hidden;
+}
+
+.work-panel-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.work-panel-heading .eyebrow {
+  margin-bottom: 0;
+}
+
+.work-panel-heading h2 {
+  font-size: clamp(2.4rem, 4.6vw, 4.8rem);
+  text-align: right;
+}
+
 .brand-hero {
   display: grid;
-  justify-items: center;
-  text-align: center;
+  justify-items: start;
+  text-align: left;
 }
 
 .eyebrow {
@@ -84,7 +129,7 @@ h2 {
 
 h1 {
   max-width: 940px;
-  font-size: clamp(4.4rem, 13vw, 12rem);
+  font-size: clamp(3.2rem, 6.8vw, 6.9rem);
   line-height: .82;
   text-shadow: 7px 7px 0 var(--gold-soft);
 }
@@ -105,7 +150,7 @@ h2 {
 
 .hero-actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 26px;
@@ -128,7 +173,7 @@ h2 {
 
 .path-choice-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 
@@ -156,7 +201,7 @@ h2 {
 
 .path-choice-grid h2 {
   max-width: 560px;
-  font-size: clamp(2.8rem, 6vw, 5.6rem);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
 }
 
 .path-choice-grid p:not(.eyebrow) {
@@ -174,13 +219,17 @@ h2 {
 
 .logo-showcase {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   align-items: center;
+  max-height: 650px;
+  overflow: auto;
+  padding: 2px 8px 8px 2px;
+  scrollbar-width: thin;
 }
 
 .logo-card {
-  min-height: 210px;
+  min-height: 154px;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -645,8 +694,15 @@ footer {
 }
 
 @media (max-width: 980px) {
+  .site-layout {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
   .logo-showcase {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: none;
+    overflow: visible;
   }
 
   .offer-panel,
@@ -668,6 +724,25 @@ footer {
   .page-shell {
     width: min(100% - 22px, 1180px);
     padding-top: 32px;
+  }
+
+  .site-info-panel,
+  .site-work-panel {
+    box-shadow: 5px 5px 0 var(--line);
+  }
+
+  .site-info-panel,
+  .site-work-panel {
+    padding: 14px;
+  }
+
+  .work-panel-heading {
+    display: grid;
+    gap: 8px;
+  }
+
+  .work-panel-heading h2 {
+    text-align: left;
   }
 
   h1 {
