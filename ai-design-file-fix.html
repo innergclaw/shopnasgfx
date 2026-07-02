@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Design File Fix | ShopNasGraphics</title>
+  <meta name="description" content="Send your AI-generated design to ShopNasGraphics and get clean, vendor-ready files for print, merch, flyers, labels, and business use." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .file-fix-page {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: clamp(28px, 5vw, 70px) 0 34px;
+    }
+
+    .file-fix-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: clamp(22px, 4vw, 46px);
+    }
+
+    .file-fix-nav a {
+      border: 3px solid var(--line);
+      background: var(--white);
+      box-shadow: 6px 6px 0 var(--line);
+      padding: 10px 12px;
+      font-size: .78rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      transition: transform .18s var(--ease-out), box-shadow .18s var(--ease-out);
+    }
+
+    .file-fix-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .82fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .file-fix-copy,
+    .file-fix-visual,
+    .file-fix-section,
+    .file-fix-card,
+    .file-fix-cta {
+      border: 3px solid var(--line);
+      background: rgba(255, 253, 248, .88);
+      box-shadow: 9px 9px 0 var(--line);
+    }
+
+    .file-fix-copy {
+      min-height: 640px;
+      display: grid;
+      align-content: center;
+      padding: clamp(24px, 4.8vw, 54px);
+      background:
+        linear-gradient(135deg, rgba(200, 255, 46, .7) 0 22%, transparent 22% 100%),
+        linear-gradient(315deg, rgba(212, 154, 52, .42) 0 20%, transparent 20% 100%),
+        var(--white);
+    }
+
+    .file-fix-copy h1 {
+      max-width: 900px;
+      font-size: clamp(4.4rem, 9vw, 8.7rem);
+      line-height: .78;
+    }
+
+    .file-fix-copy .lead {
+      max-width: 760px;
+      color: #4f453e;
+      font-size: clamp(1.02rem, 2vw, 1.24rem);
+    }
+
+    .file-fix-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .file-fix-actions .btn {
+      width: auto;
+      min-width: 210px;
+      padding-inline: 18px;
+    }
+
+    .file-fix-visual {
+      position: relative;
+      min-height: 640px;
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: clamp(18px, 3vw, 34px);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(41, 215, 255, .24), transparent 34%),
+        radial-gradient(circle at 82% 82%, rgba(255, 79, 50, .25), transparent 38%),
+        var(--ink);
+      color: var(--white);
+    }
+
+    .file-fix-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: .28;
+      pointer-events: none;
+    }
+
+    .file-card-stack {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 16px;
+    }
+
+    .file-card {
+      border: 3px solid var(--white);
+      background: rgba(255, 253, 248, .08);
+      box-shadow: 7px 7px 0 rgba(212, 154, 52, .95);
+      padding: 20px;
+      transform: translateY(0);
+      animation: slowLift 5.5s var(--ease-out) infinite alternate;
+    }
+
+    .file-card:nth-child(2) {
+      margin-left: clamp(18px, 5vw, 56px);
+      animation-delay: .35s;
+      box-shadow: 7px 7px 0 rgba(200, 255, 46, .88);
+    }
+
+    .file-card:nth-child(3) {
+      margin-right: clamp(18px, 5vw, 56px);
+      animation-delay: .7s;
+      box-shadow: 7px 7px 0 rgba(41, 215, 255, .88);
+    }
+
+    .file-card span {
+      display: inline-flex;
+      margin-bottom: 10px;
+      border: 2px solid var(--white);
+      padding: 5px 8px;
+      color: var(--lime);
+      font-size: .7rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .file-card strong {
+      display: block;
+      font-family: Anton, Impact, sans-serif;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 400;
+      line-height: .9;
+      text-transform: uppercase;
+    }
+
+    .file-card p {
+      margin: 12px 0 0;
+      color: rgba(255,255,255,.76);
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .file-fix-grid,
+    .file-fix-pricing {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .file-fix-section {
+      margin-top: 18px;
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .file-fix-section h2,
+    .file-fix-cta h2 {
+      max-width: 880px;
+      font-size: clamp(2.8rem, 6vw, 6rem);
+    }
+
+    .file-fix-section > p,
+    .file-fix-cta p {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .file-fix-card {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      padding: clamp(20px, 3vw, 30px);
+    }
+
+    .file-fix-card h3 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .file-fix-card p,
+    .file-fix-card li {
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .file-fix-card p,
+    .file-fix-card ul {
+      margin: 0;
+    }
+
+    .file-fix-card ul {
+      padding-left: 19px;
+    }
+
+    .price-pill {
+      width: fit-content;
+      border: 3px solid var(--line);
+      background: var(--lime);
+      box-shadow: 5px 5px 0 var(--line);
+      padding: 8px 10px;
+      font-family: Anton, Impact, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      font-weight: 400;
+      line-height: .9;
+    }
+
+    .file-fix-pricing .file-fix-card:first-child {
+      background:
+        linear-gradient(135deg, rgba(212, 154, 52, .32) 0 32%, transparent 32% 100%),
+        var(--white);
+    }
+
+    .file-fix-pricing .file-fix-card:last-child {
+      background:
+        linear-gradient(135deg, rgba(41, 215, 255, .28) 0 32%, transparent 32% 100%),
+        var(--white);
+    }
+
+    .file-fix-cta {
+      margin-top: 18px;
+      padding: clamp(24px, 4vw, 46px);
+      background:
+        linear-gradient(135deg, rgba(255, 79, 50, .72) 0 24%, transparent 24% 100%),
+        linear-gradient(315deg, rgba(200, 255, 46, .58) 0 22%, transparent 22% 100%),
+        var(--white);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .file-fix-copy,
+    .file-fix-visual {
+      animation: pageEnter .55s var(--ease-out) both;
+    }
+
+    .file-fix-visual {
+      animation-delay: .08s;
+    }
+
+    @keyframes pageEnter {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slowLift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-8px); }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .file-fix-nav a:hover,
+      .file-fix-card:hover {
+        transform: translate(4px, 4px);
+        box-shadow: 5px 5px 0 var(--line);
+      }
+    }
+
+    .file-fix-nav a:active,
+    .file-fix-actions .btn:active {
+      transform: scale(.98);
+    }
+
+    @media (max-width: 920px) {
+      .file-fix-hero,
+      .file-fix-grid,
+      .file-fix-pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .file-fix-copy,
+      .file-fix-visual {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .file-fix-page {
+        width: min(100% - 22px, 1180px);
+        padding-top: 22px;
+      }
+
+      .file-fix-nav {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .file-fix-copy,
+      .file-fix-visual,
+      .file-fix-section,
+      .file-fix-card,
+      .file-fix-cta {
+        box-shadow: 5px 5px 0 var(--line);
+      }
+
+      .file-fix-copy h1 {
+        font-size: clamp(4rem, 19vw, 5.8rem);
+      }
+
+      .file-fix-actions .btn {
+        width: calc(100% - 8px);
+      }
+
+      .file-card:nth-child(2),
+      .file-card:nth-child(3) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .file-fix-copy,
+      .file-fix-visual,
+      .file-card,
+      .reveal {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="file-fix-page" id="top">
+    <nav class="file-fix-nav" aria-label="AI Design File Fix navigation">
+      <a href="index.html">ShopNasGraphics</a>
+      <a href="https://instagram.com/shopnasgfx" target="_blank" rel="noopener noreferrer">Instagram @shopnasgfx</a>
+    </nav>
+
+    <section class="file-fix-hero" aria-label="AI Design File Fix service">
+      <div class="file-fix-copy">
+        <p class="eyebrow">AI Design File Fix</p>
+        <h1>AI gave you the design. I make the files usable.</h1>
+        <p class="lead">If your AI logo, flyer, label, shirt design, or promo graphic looks good but cannot be sent to a printer, vendor, or production shop, send it in. ShopNasGraphics cleans it up and exports the proper files.</p>
+        <div class="file-fix-actions" aria-label="Start the AI file fix service">
+          <a class="btn" href="sms:2674730397?&body=SERVICE">Text SERVICE</a>
+          <a class="btn secondary" href="https://instagram.com/shopnasgfx" target="_blank" rel="noopener noreferrer">Visit Instagram</a>
+        </div>
+      </div>
+
+      <div class="file-fix-visual" aria-label="File conversion examples">
+        <div class="file-card-stack">
+          <article class="file-card">
+            <span>Before</span>
+            <strong>Screenshot design</strong>
+            <p>Low quality, wrong size, no transparent background, not ready for a vendor.</p>
+          </article>
+          <article class="file-card">
+            <span>Fixed</span>
+            <strong>Print-ready export</strong>
+            <p>Clean files prepared for printing, merch, labels, flyers, signs, and posts.</p>
+          </article>
+          <article class="file-card">
+            <span>Delivered</span>
+            <strong>PNG JPG PDF</strong>
+            <p>Simple files you can actually send without guessing what the vendor needs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="file-fix-section reveal" aria-label="Who this service is for">
+      <p class="eyebrow">The problem</p>
+      <h2>Your AI design is not always a real production file.</h2>
+      <p>A good-looking AI image can still fail when it is time to print. Blurry edges, bad backgrounds, wrong sizing, missing transparency, and screenshot-quality exports slow down the real job.</p>
+      <div class="file-fix-grid">
+        <article class="file-fix-card">
+          <h3>For business owners</h3>
+          <p>You already have the idea. This service gets the file cleaned up so you can move faster with shirts, labels, flyers, menus, stickers, and promo material.</p>
+        </article>
+        <article class="file-fix-card">
+          <h3>For creators</h3>
+          <p>If you generated something in AI but need it formatted for a real-world use, send the design and I will prepare the right export set.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="file-fix-section reveal" aria-label="AI Design File Fix pricing">
+      <p class="eyebrow">Simple pricing</p>
+      <h2>Two options. No package confusion.</h2>
+      <div class="file-fix-pricing">
+        <article class="file-fix-card">
+          <span class="price-pill">$75</span>
+          <h3>Text-only file fix</h3>
+          <p>For designs where the main issue is wording, layout cleanup, sizing, export quality, or making the text printable.</p>
+          <ul>
+            <li>Clean text placement</li>
+            <li>High-resolution exports</li>
+            <li>PNG, JPG, and PDF delivery</li>
+          </ul>
+        </article>
+        <article class="file-fix-card">
+          <span class="price-pill">$125</span>
+          <h3>Graphic file fix</h3>
+          <p>For designs with logos, images, product graphics, labels, shirt artwork, flyers, or visual elements that need cleanup before production.</p>
+          <ul>
+            <li>Background cleanup</li>
+            <li>Print-ready sizing</li>
+            <li>Vendor-ready file exports</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="file-fix-section reveal" aria-label="How the file fix works">
+      <p class="eyebrow">How it works</p>
+      <h2>Send the design. Get back files you can use.</h2>
+      <div class="file-fix-grid">
+        <article class="file-fix-card">
+          <h3>01 Text SERVICE</h3>
+          <p>Text <strong>SERVICE</strong> to <strong>267 473 0397</strong> or DM <strong>@shopnasgfx</strong> on Instagram.</p>
+        </article>
+        <article class="file-fix-card">
+          <h3>02 Send the AI design</h3>
+          <p>Send the image, screenshot, prompt result, or file you want cleaned up. Include what it will be used for.</p>
+        </article>
+        <article class="file-fix-card">
+          <h3>03 Confirm the option</h3>
+          <p>I confirm whether it is text-only or graphic-based, then send the payment step.</p>
+        </article>
+        <article class="file-fix-card">
+          <h3>04 Receive clean files</h3>
+          <p>You get practical files for your printer, vendor, social post, product, or business use.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="file-fix-cta reveal" aria-label="Start AI Design File Fix">
+      <p class="eyebrow">Start now</p>
+      <h2>Need files? Turn your AI design into professional files.</h2>
+      <p>This is file prep and cleanup, not a full redesign. If the design needs to be fully rebuilt or turned into a complete brand system, I will quote that separately before starting.</p>
+      <div class="file-fix-actions">
+        <a class="btn" href="sms:2674730397?&body=SERVICE">Text SERVICE to 267 473 0397</a>
+        <a class="btn secondary" href="https://instagram.com/shopnasgfx" target="_blank" rel="noopener noreferrer">Visit @shopnasgfx</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© ShopNasGraphics</p>
+    <a href="faq.html">FAQ & Refund Policy</a>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.16 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>
