@@ -66,11 +66,13 @@ document.querySelectorAll('.js-intake-form').forEach((form) => {
         formNote.className = 'form-note success';
         formNote.textContent = form.dataset.success || 'Sent. ShopNasGraphics will follow up with your next step.';
       }
+      document.dispatchEvent(new CustomEvent('cuelume:success'));
     } catch (error) {
       if (formNote) {
         formNote.className = 'form-note error';
         formNote.textContent = 'Could not send the inquiry right now. Please try again or email directly.';
       }
+      document.dispatchEvent(new CustomEvent('cuelume:error'));
     } finally {
       button.disabled = false;
       button.textContent = originalText;
