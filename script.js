@@ -4,6 +4,45 @@ const modalTitle = document.getElementById('modalTitle');
 const modalType = document.getElementById('modalType');
 const closeBtn = document.querySelector('.modal-close');
 
+const quoteForm = document.getElementById('quote');
+const quoteSelect = quoteForm?.querySelector('select[name="project_type"]');
+const mobileQuoteCta = document.querySelector('.mobile-quote-cta');
+
+if (quoteForm && mobileQuoteCta && 'IntersectionObserver' in window) {
+  const quoteVisibilityObserver = new IntersectionObserver(([entry]) => {
+    mobileQuoteCta.classList.toggle('is-hidden', entry.isIntersecting);
+  }, { threshold: 0.12 });
+
+  quoteVisibilityObserver.observe(quoteForm);
+}
+
+document.querySelectorAll('[data-quote-trigger]').forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    if (!quoteForm) return;
+    quoteForm.dataset.ctaSource = trigger.dataset.quoteTrigger || 'unknown';
+
+    if (trigger.dataset.package && quoteSelect) {
+      quoteSelect.value = trigger.dataset.package;
+    }
+  });
+});
+
+document.querySelectorAll('.js-intake-form').forEach((form) => {
+  const markFormStarted = () => {
+    if (!form.dataset.formStartedAt) {
+      form.dataset.formStartedAt = new Date().toISOString();
+      window.dispatchEvent(new CustomEvent('shopnasgfx:form-start', {
+        detail: {
+          formId: form.id,
+          ctaSource: form.dataset.ctaSource || 'direct'
+        }
+      }));
+    }
+  };
+
+  form.addEventListener('input', markFormStarted, { once: true });
+});
+
 if (modal && modalImg && modalTitle && modalType && closeBtn) {
   document.querySelectorAll('.logo-card[data-img]').forEach((card) => {
     card.addEventListener('click', () => {
@@ -47,8 +86,16 @@ document.querySelectorAll('.js-intake-form').forEach((form) => {
     try {
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
+      const searchParams = new URLSearchParams(window.location.search);
       payload.submitted_at = new Date().toISOString();
       payload.page_url = window.location.href;
+      payload.referrer = document.referrer || 'direct';
+      payload.cta_source = form.dataset.ctaSource || 'direct';
+      payload.form_started_at = form.dataset.formStartedAt || '';
+      payload.utm_source = searchParams.get('utm_source') || '';
+      payload.utm_medium = searchParams.get('utm_medium') || '';
+      payload.utm_campaign = searchParams.get('utm_campaign') || '';
+      payload.utm_content = searchParams.get('utm_content') || '';
 
       const response = await fetch(form.action, {
         method: 'POST',
@@ -66,6 +113,14 @@ document.querySelectorAll('.js-intake-form').forEach((form) => {
         formNote.className = 'form-note success';
         formNote.textContent = form.dataset.success || 'Sent. ShopNasGraphics will follow up with your next step.';
       }
+      window.dispatchEvent(new CustomEvent('shopnasgfx:lead-submit-success', {
+        detail: {
+          formId: form.id,
+          projectType: payload.project_type,
+          ctaSource: payload.cta_source,
+          utmSource: payload.utm_source
+        }
+      }));
       document.dispatchEvent(new CustomEvent('cuelume:success'));
     } catch (error) {
       if (formNote) {
