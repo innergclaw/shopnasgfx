@@ -907,6 +907,10 @@ footer {
   align-items: stretch;
 }
 
+.conversion-hero > * {
+  min-width: 0;
+}
+
 .conversion-copy,
 .lead-form,
 .package-section,
