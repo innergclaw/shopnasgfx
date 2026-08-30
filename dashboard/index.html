@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ShopNasGFX member dashboard." />
+  <title>Member dashboard | ShopNasGFX</title>
+  <link rel="stylesheet" href="../member-access.css" />
+</head>
+<body data-member-page="dashboard" style="--member-bg:#f6f0e7;--member-ink:#0b0b0b;--member-muted:#6f655c;--member-line:rgba(11,11,11,.18);--member-surface:#fffdf8;--member-accent:#d49a34">
+  <main class="member-page">
+    <div class="member-shell">
+      <div class="member-topline"><a href="../">Back to ShopNasGFX</a><span>Member dashboard</span></div>
+      <p class="member-eyebrow">Creative services member</p>
+      <h1 class="member-title">Your ShopNasGFX room.</h1>
+      <p class="member-lede">Continue into creative services, selected work, and your next design request.</p>
+      <p class="member-status" id="member-status" role="status" aria-live="polite">Checking your secure session...</p>
+      <section class="member-dashboard" id="member-dashboard" aria-labelledby="member-continue-title">
+        <div class="member-focus">
+          <p class="member-eyebrow">Your next move</p>
+          <h2 id="member-continue-title">Choose where to continue.</h2>
+          <p id="member-email">Your member access is active.</p>
+        </div>
+        <nav class="member-grid" aria-label="ShopNasGFX member destinations">
+        <a class="member-link" href="../#packages"><strong>View packages</strong><span aria-hidden="true">↗</span></a>
+        <a class="member-link" href="../#work"><strong>See the work</strong><span aria-hidden="true">↗</span></a>
+        <a class="member-link" href="../#quote"><strong>Start a project</strong><span aria-hidden="true">↗</span></a>
+        <a class="member-link" href="https://nasirr.innergintel.org/"><strong>Open Home Base</strong><span aria-hidden="true">↗</span></a>
+        </nav>
+        <button class="member-button member-signout" id="member-signout" type="button">Sign out</button>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="../member-auth.mjs"></script>
+</body>
+</html>

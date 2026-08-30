@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Create or access your ShopNasGFX member account." />
+  <title>Member access | ShopNasGFX</title>
+  <link rel="stylesheet" href="../member-access.css" />
+</head>
+<body data-member-page="account" style="--member-bg:#f6f0e7;--member-ink:#0b0b0b;--member-muted:#6f655c;--member-line:rgba(11,11,11,.18);--member-surface:#fffdf8;--member-accent:#d49a34">
+  <main class="member-page">
+    <div class="member-shell">
+      <div class="member-topline"><a href="../">Back to ShopNasGFX</a><span>One account / Full ecosystem</span></div>
+      <p class="member-eyebrow">Creative services member</p>
+      <h1 class="member-title">Your creative access.</h1>
+      <p class="member-lede">Use the same member account across ShopNasGFX, InnerGReads, OwnYourWeb, and Home Base.</p>
+      <section class="member-panel" aria-labelledby="member-choice-title">
+        <h2 id="member-choice-title">Choose how you want to continue.</h2>
+        <p class="member-note">Use Google, or create an account with your email and a password.</p>
+        <div class="member-provider-list">
+          <button class="member-button" type="button" data-provider="google">Continue with Google</button>
+        </div>
+        <div class="member-divider">or use email</div>
+        <form class="member-email-form" id="member-email-form">
+          <label for="member-email-input">Email address<input class="member-field" id="member-email-input" name="email" type="email" autocomplete="email" required /></label>
+          <label for="member-password">Password<input class="member-field" id="member-password" name="password" type="password" autocomplete="current-password" minlength="8" required /></label>
+          <div class="member-actions">
+            <button class="member-button" type="submit">Create account</button>
+            <button class="member-button" type="button" data-email-action="signin">Sign in</button>
+          </div>
+        </form>
+        <form class="member-recovery-form" id="member-recovery-form" hidden>
+          <label for="member-new-password">New password<input class="member-field" id="member-new-password" name="password" type="password" autocomplete="new-password" minlength="8" required /></label>
+          <label for="member-confirm-password">Confirm new password<input class="member-field" id="member-confirm-password" name="password-confirm" type="password" autocomplete="new-password" minlength="8" required /></label>
+          <button class="member-button" type="submit">Update password</button>
+        </form>
+        <p class="member-status" id="member-status" role="status" aria-live="polite">Checking your session...</p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="../member-auth.mjs"></script>
+</body>
+</html>
