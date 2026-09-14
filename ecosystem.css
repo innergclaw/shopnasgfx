@@ -16,6 +16,7 @@
 
 html {
   background: var(--paper);
+  overflow-x: clip;
 }
 
 body.home-page {
@@ -294,6 +295,11 @@ body.home-page {
 }
 
 @media (max-width: 700px) {
+  .motion-ready .reveal-section[data-reveal="left"],
+  .motion-ready .reveal-section[data-reveal="right"] {
+    transform: translateY(38px) scale(.985);
+  }
+
   .home-page .page-shell {
     width: min(100% - 24px, 1180px);
     gap: 16px;
