@@ -8,6 +8,27 @@ const quoteForm = document.getElementById('quote');
 const quoteSelect = quoteForm?.querySelector('select[name="project_type"]');
 const mobileQuoteCta = document.querySelector('.mobile-quote-cta');
 
+const revealSections = document.querySelectorAll('.reveal-section');
+const revealItems = document.querySelectorAll('.reveal-item');
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  document.documentElement.classList.add('motion-ready');
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+
+  revealSections.forEach((section) => revealObserver.observe(section));
+  revealItems.forEach((item, index) => {
+    item.style.setProperty('--reveal-delay', `${(index % 4) * 90}ms`);
+    revealObserver.observe(item);
+  });
+}
+
 if (quoteForm && mobileQuoteCta && 'IntersectionObserver' in window) {
   const quoteVisibilityObserver = new IntersectionObserver(([entry]) => {
     mobileQuoteCta.classList.toggle('is-hidden', entry.isIntersecting);
