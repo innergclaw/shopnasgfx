@@ -4,6 +4,9 @@ import test from "node:test";
 
 const html = await readFile(new URL("./index.html", import.meta.url), "utf8");
 const script = await readFile(new URL("./script.js", import.meta.url), "utf8");
+const faq = await readFile(new URL("./faq.html", import.meta.url), "utf8");
+const reviews = await readFile(new URL("./reviews.html", import.meta.url), "utf8");
+const fileFix = await readFile(new URL("./ai-design-file-fix.html", import.meta.url), "utf8");
 
 test("SHOPNASGFX homepage leads with customer outcomes", () => {
   assert.match(html, /Look ready\. Promote with confidence\./);
@@ -28,4 +31,18 @@ test("SHOPNASGFX homepage preserves price and contact facts", () => {
   assert.match(html, /shopnasgfx-intake/);
   assert.match(html, /2674730397/);
   assert.match(html, /shopnasgfx@gmail\.com/);
+});
+
+test("SHOPNASGFX speaks in the lead designer's first-person voice", () => {
+  for (const page of [html, faq, reviews, fileFix]) {
+    assert.doesNotMatch(page, /\b(?:we|we'll|our|us)\b/i);
+    assert.doesNotMatch(page, /ShopNasGraphics/);
+  }
+
+  assert.match(html, /I'm Nasirr, the lead designer behind SHOPNASGFX\./);
+  assert.match(html, /My team helps prepare the work for delivery\./);
+  assert.match(html, /I lead the design\. My team helps carry it through\./);
+  assert.match(faq, /starting a project with me/);
+  assert.match(reviews, /working with me and my SHOPNASGFX team/);
+  assert.match(fileFix, /send it to me\. I clean it up/);
 });
