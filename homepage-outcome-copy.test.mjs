@@ -20,6 +20,7 @@ test("SHOPNASGFX homepage keeps the decision path short", () => {
   assert.match(html, /class="[^"]*reveal-section/);
   assert.match(script, /IntersectionObserver/);
   assert.match(script, /prefers-reduced-motion/);
+  assert.match(html, /href="ecosystem\.css"/);
 });
 
 test("SHOPNASGFX homepage preserves price and contact facts", () => {
