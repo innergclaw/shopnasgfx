@@ -8,10 +8,10 @@ const faq = await readFile(new URL("./faq.html", import.meta.url), "utf8");
 const reviews = await readFile(new URL("./reviews.html", import.meta.url), "utf8");
 const fileFix = await readFile(new URL("./ai-design-file-fix.html", import.meta.url), "utf8");
 
-test("SHOPNASGFX homepage leads with customer outcomes", () => {
-  assert.match(html, /Look ready\. Promote with confidence\./);
+test("SHOPNASGFX homepage leads with the builder path", () => {
+  assert.match(html, /Built for the builders\. Priced for real life\./);
   assert.match(html, /What are you trying to sell or promote\?/);
-  assert.match(html, /Fill out the short form/);
+  assert.match(html, /See services from \$15/);
   assert.match(html, /Text about my project/);
   assert.doesNotMatch(html, /AI-Powered/i);
 });
@@ -27,7 +27,7 @@ test("SHOPNASGFX homepage keeps the decision path short", () => {
 });
 
 test("SHOPNASGFX homepage preserves price and contact facts", () => {
-  for (const price of ["$150", "$250", "$500", "$750"]) assert.match(html, new RegExp(`\\${price}`));
+  for (const price of ["$15", "$35", "$45", "$50", "$100", "$150", "$250"]) assert.match(html, new RegExp(`\\${price}`));
   assert.match(html, /shopnasgfx-intake/);
   assert.match(html, /2674730397/);
   assert.match(html, /shopnasgfx@gmail\.com/);
@@ -40,8 +40,7 @@ test("SHOPNASGFX speaks in the lead designer's first-person voice", () => {
   }
 
   assert.match(html, /I'm Nasirr, the lead designer behind SHOPNASGFX\./);
-  assert.match(html, /My team helps prepare the work for delivery\./);
-  assert.match(html, /I lead the design\. My team helps carry it through\./);
+  assert.match(html, /Introductory prices/);
   assert.match(faq, /starting a project with me/);
   assert.match(reviews, /working with me and my SHOPNASGFX team/);
   assert.match(fileFix, /send it to me\. I clean it up/);
