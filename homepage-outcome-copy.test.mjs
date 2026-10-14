@@ -27,7 +27,13 @@ test("SHOPNASGFX homepage keeps the decision path short", () => {
 });
 
 test("SHOPNASGFX homepage preserves price and contact facts", () => {
-  for (const price of ["$15", "$35", "$45", "$50", "$100", "$150", "$250"]) assert.match(html, new RegExp(`\\${price}`));
+  for (const price of ["$15", "$35", "$45", "$50", "$150", "$250"]) assert.match(html, new RegExp(`\\${price}`));
+  assert.doesNotMatch(html, /Logo Suite/);
+  assert.doesNotMatch(html, /\$100/);
+  assert.match(html, /Logo Starter - \$50 intro<\/option>\s*<option>Brand Starter Kit - \$150 intro/);
+  const packages = html.slice(html.indexOf('id="packages"'), html.indexOf('id="agents"'));
+  assert.match(packages, /<h3>Logo Starter<\/h3>[\s\S]*?<h3>Brand Starter Kit<\/h3>/);
+  assert.doesNotMatch(packages, /<h3>Logo Suite<\/h3>/);
   assert.match(html, /shopnasgfx-intake/);
   assert.match(html, /2674730397/);
   assert.match(html, /shopnasgfx@gmail\.com/);
