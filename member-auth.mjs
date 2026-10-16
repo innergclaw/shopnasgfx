@@ -1,5 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/+esm";
-import { ACCOUNT_PATH, DASHBOARD_PATH, isRecoveryCallback, shouldOpenDashboard, shouldReturnToAccount } from "./member-auth-flow.mjs";
+import { ACCOUNT_PATH, DASHBOARD_PATH, isRecoveryCallback, shouldOpenDashboard, shouldReturnToAccount, newPasswordProblem } from "./member-auth-flow.mjs";
 
 const SUPABASE_URL = "https://zkyhhoxcrjkhywblzehr.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_bdi3BexAKWDBaUIh40hJ_A_8CNVdnM_";
@@ -58,6 +58,10 @@ const initializeAccount = async () => {
       setStatus("Enter a valid email and a password with at least 8 characters.", "error");
       return;
     }
+    if (mode === "signup" && newPasswordProblem(password)) {
+      setStatus(newPasswordProblem(password), "error");
+      return;
+    }
     [...emailForm.querySelectorAll("button")].forEach((button) => { button.disabled = true; });
     setStatus(mode === "signup" ? "Creating your member account..." : "Signing you in...");
     const result = mode === "signup"
@@ -83,8 +87,12 @@ const initializeAccount = async () => {
     const formData = new FormData(recoveryForm);
     const password = String(formData.get("password") || "");
     const confirmation = String(formData.get("password-confirm") || "");
-    if (password.length < 8 || password !== confirmation) {
-      setStatus("Use at least 8 characters and make both passwords match.", "error");
+    if (newPasswordProblem(password)) {
+      setStatus(newPasswordProblem(password), "error");
+      return;
+    }
+    if (password !== confirmation) {
+      setStatus("Make both passwords match.", "error");
       return;
     }
     const button = recoveryForm.querySelector("button");
