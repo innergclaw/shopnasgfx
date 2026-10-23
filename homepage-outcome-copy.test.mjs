@@ -67,7 +67,7 @@ test("Home leads with brand systems and links to quick designs", () => {
 });
 
 test("Prices live in offers.js and are marked proposed", () => {
-  assert.match(offers, /pricesAreProposed: true/);
+  assert.match(offers, /pricesAreProposed: false/);
   for (const p of ["$750/mo", "$1,500/mo", "$3,000/mo", "$297", "$1,800", "$3,200"]) assert.ok(offers.includes(p), p);
   assert.ok(!home.includes("$750/mo"));
   for (const gone of ["Brand Spark", "Brand Foundation Pro", "Brand Refresh", "Brand System\""]) { assert.ok(!offers.includes(gone), gone); assert.ok(!home.includes(gone), gone); }

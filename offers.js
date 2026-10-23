@@ -1,7 +1,7 @@
-// Retainer and workshop prices are PROPOSED ~ pending Mr G's approval. Edit all prices here only; the home page renders from this file.
+// Prices approved by Mr G 2026-10-23. Edit all prices here only; the home page renders from this file.
 // Sources: Niche Lab pricing research, 2026-10-23 (18 public comparables, linked in the PR).
 window.SHOPNASGFX_OFFERS = {
-  pricesAreProposed: true,
+  pricesAreProposed: false,
   retainers: [
     { id: "keep", name: "Keep", price: "$750/mo", turnaround: "2 to 3 business days", for: "3 month minimum", deliverables: ["Up to 8 requests a month", "1 active request", "SI prompt library upkeep"] },
     { id: "grow", name: "Grow", price: "$1,500/mo", turnaround: "1 to 2 business days", for: "3 month minimum", featured: true, deliverables: ["Up to 20 requests a month", "2 active requests", "Monthly brand check-in"] },
@@ -27,5 +27,5 @@ window.SHOPNASGFX_OFFERS = {
     { id: "creative-agent", name: "Creative Business Agent", price: "$29/mo", for: "Monthly agent", deliverables: ["Flyers, social graphics, promo copy, and campaign variations."] }
   ],
   buyTodayNote: "Introductory prices. I confirm what is included before you pay.",
-  workshopNote: "Workshop fees credit toward a Brand System booked within 30 days."
+  workshopNote: "Workshop fees credit toward your first retainer month when you book a retainer within 30 days."
 };
