@@ -1,7 +1,7 @@
 export const PHONE = "+12674730397";
 export const PHONE_DISPLAY = "267 473 0397";
-export const SERVICES = ["Brand Spark", "Brand System", "Brand Foundation Pro", "Brand Refresh", "Brand on Retainer", "SI Brand Workshop", "Not sure yet"];
-export const BUDGETS = ["Under $1,500", "$1,500 to $3,500", "$3,500 to $6,500", "$6,500+", "Monthly retainer"];
+export const SERVICES = ["Brand on Retainer", "SI Brand Workshop", "Quick design", "Not sure yet"];
+export const BUDGETS = ["Under $500", "$500 to $1,500", "$1,500 to $3,500", "$3,500+", "Monthly retainer"];
 export const DELIVERY = ["ASAP", "A few weeks", "1 to 2 months", "Not sure"];
 export const AGREEMENT = "I understand that by submitting this form or texting, a 25% deposit is required on all projects discussed before any work begins.";
 export const DEPOSIT_ERROR = "Please check the deposit agreement box before sending your details.";

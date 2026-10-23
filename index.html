@@ -19,7 +19,7 @@
     <header class="conversion-nav" aria-label="SHOPNASGFX navigation">
       <a class="brand-chip" href="#top">SHOPNASGFX</a>
       <nav aria-label="Homepage sections">
-        <a href="#services">Brand systems</a>
+        <a href="#services">Services</a>
         <a href="#how">How I work with SI</a>
         <a href="#showcase">Work</a>
         <a href="quick-designs/">Quick designs</a>
@@ -40,39 +40,44 @@
         <li><strong>2015</strong><span>designing since</span></li>
       </ul>
       <div class="hero-actions decision-actions">
-        <a class="btn hero-btn" href="#services">See brand systems</a>
+        <a class="btn hero-btn" href="#services">See services</a>
         <a class="btn secondary hero-btn" href="#start">Start a brand project</a>
       </div>
       <a class="package-jump" href="quick-designs/">Need one flyer or a starter logo? See the quick designs menu.</a>
     </section>
 
-    <section class="package-section reveal-section" id="services" aria-labelledby="services-title" data-reveal="left">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Brand systems</p>
-          <h2 id="services-title">Brand systems, not single files.</h2>
+    <section class="package-section reveal-section" id="services" aria-label="Services" data-reveal="left">
+      <div class="offer-group" id="retainers">
+        <div class="section-heading tier-subhead">
+          <div>
+            <p class="eyebrow">Brand on retainer</p>
+            <h2>Retainers</h2>
+          </div>
+          <p id="retainer-note"></p>
         </div>
-        <p>Every system includes logo, colors, type, voice, and SI prompts trained on your brand. Prices are proposed and confirmed with you before any deposit.</p>
+        <div class="offer-list" id="offers-retainer"></div>
       </div>
-      <div class="pricing-grid conversion-pricing" id="tiers-brand"></div>
-
-      <div class="section-heading tier-subhead">
-        <div>
-          <p class="eyebrow">Brand on retainer</p>
-          <h2>Your brand, kept running every month.</h2>
+      <div class="offer-group" id="teach">
+        <div class="section-heading tier-subhead">
+          <div>
+            <p class="eyebrow">SI brand workshops</p>
+            <h2>Teach the Process</h2>
+          </div>
+          <p id="workshop-note"></p>
         </div>
-        <p id="retainer-note"></p>
+        <div class="offer-list" id="offers-workshop"></div>
       </div>
-      <div class="pricing-grid conversion-pricing" id="tiers-retainer"></div>
-
-      <div class="section-heading tier-subhead">
-        <div>
-          <p class="eyebrow">Teach the process</p>
-          <h2>SI Brand Workshops.</h2>
+      <div class="offer-group" id="buy-today">
+        <div class="section-heading tier-subhead">
+          <div>
+            <p class="eyebrow">Quick designs</p>
+            <h2>Buy Today</h2>
+          </div>
+          <p id="buy-note"></p>
         </div>
-        <p id="workshop-note"></p>
+        <div class="offer-list" id="offers-buy"></div>
       </div>
-      <div class="pricing-grid conversion-pricing" id="tiers-workshop"></div>
+      <p class="pricing-note"><a href="quick-designs/">See the full quick designs menu</a></p>
       <noscript><p class="pricing-note">Turn on JavaScript to see services and pricing, or text 267 473 0397.</p></noscript>
     </section>
 
@@ -128,10 +133,10 @@
           <label><span>First name</span><input type="text" name="firstName" autocomplete="given-name" maxlength="60" required></label>
           <label><span>Last name</span><input type="text" name="lastName" autocomplete="family-name" maxlength="60" required></label>
         </div>
-        <label><span>Service</span><select name="serviceType" required><option value="">Choose one</option><option>Brand Spark</option><option>Brand System</option><option>Brand Foundation Pro</option><option>Brand Refresh</option><option>Brand on Retainer</option><option>SI Brand Workshop</option><option>Not sure yet</option></select></label>
+        <label><span>Service</span><select name="serviceType" required><option value="">Choose one</option><option>Brand on Retainer</option><option>SI Brand Workshop</option><option>Quick design</option><option>Not sure yet</option></select></label>
         <label><span>Project details</span><textarea name="details" rows="4" maxlength="500" placeholder="Your business, your goal, and any deadline." required></textarea></label>
         <div class="field-row">
-          <label><span>Budget</span><select name="budget" required><option value="">Choose one</option><option>Under $1,500</option><option>$1,500 to $3,500</option><option>$3,500 to $6,500</option><option>$6,500+</option><option>Monthly retainer</option></select></label>
+          <label><span>Budget</span><select name="budget" required><option value="">Choose one</option><option>Under $500</option><option>$500 to $1,500</option><option>$1,500 to $3,500</option><option>$3,500+</option><option>Monthly retainer</option></select></label>
           <label><span>Timeframe</span><select name="delivery" required><option value="">Choose one</option><option>ASAP</option><option>A few weeks</option><option>1 to 2 months</option><option>Not sure</option></select></label>
         </div>
         <label class="deposit-check"><input type="checkbox" name="depositAgreement" value="agreed" required><span>I understand that by submitting this form or texting, a 25% deposit is required on all projects discussed before any work begins.</span></label>
