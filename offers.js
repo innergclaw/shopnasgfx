@@ -2,12 +2,6 @@
 // Sources: Niche Lab pricing research, 2026-10-23 (18 public comparables, linked in the PR).
 window.SHOPNASGFX_OFFERS = {
   pricesAreProposed: false,
-  retainers: [
-    { id: "keep", name: "Keep", price: "$750/mo", turnaround: "2 to 3 business days", for: "3 month minimum", deliverables: ["Up to 8 requests a month", "1 active request", "SI prompt library upkeep"] },
-    { id: "grow", name: "Grow", price: "$1,500/mo", turnaround: "1 to 2 business days", for: "3 month minimum", featured: true, deliverables: ["Up to 20 requests a month", "2 active requests", "Monthly brand check-in"] },
-    { id: "lead", name: "Lead", price: "$3,000/mo", turnaround: "Priority", for: "6 month minimum", deliverables: ["About 40 hours a month", "3 active requests", "Quarterly campaign concepts", "SI workflow tuning"] }
-  ],
-  retainerNote: "10% off when you prepay a quarter.",
   workshops: [
     { id: "seat", name: "SI Brand Workshop seat", price: "$97 ($79 early)", turnaround: "Live group session", for: "Owners and solo founders", deliverables: ["Use SI without losing your identity", "Prompt templates to keep"] },
     { id: "series", name: "4 session series", price: "$297", turnaround: "4 weeks", for: "Done-with-you setup", deliverables: ["Build your own brand prompt kit", "Weekly review"] },
@@ -26,6 +20,5 @@ window.SHOPNASGFX_OFFERS = {
     { id: "brand-agent", name: "Brand Agent", price: "$15/mo", for: "Monthly agent", deliverables: ["Colors, type, logo use, and reusable social templates for one identity."] },
     { id: "creative-agent", name: "Creative Business Agent", price: "$29/mo", for: "Monthly agent", deliverables: ["Flyers, social graphics, promo copy, and campaign variations."] }
   ],
-  buyTodayNote: "Introductory prices. I confirm what is included before you pay.",
-  workshopNote: "Workshop fees credit toward your first retainer month when you book a retainer within 30 days."
+  buyTodayNote: "Introductory prices. I confirm what is included before you pay."
 };

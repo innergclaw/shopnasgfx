@@ -68,19 +68,19 @@ test("Home leads with brand systems and links to quick designs", () => {
 
 test("Prices live in offers.js and are marked proposed", () => {
   assert.match(offers, /pricesAreProposed: false/);
-  for (const p of ["$750/mo", "$1,500/mo", "$3,000/mo", "$297", "$1,800", "$3,200"]) assert.ok(offers.includes(p), p);
+  for (const p of ["$297", "$1,800", "$3,200"]) assert.ok(offers.includes(p), p);
   assert.ok(!home.includes("$750/mo"));
   for (const gone of ["Brand Spark", "Brand Foundation Pro", "Brand Refresh", "Brand System\""]) { assert.ok(!offers.includes(gone), gone); assert.ok(!home.includes(gone), gone); }
   for (const p of ["$15\"", "$35\"", "$45\"", "$50\"", "$150\"", "$250\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
-  for (const id of ["retainers", "teach", "buy-today"]) assert.ok(home.includes(`id="${id}"`), id);
-  assert.match(home, />Retainers</); assert.match(home, />Teach the Process</); assert.match(home, />Buy Today</);
+  for (const id of ["teach", "buy-today"]) assert.ok(home.includes(`id="${id}"`), id);
+  assert.ok(!/retainer/i.test(home) && !/retainer/i.test(offers)); assert.match(home, />Teach the Process</); assert.match(home, />Buy Today</);
 });
 
 test("Intake requires the exact deposit agreement and texts 267 473 0397", () => {
   const sentence = "I understand that by submitting this form or texting, a 25% deposit is required on all projects discussed before any work begins.";
   assert.ok(home.includes(sentence));
   assert.match(home, /name="depositAgreement" value="agreed" required/);
-  const ok = { firstName: "A", lastName: "B", serviceType: "Brand on Retainer", details: "x", budget: "$500 to $1,500", delivery: "Not sure", depositAgreement: "agreed" };
+  const ok = { firstName: "A", lastName: "B", serviceType: "SI Brand Workshop", details: "x", budget: "$500 to $1,500", delivery: "Not sure", depositAgreement: "agreed" };
   assert.deepEqual(intake.validateDetails(ok), {});
   assert.ok(intake.validateDetails({ ...ok, depositAgreement: undefined }).depositAgreement);
   assert.match(intake.buildSmsHref(intake.buildMessage(ok)), /^sms:\+12674730397\?&body=/);

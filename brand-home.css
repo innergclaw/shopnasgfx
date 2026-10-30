@@ -85,3 +85,7 @@
 @media (prefers-reduced-motion: reduce) {
   .offer-group, .offer-group::before, .si-steps::after, .si-steps b, .js-stack .showcase-item { transition: none !important; }
 }
+.offer-groups { display: grid; gap: 18px; }
+@media (min-width: 900px) { .offer-groups { grid-template-columns: 1fr 1fr; align-items: start; } .offer-groups .offer-group { margin-top: 18px; } }
+.offer-groups .section-heading { display: grid; grid-template-columns: 1fr; gap: 8px; align-items: start; }
+.offer-groups .section-heading p:empty { display: none; }

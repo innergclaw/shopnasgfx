@@ -14,10 +14,9 @@
       t.deliverables.map(function (d) { return '<li>' + check + '<div>' + esc(d) + '</div></li>'; }).join('') + '</ul>' + cta + '</div></details>';
   }
   function fill(id, list, opts) { var el = document.getElementById(id); if (el && list) el.innerHTML = list.map(function (t) { return item(t, opts); }).join(''); }
-  fill("offers-retainer", o.retainers, { proposed: true, service: "Brand on Retainer" });
   fill("offers-workshop", o.workshops, { proposed: true, service: "SI Brand Workshop" });
   fill("offers-buy", o.buyToday, { proposed: false, href: "quick-designs/#quote", cta: "Order on quick designs" });
-  [["retainer-note", o.retainerNote], ["workshop-note", o.workshopNote], ["buy-note", o.buyTodayNote]].forEach(function (p) { var el = document.getElementById(p[0]); if (el) el.textContent = p[1]; });
+  [["workshop-note", o.workshopNote], ["buy-note", o.buyTodayNote]].forEach(function (p) { var el = document.getElementById(p[0]); if (el) el.textContent = p[1]; });
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("[data-service]"); if (!a) return;
     var sel = document.querySelector('#brand-intake-form select[name="serviceType"]'); if (sel) sel.value = a.getAttribute("data-service");
