@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="ecosystem.css?v=builders-1" />
-  <link rel="stylesheet" href="brand-home.css?v=1" />
+  <link rel="stylesheet" href="brand-home.css?v=2" />
 </head>
 <body class="home-page">
   <a class="skip-link" href="#start">Skip to project intake</a>
@@ -36,7 +36,7 @@
       <h1 id="hero-title">I build brands that run with SI behind them.</h1>
       <p class="lead">I'm Nasirr, the lead designer behind SHOPNASGFX. Strategy comes first: positioning, audience, and story. Then I design the full system, logo, colors, type, and voice, and train a set of SI prompts on it so every flyer, post, and mockup after launch still looks and sounds like you.</p>
       <ul class="brand-stats" aria-label="SHOPNASGFX track record">
-        <li><strong>500+</strong><span>founders and business owners helped</span></li>
+        <li><strong data-count-to="500" data-count-suffix="+">500+</strong><span>founders and business owners helped</span></li>
         <li><strong>2015</strong><span>designing since</span></li>
       </ul>
       <div class="hero-actions decision-actions">
@@ -105,6 +105,7 @@
         </div>
         <p>Real client work. Left: one logo file. Right: the set of marks from the same project, ready for every format.</p>
       </div>
+      <div class="showcase-stack">
         <figure class="showcase-item reveal-item">
           <div><p class="showcase-label">Single file</p><div class="showcase-single"><img src="assets/showcase/honey-and-friends-horizontal.png" alt="Honey &amp; Friends Events logo" loading="lazy"></div></div>
           <div><p class="showcase-label">Brand mark system</p><div class="showcase-marks"><div><img src="assets/showcase/honey-and-friends-horizontal.png" alt="Honey &amp; Friends Events mark" loading="lazy"></div><div><img src="assets/showcase/honey-and-friends-stacked.png" alt="Honey &amp; Friends Events mark" loading="lazy"></div><div><img src="assets/showcase/honey-and-friends-badge.png" alt="Honey &amp; Friends Events mark" loading="lazy"></div><div><img src="assets/showcase/honey-and-friends-monogram.png" alt="Honey &amp; Friends Events mark" loading="lazy"></div></div></div>
@@ -120,6 +121,7 @@
           <div><p class="showcase-label">Brand mark system</p><div class="showcase-marks"><div><img src="assets/client-logos/omni-global-solutions-corrected-logo.png" alt="Omni Global Solutions LLC mark" loading="lazy"></div><div><img src="assets/client-logos/omni-global-solutions-horizontal-logo.png" alt="Omni Global Solutions LLC mark" loading="lazy"></div><div><img src="assets/client-logos/omni-global-solutions-logo-mark.png" alt="Omni Global Solutions LLC mark" loading="lazy"></div></div></div>
           <figcaption>Omni Global Solutions LLC</figcaption>
         </figure>
+      </div>
     </section>
 
     <section class="package-section reveal-section brand-intake" id="start" aria-labelledby="start-title" data-reveal="up">
@@ -182,5 +184,6 @@
   <script type="module" src="./brand-intake.mjs?v=1"></script>
   <script type="module" src="./interaction-sounds.js"></script>
   <script src="script.js"></script>
+  <script src="easyui-enhance.js?v=1"></script>
 </body>
 </html>
