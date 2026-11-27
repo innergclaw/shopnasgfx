@@ -358,6 +358,8 @@ body.home-page {
   .home-page .hero-actions .btn,
   .reach-links .btn {
     width: 100%;
+    min-width: 0;
+    padding-inline: 1.25rem;
   }
 
   .mobile-quote-cta {
