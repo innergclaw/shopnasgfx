@@ -1549,3 +1549,26 @@ footer {
   margin-top: 10px;
   background: rgba(255, 255, 255, .5);
 }
+
+.soft-details > p.example-link-wrap,
+.example-link-wrap {
+  padding-top: 0;
+  color: var(--ink);
+}
+
+.example-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  overflow-wrap: anywhere;
+}
+
+.example-link:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 4px;
+}
