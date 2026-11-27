@@ -1,14 +1,9 @@
-// Logo and identity: Step 1 card chosen by Mr G 2026-11-27.
-// Workshops, graphics, and agents unchanged from the 2026-10-23 catalog.
+// Logo and identity: Step 1 card chosen by Mr G 2026-11-27, for January 1, 2027.
+// SI brand workshops were taken off the public site on 2026-11-27. The catalog is in /archived/workshops.js.
+// Graphics and agents are unchanged from the 2026-10-23 catalog.
 // Edit prices here; the home page and calculator render from this file.
 window.SHOPNASGFX_OFFERS = {
   pricesAreProposed: false,
-  workshops: [
-    { id: "seat", name: "SI Brand Workshop seat", price: "$97 ($79 early)", turnaround: "Live group session", for: "Owners and solo founders", deliverables: ["Use SI without losing your identity", "Prompt templates to keep"] },
-    { id: "series", name: "4 session series", price: "$297", turnaround: "4 weeks", for: "Done-with-you setup", deliverables: ["Build your own brand prompt kit", "Weekly review"] },
-    { id: "half", name: "Private half day", price: "$1,800", turnaround: "Scheduled", for: "Your team", deliverables: ["On-brand SI workflow for your team"] },
-    { id: "full", name: "Private full day", price: "$3,200", turnaround: "Scheduled", for: "Your team", deliverables: ["Strategy, prompts, and workflow build"] }
-  ],
   identity: [
     { id: "essentials", name: "Logo Essentials", price: "$450", turnaround: "1 to 2 weeks", for: "A first real mark", deliverables: ["Discovery call or written brief, then 2 distinct concepts", "2 revision rounds on the chosen direction", "Primary logo plus one simple lockup (horizontal or stacked)", "Vector masters: Illustrator (.ai), SVG, EPS, and PDF", "PNG set: full color, black, white, and transparent, at standard sizes", "Color values and font names on a one-page spec", "Exclusive use of the approved mark; full ownership after final payment"] },
     { id: "mark", name: "Brand Mark", price: "$1,200", turnaround: "2 to 3 weeks", for: "Recommended", recommended: true, deliverables: ["Everything in Logo Essentials", "3 distinct concepts, then 3 revision rounds on the chosen direction", "Logo suite: primary, secondary, and a standalone mark", "Color system with print and screen values, plus a type pairing", "Mini brand guide (about 4 to 6 pages) covering logo use, clear space, color, and type", "Social profile set: avatar, cover or banner, and a basic post template", "Exclusive approved mark; unused concepts stay with ShopNasGfx unless bought out"] },

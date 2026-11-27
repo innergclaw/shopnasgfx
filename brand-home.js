@@ -17,7 +17,7 @@
   }
   function fill(id, list, opts) { var el = document.getElementById(id); if (el && list) el.innerHTML = list.map(function (t) { return item(t, opts); }).join(''); }
   fill("offers-identity", o.identity, { service: "Brand design" });
-  fill("offers-workshop", o.workshops, { proposed: true, service: "SI Brand Workshop" });
+  if (o.workshops && o.workshops.length) fill("offers-workshop", o.workshops, { proposed: true, service: "SI Brand Workshop" });
   fill("offers-buy", o.buyToday, { proposed: false, href: "quick-designs/#quote", cta: "Order on quick designs" });
   [["workshop-note", o.workshopNote], ["buy-note", o.buyTodayNote], ["identity-note", o.identityNote]].forEach(function (p) { var el = document.getElementById(p[0]); if (el && p[1]) el.textContent = p[1]; });
   document.addEventListener("click", function (e) {
