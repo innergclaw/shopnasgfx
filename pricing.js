@@ -19,14 +19,40 @@
     minus.addEventListener('click', function () { set(item.count - 1); }); plus.addEventListener('click', function () { set(item.count + 1); }); input.addEventListener('input', function () { set(input.value); });
     item.set = set; stepper.append(minus, input, plus); row.append(label, stepper); host.appendChild(row); minus.disabled = item.count === 0;
   });
-  function totals() { return items.reduce(function (t, i) { t[i.monthly ? 'monthly' : 'project'] += i.count * i.price; return t; }, { project: 0, monthly: 0 }); }
-  function update() { var t = totals(); document.getElementById('calculator-total').textContent = money(t.project); document.getElementById('calculator-deposit').textContent = money(t.project * .25); document.getElementById('calculator-status').textContent = ''; }
+  function totals() {
+    return items.reduce(function (t, i) {
+      var line = i.count * i.price;
+      t[i.monthly ? 'monthly' : 'project'] += line;
+      t.due += i.id === 'launch' ? line * 0.5 : line;
+      return t;
+    }, { project: 0, monthly: 0, due: 0 });
+  }
+  function dueLabel(t) {
+    if (!t.project) return 'Due to start';
+    if (t.due === t.project) return 'Due in full';
+    var hasLaunch = items.some(function (i) { return i.id === 'launch' && i.count > 0; });
+    var hasFull = items.some(function (i) { return i.id !== 'launch' && i.count > 0; });
+    return hasLaunch && !hasFull ? '50% deposit' : 'Due to start';
+  }
+  function dueSummary(t) {
+    var label = dueLabel(t);
+    if (label === 'Due in full') return 'due in full ' + money(t.due);
+    if (label === '50% deposit') return '50% deposit ' + money(t.due);
+    return 'due to start ' + money(t.due);
+  }
+  function update() {
+    var t = totals();
+    document.getElementById('calculator-total').textContent = money(t.project);
+    document.getElementById('calculator-due-label').textContent = dueLabel(t);
+    document.getElementById('calculator-deposit').textContent = money(t.due);
+    document.getElementById('calculator-status').textContent = '';
+  }
   document.getElementById('calculator-reset').addEventListener('click', function () { items.forEach(function (i) { i.set(i.id === 'logo' ? 1 : 0); }); });
   document.getElementById('calculator-continue').addEventListener('click', function (e) {
     var selected = items.filter(function (i) { return i.count > 0; });
     if (!selected.length) { e.preventDefault(); document.getElementById('calculator-status').textContent = 'Add at least one service to discuss your estimate.'; return; }
     var form = document.getElementById('brand-intake-form'); var t = totals();
-    var summary = 'Estimate: ' + selected.map(function (i) { return i.count + ' × ' + i.name; }).join(', ') + '. Project ' + money(t.project) + '; 25% deposit ' + money(t.project * .25) + '. Final scope to confirm.';
+    var summary = 'Estimate: ' + selected.map(function (i) { return i.count + ' × ' + i.name; }).join(', ') + '. Project ' + money(t.project) + '; ' + dueSummary(t) + '. Final scope to confirm.';
     var field = form.elements.details;
     // Preserve anything the visitor has already written; update only our previous estimate.
     var previous = field.dataset.estimate || '';

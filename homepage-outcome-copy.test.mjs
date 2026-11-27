@@ -28,9 +28,9 @@ test("Quick designs page keeps the decision path short", () => {
 });
 
 test("Quick designs page preserves price and contact facts", () => {
-  for (const price of ["$15", "$35", "$45", "$100", "$200", "$300"]) assert.match(html, new RegExp(`\\${price}`));
+  for (const price of ["$15", "$35", "$45", "$100", "$250", "$500"]) assert.match(html, new RegExp(`\\${price}`));
   assert.doesNotMatch(html, /Logo Suite/);
-  assert.match(html, /Logo Starter - \$100 intro<\/option>\s*<option>Brand Starter Kit - \$200 intro/);
+  assert.match(html, /Logo Starter - \$100 intro<\/option>\s*<option>Brand Starter Kit - \$250 intro/);
   const packages = html.slice(html.indexOf('id="packages"'), html.indexOf('id="agents"'));
   assert.match(packages, /<h3>Logo Starter<\/h3>[\s\S]*?<h3>Brand Starter Kit<\/h3>/);
   assert.doesNotMatch(packages, /<h3>Logo Suite<\/h3>/);
@@ -70,8 +70,18 @@ test("Prices live in offers.js and are marked proposed", () => {
   assert.match(offers, /pricesAreProposed: false/);
   assert.ok(!home.includes("$750/mo"));
   for (const gone of ["Brand Spark", "Brand Foundation Pro", "Brand Refresh", "Brand System\""]) { assert.ok(!offers.includes(gone), gone); assert.ok(!home.includes(gone), gone); }
-  for (const p of ["$15\"", "$35\"", "$45\"", "$100\"", "$200\"", "$300\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
+  for (const p of ["$15\"", "$35\"", "$45\"", "$100\"", "$250\"", "$500\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
   assert.ok(!/retainer/i.test(home) && !/retainer/i.test(offers));
+});
+
+test("Calculator and FAQ use the package deposit rules", () => {
+  assert.match(home, /id="calculator-due-label">Due in full</);
+  assert.match(home, /id="calculator-deposit">\$100</);
+  assert.doesNotMatch(home, /25% project deposit/);
+  assert.doesNotMatch(faq, /under \$150/);
+  assert.match(faq, /Logo Starter is \$100, paid in full/);
+  assert.match(faq, /Brand Starter Kit is \$250, paid in full/);
+  assert.match(faq, /Launch Package is \$500, with a 50% deposit/);
 });
 
 test("SI brand workshops are archived and off the public site", () => {
@@ -85,7 +95,7 @@ test("SI brand workshops are archived and off the public site", () => {
 });
 
 test("Intake requires the exact deposit agreement and texts 267 473 0397", () => {
-  const sentence = "I understand that by submitting this form or texting, a 25% deposit is required on all projects discussed before any work begins.";
+  const sentence = "I understand that by submitting this form or texting, Logo Starter and Brand Starter Kit are paid in full before any work begins, and the Launch Package requires a 50% deposit before work begins, with the remaining 50% due before final files.";
   assert.ok(home.includes(sentence));
   assert.match(home, /name="depositAgreement" value="agreed" required/);
   const ok = { firstName: "A", lastName: "B", serviceType: "Brand design", details: "x", budget: "$500 to $1,500", delivery: "Not sure", depositAgreement: "agreed" };
