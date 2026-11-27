@@ -28,9 +28,9 @@ test("Quick designs page keeps the decision path short", () => {
 });
 
 test("Quick designs page preserves price and contact facts", () => {
-  for (const price of ["$15", "$35", "$45", "$100", "$250", "$500"]) assert.match(html, new RegExp(`\\${price}`));
+  for (const price of ["$15", "$35", "$45", "$125", "$300", "$750"]) assert.match(html, new RegExp(`\\${price}`));
   assert.doesNotMatch(html, /Logo Suite/);
-  assert.match(html, /Logo Starter - \$100 intro<\/option>\s*<option>Brand Starter Kit - \$250 intro/);
+  assert.match(html, /Logo Starter - \$125 intro<\/option>\s*<option>Brand Starter Kit - \$300 intro/);
   const packages = html.slice(html.indexOf('id="packages"'), html.indexOf('id="agents"'));
   assert.match(packages, /<h3>Logo Starter<\/h3>[\s\S]*?<h3>Brand Starter Kit<\/h3>/);
   assert.doesNotMatch(packages, /<h3>Logo Suite<\/h3>/);
@@ -70,18 +70,18 @@ test("Prices live in offers.js and are marked proposed", () => {
   assert.match(offers, /pricesAreProposed: false/);
   assert.ok(!home.includes("$750/mo"));
   for (const gone of ["Brand Spark", "Brand Foundation Pro", "Brand Refresh", "Brand System\""]) { assert.ok(!offers.includes(gone), gone); assert.ok(!home.includes(gone), gone); }
-  for (const p of ["$15\"", "$35\"", "$45\"", "$100\"", "$250\"", "$500\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
+  for (const p of ["$15\"", "$35\"", "$45\"", "$125\"", "$300\"", "$750\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
   assert.ok(!/retainer/i.test(home) && !/retainer/i.test(offers));
 });
 
 test("Calculator and FAQ use the package deposit rules", () => {
   assert.match(home, /id="calculator-due-label">Due in full</);
-  assert.match(home, /id="calculator-deposit">\$100</);
+  assert.match(home, /id="calculator-deposit">\$125</);
   assert.doesNotMatch(home, /25% project deposit/);
   assert.doesNotMatch(faq, /under \$150/);
-  assert.match(faq, /Logo Starter is \$100, paid in full/);
-  assert.match(faq, /Brand Starter Kit is \$250, paid in full/);
-  assert.match(faq, /Launch Package is \$500, with a 50% deposit/);
+  assert.match(faq, /Logo Starter is \$125, paid in full/);
+  assert.match(faq, /Brand Starter Kit is \$300, paid in full/);
+  assert.match(faq, /Launch Package is \$750, with a 50% deposit/);
 });
 
 test("SI brand workshops are archived and off the public site", () => {
@@ -137,7 +137,7 @@ test("Discuss this project opens a prefilled SMS to 267 473 0397", async () => {
   assert.match(home, /id="calculator-continue"/);
   assert.match(home, /sms:\+12674730397\?&body=/);
   assert.match(home, /1%20%C3%97%20Logo%20Starter/);
-  assert.match(home, /Due%20in%20full%3A%20%24100/);
+  assert.match(home, /Due%20in%20full%3A%20%24125/);
   assert.match(pricing, /smsHref/);
   assert.match(pricing, /\?&body=/);
   assert.match(pricing, /\?body=/);
