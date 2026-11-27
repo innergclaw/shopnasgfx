@@ -16,7 +16,14 @@
   var detailsHost = document.getElementById('package-details');
   if (detailsHost) {
     detailsHost.innerHTML = offers.buyToday.filter(function (item) { return ['logo', 'kit', 'launch'].indexOf(item.id) !== -1; }).map(function (item) {
-      var example = item.example ? '<p class="example-link-wrap"><a class="example-link" href="' + esc(item.example) + '" target="_blank" rel="noopener noreferrer">See example</a></p>' : '';
+      var example = '';
+      if (item.example) {
+        example = '<p class="example-link-wrap"><a class="example-link" href="' + esc(item.example) + '" target="_blank" rel="noopener noreferrer">See example</a>';
+        if (item.demo) {
+          example += '<a class="example-link" href="' + esc(item.demo) + '" target="_blank" rel="noopener noreferrer">View live demo</a>';
+        }
+        example += '</p>';
+      }
       return '<details class="soft-details"><summary>' + esc(item.name) + ' · ' + esc(item.price) + '</summary><p>' + esc((item.deliverables || []).join(' ')) + '</p>' + example + '</details>';
     }).join('');
   }
