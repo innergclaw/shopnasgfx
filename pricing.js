@@ -33,7 +33,7 @@
     var original = previous && field.value.indexOf(previous) === 0 ? field.value.slice(previous.length).trim() : field.value.trim();
     if ((summary + '\n' + original).length > field.maxLength) { e.preventDefault(); document.getElementById('calculator-status').textContent = 'Your project notes are too long to add this estimate. Shorten the notes below and try again.'; return; }
     field.value = summary + (original ? '\n' + original : ''); field.dataset.estimate = summary;
-    field.dispatchEvent(new Event('input', { bubbles: true })); form.elements.serviceType.value = 'Quick design';
+    field.dispatchEvent(new Event('input', { bubbles: true })); form.elements.serviceType.value = 'Brand design';
   });
   update();
 })();
