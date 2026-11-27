@@ -8,10 +8,7 @@
     var proposed = opts.proposed && o.pricesAreProposed;
     var cta = opts.href ? '<a class="btn offer-cta" href="' + opts.href + '">' + opts.cta + '</a>'
       : '<a class="btn offer-cta" href="#start" data-service="' + esc(opts.service) + '">Ask about ' + esc(t.name) + '</a>';
-    return '<details class="offer-item" data-offer="' + esc(t.id) + '"><summary><span class="offer-name">' + esc(t.name) + '</span>' +
-      '<span class="offer-price" data-price="' + esc(t.id) + '">' + esc(t.price) + (proposed ? '<em class="proposed-tag">Proposed</em>' : '') + '</span>' + chev + '</summary>' +
-      '<div class="offer-body"><p class="tier-turn">' + esc(t.for) + (t.turnaround ? ' ~ Turnaround: ' + esc(t.turnaround) : '') + '</p><ul class="tier-list">' +
-      t.deliverables.map(function (d) { return '<li>' + check + '<div>' + esc(d) + '</div></li>'; }).join('') + '</ul>' + cta + '</div></details>';
+    return '<article class="price-row" data-offer="' + esc(t.id) + '"><div class="price-description"><p class="eyebrow">' + esc(t.for) + '</p><h3>' + esc(t.name) + '</h3><p>' + t.deliverables.map(esc).join(' ') + '</p>' + (t.turnaround ? '<p class="price-meta">' + esc(t.turnaround) + '</p>' : '') + '</div><div class="price-action"><strong data-price="' + esc(t.id) + '">' + esc(t.price) + '</strong>' + cta + '</div></article>';
   }
   function fill(id, list, opts) { var el = document.getElementById(id); if (el && list) el.innerHTML = list.map(function (t) { return item(t, opts); }).join(''); }
   fill("offers-workshop", o.workshops, { proposed: true, service: "SI Brand Workshop" });

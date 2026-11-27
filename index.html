@@ -10,7 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="ecosystem.css?v=builders-1" />
-  <link rel="stylesheet" href="brand-home.css?v=3" />
+  <link rel="stylesheet" href="brand-home.css?v=4" />
+  <link rel="stylesheet" href="pricing.css?v=1">
 </head>
 <body class="home-page">
   <a class="skip-link" href="#start">Skip to project intake</a>
@@ -19,7 +20,7 @@
     <header class="conversion-nav" aria-label="SHOPNASGFX navigation">
       <a class="brand-chip" href="#top">SHOPNASGFX</a>
       <nav aria-label="Homepage sections">
-        <a href="#services">Services</a>
+        <a href="#services">Pricing</a><a href="#calculator">Calculator</a>
         <a href="#how">How I work with SI</a>
         <a href="#showcase">Work</a>
         <a href="quick-designs/">Quick designs</a>
@@ -47,7 +48,7 @@
     </section>
 
     <section class="package-section reveal-section" id="services" aria-label="Services" data-reveal="left">
-      <div class="offer-groups">
+      <div class="pricing-intro"><p class="eyebrow">The SHOPNASGFX price list</p><h2>YOUR VISION.<br>CLEAR PRICING.</h2><p>Start with one design. Build out your brand. Choose what you need and see your estimate before your consultation.</p><a class="btn" href="#calculator">Build your project</a></div><div class="offer-groups">
       <div class="offer-group" id="teach">
         <div class="section-heading tier-subhead">
           <div>
@@ -71,6 +72,11 @@
       </div>
       <p class="pricing-note"><a href="quick-designs/">See the full quick designs menu</a></p>
       <noscript><p class="pricing-note">Turn on JavaScript to see services and pricing, or text 267 473 0397.</p></noscript>
+    </section>
+
+    <section class="project-calculator" id="calculator" aria-labelledby="calculator-title">
+      <div><p class="eyebrow">Project calculator · USD</p><h2 id="calculator-title">BUILD YOUR<br>NEXT MOVE.</h2><p>Add designs to your project. Your estimate updates as you go.</p><p class="price-meta">Each item uses its listed rate. Packages include their listed deliverables; only add separate items when you need extra work.</p></div>
+      <div class="calculator-panel"><div id="calculator-items"></div><div class="calculator-summary" aria-live="polite" aria-atomic="true"><p>Estimated project total <strong id="calculator-total">$50</strong></p><p>25% project deposit <strong id="calculator-deposit">$12.50</strong></p><p>Monthly services <strong id="calculator-monthly">$0/mo</strong></p></div><p class="price-meta">An estimate, subject to scope confirmation. Monthly services are separate from the one-time project and deposit. No payment is collected here.</p><a class="btn" id="calculator-continue" href="#start">Discuss this project</a><button class="calculator-reset" type="button" id="calculator-reset">Reset selection</button><p id="calculator-status" role="status"></p></div>
     </section>
 
     <section class="process-section reveal-section" id="how" aria-labelledby="how-title" data-reveal="right">
@@ -172,7 +178,8 @@
   <a class="mobile-quote-cta" href="#start">Start a project</a>
 
   <script src="offers.js?v=2"></script>
-  <script src="brand-home.js?v=2"></script>
+  <script src="brand-home.js?v=4"></script>
+  <script src="pricing.js?v=1"></script>
   <script type="module" src="./brand-intake.mjs?v=2"></script>
   <script type="module" src="./interaction-sounds.js"></script>
   <script src="script.js"></script>
