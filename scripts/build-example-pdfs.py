@@ -62,6 +62,7 @@ OMNI_SCREENS = {
     "mobile": OUT / "source" / "omni-global-mobile.jpg",
     "contact": OUT / "source" / "omni-global-contact.jpg",
 }
+OMNI_LIVE_URL = "https://ownyourweb.xyz/demos/omni-global-solutions.html"
 
 # Color values sampled from the approved Omni Global Solutions marks in the public file set.
 OMNI_COLORS = [
@@ -219,6 +220,27 @@ class Doc:
         for line in wrap(c, text, "Inter", 9, width):
             c.drawString(x, y, line)
             y -= 12
+        return y
+
+    def link_line(self, c: canvas.Canvas, x: float, y: float, label: str, url: str, width: float) -> float:
+        """Draw a visible text link and a clickable URI annotation."""
+        c.setFillColor(INK)
+        c.setFont("InterSemi", 10)
+        c.drawString(x, y, label)
+        tw = c.stringWidth(label, "InterSemi", 10)
+        c.setStrokeColor(INK)
+        c.setLineWidth(0.7)
+        c.line(x, y - 1.4, x + tw, y - 1.4)
+        c.linkURL(url, (x, y - 4, x + tw, y + 12), relative=0, thickness=0)
+        y -= 13
+        visible = url.removeprefix("https://").removeprefix("http://")
+        c.setFillColor(MUTED)
+        c.setFont("Inter", 8)
+        for line in wrap(c, visible, "Inter", 8, width):
+            lw = c.stringWidth(line, "Inter", 8)
+            c.drawString(x, y, line)
+            c.linkURL(url, (x, y - 3, x + lw, y + 10), relative=0, thickness=0)
+            y -= 11
         return y
 
     def placeholder(self, c: canvas.Canvas, x: float, y: float, w: float, h: float, title: str, body: str) -> None:
@@ -462,7 +484,8 @@ def build_launch() -> None:
     y -= 10
     gap = 12
     # Side by side: desktop (wide) and mobile (tall), top-aligned, height set by the mobile frame.
-    mobile_h = 430
+    # Leave room under the captions for a clickable live-site line.
+    mobile_h = 400
     iw, ih = logo_size(OMNI_SCREENS["mobile"])
     mobile_w = mobile_h * (iw / ih)
     desktop_w = CONTENT_W - gap - mobile_w
@@ -470,19 +493,27 @@ def build_launch() -> None:
     desktop_h = desktop_w * (dh / dw)
     doc.placed_photo(c, OMNI_SCREENS["desktop"], MARGIN, y - desktop_h, desktop_w, desktop_h, fill="#0B0B0B")
     doc.placed_photo(c, OMNI_SCREENS["mobile"], MARGIN + desktop_w + gap, y - mobile_h, mobile_w, mobile_h, fill="#0B0B0B")
-    doc.caption(
+    desk_end = doc.caption(
         c,
         MARGIN,
         y - desktop_h - 14,
         "Desktop, 1440. Example deliverable ~ Project Omni Global.",
         desktop_w,
     )
-    doc.caption(
+    mob_end = doc.caption(
         c,
         MARGIN + desktop_w + gap,
         y - mobile_h - 14,
         "Mobile, 390. Example deliverable ~ Project Omni Global.",
         mobile_w,
+    )
+    doc.link_line(
+        c,
+        MARGIN,
+        min(desk_end, mob_end) - 16,
+        "View the live site",
+        OMNI_LIVE_URL,
+        CONTENT_W,
     )
 
     c = doc.start_page()
@@ -537,6 +568,19 @@ def build_launch() -> None:
     doc.save()
 
 
+def launch_link_uris(path: Path) -> list[str]:
+    from pypdf import PdfReader
+
+    uris: list[str] = []
+    for page in PdfReader(str(path)).pages:
+        annots = page.annotations or []
+        for annot in annots:
+            action = annot.get_object().get("/A")
+            if action and action.get("/URI"):
+                uris.append(str(action["/URI"]))
+    return uris
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     register_fonts()
@@ -552,6 +596,10 @@ def main() -> None:
         print(f"{name}: {size / 1024:.1f} KB")
         if size >= 3 * 1024 * 1024:
             raise SystemExit(f"{name} is over 3 MB")
+    uris = launch_link_uris(OUT / "launch-package.pdf")
+    print("launch-package.pdf link URIs:", uris)
+    if OMNI_LIVE_URL not in uris:
+        raise SystemExit("launch-package.pdf is missing a clickable link to the live demo")
 
 
 if __name__ == "__main__":

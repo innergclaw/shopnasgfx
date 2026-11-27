@@ -149,3 +149,11 @@ test("Package examples open PDFs in a new tab", async () => {
   }
   // The 2027 identity packages are a different catalog than the current starter example PDFs, so those links are not attached here. The files themselves ship with main.
 });
+
+test("Launch Package example PDF has a clickable live demo link", async () => {
+  const { execFile } = await import("node:child_process");
+  const { promisify } = await import("node:util");
+  const exec = promisify(execFile);
+  const { stdout } = await exec("python3", ["-c", "from pypdf import PdfReader\nuris=[]\nfor p in PdfReader('examples/launch-package.pdf').pages:\n    for a in (p.annotations or []):\n        act=a.get_object().get('/A')\n        if act and act.get('/URI'): uris.append(str(act['/URI']))\nprint('\\n'.join(uris))"]);
+  assert.match(stdout, /https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html/);
+});
