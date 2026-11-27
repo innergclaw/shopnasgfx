@@ -48,7 +48,7 @@
     return hasLaunch && !hasFull ? '50% deposit' : 'Due to start';
   }
 function smsBody(selected, t) {
-    return "Hi Nasirr, I'd like to discuss a project.\n\n" +
+    return "Hello Nasirr, I would like to discuss a project.\n\n" +
       selected.map(function (i) { return i.count + ' \u00d7 ' + i.name; }).join('\n') +
       '\n\nProject total: ' + money(t.project) + '\n' + dueLabel(t) + ': ' + money(t.due) +
       '\n\nSent from shopnasgfx.com';
@@ -73,7 +73,7 @@ function smsBody(selected, t) {
     var selected = items.filter(function (i) { return i.count > 0; });
     if (!selected.length) {
       e.preventDefault();
-      document.getElementById('calculator-status').textContent = 'Add at least one service to discuss your estimate.';
+      document.getElementById('calculator-status').textContent = 'Select at least one service to discuss this estimate.';
       return;
     }
     syncSms();

@@ -7,15 +7,15 @@ window.SHOPNASGFX_OFFERS = {
   pricesAreProposed: false,
   buyToday: [
     // Graphics and agents: existing live prices, unchanged. Order on /quick-designs/.
-    { id: "single", name: "Single graphic", price: "$15", for: "One need", deliverables: ["One promotional graphic for a product, special, or event."] },
-    { id: "pack", name: "Graphics pack", price: "$35", for: "Weekly posts", deliverables: ["A set of social graphics for a small business that posts often."] },
-    { id: "flyer", name: "Flyer + social", price: "$45", for: "Promote it", deliverables: ["A flyer and a social graphic for a local business or event."] },
-    { id: "logo", name: "Logo Starter", price: "$125", for: "First identity", deliverables: ["A clear logo and the files needed to start showing up."], example: "/examples/logo-starter.pdf" },
-    { id: "kit", name: "Brand Starter Kit", price: "$300", for: "Identity", deliverables: ["Main, secondary, and icon/mark."], example: "/examples/brand-starter-kit.pdf" },
-    { id: "launch", name: "Launch Package", price: "$750", for: "Launch base", deliverables: ["Everything in the Brand Starter Kit, plus a landing page / website for digital ownership: domain, mailing list, contact, forms, and automation."], example: "/examples/launch-package.pdf" },
-    { id: "flyer-agent", name: "Flyer Agent", price: "$9/mo", for: "Monthly agent", deliverables: ["For barbers, beauty work, promoters, vendors, and neighborhood businesses. Pay per design is also available."] },
-    { id: "brand-agent", name: "Brand Agent", price: "$15/mo", for: "Monthly agent", deliverables: ["Colors, type, logo use, and reusable social templates for one identity."] },
-    { id: "creative-agent", name: "Creative Business Agent", price: "$29/mo", for: "Monthly agent", deliverables: ["Flyers, social graphics, promo copy, and campaign variations."] }
+    { id: "single", name: "Single graphic", price: "$15", for: "Single piece", deliverables: ["One promotional graphic for a product, special, or event."] },
+    { id: "pack", name: "Graphics pack", price: "$35", for: "Ongoing posts", deliverables: ["A set of social graphics for a business that publishes often."] },
+    { id: "flyer", name: "Flyer + social", price: "$45", for: "Print and social", deliverables: ["A flyer and a social graphic for a local business or event."] },
+    { id: "logo", name: "Logo Starter", price: "$125", for: "Primary identity", deliverables: ["A primary logo and the production-ready files needed to begin use."], example: "/examples/logo-starter.pdf" },
+    { id: "kit", name: "Brand Starter Kit", price: "$300", for: "Identity system", deliverables: ["Main, secondary, and icon/mark, delivered as production-ready files."], example: "/examples/brand-starter-kit.pdf" },
+    { id: "launch", name: "Launch Package", price: "$750", for: "Identity and site", deliverables: ["Everything in the Brand Starter Kit, plus a landing page / website for digital ownership: domain, mailing list, contact, forms, and automation."], example: "/examples/launch-package.pdf" },
+    { id: "flyer-agent", name: "Flyer Agent", price: "$9/mo", for: "Monthly system", deliverables: ["For barbers, beauty work, promoters, vendors, and neighborhood businesses. Pay per design is also available."] },
+    { id: "brand-agent", name: "Brand Agent", price: "$15/mo", for: "Monthly system", deliverables: ["Color, type, logo use, and reusable social templates for one identity."] },
+    { id: "creative-agent", name: "Creative Business Agent", price: "$29/mo", for: "Monthly system", deliverables: ["Flyers, social graphics, promotional copy, and campaign variations."] }
   ],
-  buyTodayNote: "Introductory prices. I confirm what is included before you pay."
+  buyTodayNote: "Introductory prices. I confirm the scope and deliverables before payment."
 };
