@@ -113,3 +113,34 @@ test("Site copy avoids AI wording, em dashes, and emoji glyphs", async () => {
     assert.doesNotMatch(t, /[\u2190-\u21FF\u2600-\u27BF]|[\u{1F300}-\u{1FAFF}]/u, f);
   }
 });
+
+test("How I work headline can wrap and packages use dropdowns", () => {
+  assert.match(home, /id="how-title">A human designer, with superintelligence doing the busywork\.</);
+  assert.match(home, /<details class="soft-details"><summary><b>01<\/b> Strategy<\/summary>/);
+  assert.match(home, /id="package-details"/);
+  assert.match(home, /<details class="soft-details calculator-terms"><summary>Payment terms<\/summary>/);
+  assert.match(html, /<details class="soft-details"><summary>What's included<\/summary>/);
+  assert.match(html, /<details class="soft-details"><summary>Payment terms<\/summary>/);
+});
+
+test("FAQ package anchors point at the live home sections", () => {
+  assert.match(faq, /href="index.html#services"/);
+  assert.match(faq, /href="index.html#how"/);
+  assert.match(faq, /href="index.html#start"/);
+  assert.doesNotMatch(faq, /index.html#packages/);
+  assert.doesNotMatch(faq, /index.html#process/);
+  assert.doesNotMatch(faq, /index.html#quote/);
+});
+
+test("Discuss this project opens a prefilled SMS to 267 473 0397", async () => {
+  const pricing = await readFile(new URL("./pricing.js", import.meta.url), "utf8");
+  assert.match(home, /id="calculator-continue"/);
+  assert.match(home, /sms:\+12674730397\?&body=/);
+  assert.match(home, /1%20%C3%97%20Logo%20Starter/);
+  assert.match(home, /Due%20in%20full%3A%20%24100/);
+  assert.match(pricing, /smsHref/);
+  assert.match(pricing, /\?&body=/);
+  assert.match(pricing, /\?body=/);
+  assert.match(pricing, /encodeURIComponent/);
+  assert.match(pricing, /\+12674730397/);
+});
