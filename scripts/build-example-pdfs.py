@@ -63,6 +63,13 @@ OMNI_SCREENS = {
     "contact": OUT / "source" / "omni-global-contact.jpg",
 }
 
+# Color values sampled from the approved Omni Global Solutions marks in the public file set.
+OMNI_COLORS = [
+    ("Omni green", "#98C522"),
+    ("Steel", "#5D5D5C"),
+    ("Silver", "#A19F9F"),
+]
+
 
 def register_fonts() -> None:
     pdfmetrics.registerFont(TTFont("Anton", "/usr/share/fonts/truetype/sand-box/google/Anton/Anton-Regular.ttf"))
@@ -261,18 +268,18 @@ def build_logo_starter() -> None:
         y,
         [
             "A primary logo and the production-ready files needed to begin use.",
-            "The work below is an example deliverable from a completed ShopNasGfx project for 10 for 10 Boxing.",
+            "The work below is from Project Omni Global, a completed project for Omni Global Solutions LLC.",
         ],
         leading=15,
     )
     y -= 8
     frame_h = 340
-    doc.placed_logo(c, BOXING["black"], MARGIN, y - frame_h, CONTENT_W, frame_h, background="#FFFDF8")
+    doc.placed_logo_alpha(c, OMNI["main"], MARGIN, y - frame_h, CONTENT_W, frame_h, background="#FFFDF8")
     doc.caption(
         c,
         MARGIN,
         y - frame_h - 16,
-        "10 for 10 Boxing. Primary mark, shown on a light ground.",
+        "Omni Global Solutions LLC. Main mark, shown on a light ground. Example deliverable.",
         CONTENT_W,
     )
 
@@ -282,8 +289,8 @@ def build_logo_starter() -> None:
         c,
         y,
         [
-            "The file set. Black and white versions of the approved mark, prepared for light and dark grounds.",
-            "The public example set for this project includes SVG and PNG. The delivery also includes the remaining production-ready files required to begin use.",
+            "The file set. The approved main mark, shown on light and dark grounds.",
+            "The public example is a PNG of the main mark. The project delivery also includes JPG, a print-ready PDF, and the editable source file.",
         ],
         leading=15,
     )
@@ -291,13 +298,12 @@ def build_logo_starter() -> None:
     gap = 14
     col_w = (CONTENT_W - gap) / 2
     frame_h = 300
-    doc.placed_logo(c, BOXING["black"], MARGIN, y - frame_h, col_w, frame_h, background="#FFFDF8")
-    doc.placed_logo(c, BOXING["white"], MARGIN + col_w + gap, y - frame_h, col_w, frame_h, background="#0B0B0B")
+    doc.placed_logo_alpha(c, OMNI["main"], MARGIN, y - frame_h, col_w, frame_h, background="#FFFDF8")
+    doc.placed_logo_alpha(c, OMNI["main"], MARGIN + col_w + gap, y - frame_h, col_w, frame_h, background="#0B0B0B")
     cap_y = y - frame_h - 16
-    doc.caption(c, MARGIN, cap_y, "Black artwork on paper. Example deliverable.", col_w - 8)
-    doc.caption(c, MARGIN + col_w + gap, cap_y, "White artwork on ink. Example deliverable.", col_w - 8)
+    doc.caption(c, MARGIN, cap_y, "Approved mark on paper. Example deliverable.", col_w - 8)
+    doc.caption(c, MARGIN + col_w + gap, cap_y, "Approved mark on ink. Example deliverable.", col_w - 8)
 
-    # File list
     list_y = 86
     c.setFillColor(INK)
     c.setFont("InterSemi", 10)
@@ -305,8 +311,10 @@ def build_logo_starter() -> None:
     c.setFont("Inter", 9.5)
     c.setFillColor(INK)
     files = [
-        "SVG, black and white",
-        "PNG, black, for web use",
+        "PNG, for digital use",
+        "JPG, for previews and uploads",
+        "PDF, print-ready",
+        "PSD, editable source",
     ]
     fy = list_y + 32
     for item in files:
@@ -330,14 +338,14 @@ def build_brand_kit() -> None:
         y,
         [
             "Main, secondary, and icon/mark, delivered as production-ready files.",
-            "The system below is an example deliverable from a completed ShopNasGfx project for Honey & Friends Events.",
+            "The system below is from Project Omni Global, a completed project for Omni Global Solutions LLC.",
         ],
         leading=15,
     )
     y -= 8
     frame_h = 280
-    doc.placed_logo(c, HONEY["horizontal"], MARGIN, y - frame_h, CONTENT_W, frame_h)
-    doc.caption(c, MARGIN, y - frame_h - 16, "Honey & Friends Events. Main mark, horizontal. Example deliverable.", CONTENT_W)
+    doc.placed_logo_alpha(c, OMNI["main"], MARGIN, y - frame_h, CONTENT_W, frame_h)
+    doc.caption(c, MARGIN, y - frame_h - 16, "Omni Global Solutions LLC. Main mark. Example deliverable.", CONTENT_W)
 
     c = doc.start_page()
     y = doc.header(c, H - 36)
@@ -345,20 +353,12 @@ def build_brand_kit() -> None:
     y -= 8
     gap = 14
     col_w = (CONTENT_W - gap) / 2
-    left_h = 250
-    doc.placed_logo(c, HONEY["stacked"], MARGIN, y - left_h, col_w, left_h)
-    doc.placed_logo(c, HONEY["badge"], MARGIN + col_w + gap, y - left_h, col_w, left_h)
-    cap = y - left_h - 16
-    cap_left = doc.caption(c, MARGIN, cap, "Secondary mark, stacked. Example deliverable.", col_w - 8)
-    doc.caption(c, MARGIN + col_w + gap, cap, "Icon/mark, badge. Example deliverable.", col_w - 8)
-    y = min(cap_left, cap) - 20
-    # monogram full width but shorter
-    mono_h = 170
-    # prevent overlap with footer
-    if y - mono_h < 80:
-        mono_h = y - 80
-    doc.placed_logo(c, HONEY["monogram"], MARGIN, y - mono_h, CONTENT_W, mono_h)
-    doc.caption(c, MARGIN, y - mono_h - 16, "Icon/mark, monogram. Example deliverable.", CONTENT_W)
+    cell_h = 380
+    doc.placed_logo_alpha(c, OMNI["secondary"], MARGIN, y - cell_h, col_w, cell_h)
+    doc.placed_logo_alpha(c, OMNI["icon"], MARGIN + col_w + gap, y - cell_h, col_w, cell_h)
+    cap = y - cell_h - 16
+    doc.caption(c, MARGIN, cap, "Secondary mark, wordmark. Example deliverable.", col_w - 8)
+    doc.caption(c, MARGIN + col_w + gap, cap, "Icon/mark. Example deliverable.", col_w - 8)
 
     c = doc.start_page()
     y = doc.header(c, H - 36)
@@ -367,7 +367,7 @@ def build_brand_kit() -> None:
         y,
         [
             "Color and type complete the kit.",
-            "The color values below were sampled from the approved Honey & Friends Events marks in the public file set.",
+            "The color values below were sampled from the approved Omni Global Solutions marks in the public file set.",
         ],
         leading=15,
     )
@@ -378,10 +378,9 @@ def build_brand_kit() -> None:
     y -= 18
     chip_w = (CONTENT_W - 16) / 3
     chip_h = 92
-    for i, (name, value) in enumerate(HONEY_COLORS):
+    for i, (name, value) in enumerate(OMNI_COLORS):
         x = MARGIN + i * (chip_w + 8)
         doc.frame(c, x, y - chip_h, chip_w, chip_h, fill=hex_color(value))
-        # label under chip
         c.setFillColor(INK)
         c.setFont("InterSemi", 8)
         c.drawString(x, y - chip_h - 14, name)
@@ -400,10 +399,10 @@ def build_brand_kit() -> None:
         y - slot_h,
         CONTENT_W,
         slot_h,
-        "Type pairing. Placeholder.",
-        "A named type specimen and font files for this project are not in the public ShopNasGfx or portfolio file set. This plate will be replaced with the original type delivery when those files are provided.",
+        "Type specimen. Placeholder.",
+        "A named typeface for these marks is not identified in the public file set or project records. This plate will be replaced with the original type delivery when that is confirmed.",
     )
-    doc.caption(c, MARGIN, y - slot_h - 16, "Missing from the public archive: type specimen and font files for Honey & Friends Events.", CONTENT_W)
+    doc.caption(c, MARGIN, y - slot_h - 16, "Type specimen and font files are not identified in the public archive for Project Omni Global.", CONTENT_W)
     doc.save()
 
 
@@ -541,12 +540,6 @@ def build_launch() -> None:
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     register_fonts()
-    for key, path in BOXING.items():
-        if not path.exists():
-            raise SystemExit(f"Missing boxing artwork: {path}")
-    for key, path in HONEY.items():
-        if not path.exists():
-            raise SystemExit(f"Missing Honey & Friends artwork: {path}")
     for key, path in {**OMNI, **OMNI_SCREENS}.items():
         if not path.exists():
             raise SystemExit(f"Missing Omni Global artwork or screenshot: {path}")
