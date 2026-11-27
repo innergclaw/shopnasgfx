@@ -165,4 +165,16 @@ test("Package examples open PDFs in a new tab", async () => {
   assert.match(pricing, /target="_blank" rel="noopener noreferrer">See example</);
   assert.match(html, /target="_blank" rel="noopener noreferrer">See example</);
   assert.match(faq, /target="_blank" rel="noopener noreferrer">See example</);
+  assert.match(offers, /demo: "https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html"/);
+  assert.match(pricing, /View live demo</);
+  assert.match(html, /href="https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html"[^>]*>View live demo</);
+  assert.match(faq, /href="https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html"[^>]*>View live demo</);
+});
+
+test("Launch Package example PDF has a clickable live demo link", async () => {
+  const { execFile } = await import("node:child_process");
+  const { promisify } = await import("node:util");
+  const exec = promisify(execFile);
+  const { stdout } = await exec("python3", ["-c", "from pypdf import PdfReader\nuris=[]\nfor p in PdfReader('examples/launch-package.pdf').pages:\n    for a in (p.annotations or []):\n        act=a.get_object().get('/A')\n        if act and act.get('/URI'): uris.append(str(act['/URI']))\nprint('\\n'.join(uris))"]);
+  assert.match(stdout, /https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html/);
 });

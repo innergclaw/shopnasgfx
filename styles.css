@@ -1554,6 +1554,10 @@ footer {
 .example-link-wrap {
   padding-top: 0;
   color: var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.25rem;
+  align-items: center;
 }
 
 .example-link {
