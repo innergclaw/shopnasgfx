@@ -52,6 +52,17 @@ HONEY_COLORS = [
     ("Paper", "#FFFDF8"),
 ]
 
+OMNI = {
+    "main": SHOP / "assets/client-logos/omni-global-solutions-corrected-logo.png",
+    "secondary": SHOP / "assets/client-logos/omni-global-solutions-horizontal-logo.png",
+    "icon": SHOP / "assets/client-logos/omni-global-solutions-logo-mark.png",
+}
+OMNI_SCREENS = {
+    "desktop": OUT / "source" / "omni-global-desktop.jpg",
+    "mobile": OUT / "source" / "omni-global-mobile.jpg",
+    "contact": OUT / "source" / "omni-global-contact.jpg",
+}
+
 
 def register_fonts() -> None:
     pdfmetrics.registerFont(TTFont("Anton", "/usr/share/fonts/truetype/sand-box/google/Anton/Anton-Regular.ttf"))
@@ -168,6 +179,28 @@ class Doc:
         dw, dh = fit_box(path, w, h, padding=22)
         img = prep_logo(path, background=background)
         c.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh, mask="auto")
+
+    def placed_logo_alpha(self, c: canvas.Canvas, path: Path, x: float, y: float, w: float, h: float, background="#FFFDF8") -> None:
+        """Place a logo with its own transparency so the plate color stays even."""
+        self.frame(c, x, y, w, h, fill=hex_color(background))
+        dw, dh = fit_box(path, w, h, padding=22)
+        im = Image.open(path).convert("RGBA")
+        im.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
+        buf = io.BytesIO()
+        im.save(buf, format="PNG", optimize=True)
+        buf.seek(0)
+        c.drawImage(ImageReader(buf), x + (w - dw) / 2, y + (h - dh) / 2, dw, dh, mask="auto")
+
+    def placed_photo(self, c: canvas.Canvas, path: Path, x: float, y: float, w: float, h: float, fill="#0B0B0B") -> None:
+        """Place a screenshot, letterboxed inside a framed plate."""
+        self.frame(c, x, y, w, h, fill=hex_color(fill))
+        iw, ih = logo_size(path)
+        pad = 0
+        avail_w, avail_h = w - pad * 2, h - pad * 2
+        scale = min(avail_w / iw, avail_h / ih)
+        dw, dh = iw * scale, ih * scale
+        img = ImageReader(str(path))
+        c.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh, preserveAspectRatio=True, mask="auto")
 
     def caption(self, c: canvas.Canvas, x: float, y: float, text: str, width: float) -> float:
         c.setFillColor(MUTED)
@@ -389,27 +422,32 @@ def build_launch() -> None:
         y,
         [
             "Everything in the Brand Starter Kit, plus a landing page / website for digital ownership: domain, mailing list, contact, forms, and automation.",
-            "The identity below is an example deliverable from a completed ShopNasGfx project for Honey & Friends Events. It shows the kit included in this package.",
+            "The identity below is from Project Omni Global, a completed project for Omni Global Solutions LLC. It shows the kit included in this package.",
         ],
         leading=15,
     )
-    y -= 8
+    y -= 10
     gap = 12
-    # four marks in a row might be tight; 2x2
+    main_h = 168
+    doc.placed_logo_alpha(c, OMNI["main"], MARGIN, y - main_h, CONTENT_W, main_h)
+    y = doc.caption(
+        c,
+        MARGIN,
+        y - main_h - 14,
+        "Omni Global Solutions LLC. Main mark. Example deliverable.",
+        CONTENT_W,
+    )
+    y -= 18
     cell_w = (CONTENT_W - gap) / 2
-    cell_h = 170
+    cell_h = 188
     items = [
-        (HONEY["horizontal"], "Main mark, horizontal."),
-        (HONEY["stacked"], "Secondary mark, stacked."),
-        (HONEY["badge"], "Icon/mark, badge."),
-        (HONEY["monogram"], "Icon/mark, monogram."),
+        (OMNI["secondary"], "Secondary mark, wordmark. Example deliverable."),
+        (OMNI["icon"], "Icon/mark. Example deliverable."),
     ]
     for i, (path, label) in enumerate(items):
-        col, row = i % 2, i // 2
-        x = MARGIN + col * (cell_w + gap)
-        top = y - row * (cell_h + 36)
-        doc.placed_logo(c, path, x, top - cell_h, cell_w, cell_h)
-        doc.caption(c, x, top - cell_h - 14, f"{label} Example deliverable.", cell_w - 6)
+        x = MARGIN + i * (cell_w + gap)
+        doc.placed_logo_alpha(c, path, x, y - cell_h, cell_w, cell_h)
+        doc.caption(c, x, y - cell_h - 14, label, cell_w - 6)
 
     c = doc.start_page()
     y = doc.header(c, H - 36)
@@ -417,23 +455,36 @@ def build_launch() -> None:
         c,
         y,
         [
-            "Landing page / website. The public ShopNasGfx site and portfolio do not include a finished landing page mockup for this package.",
-            "The slots below mark that work. A real project will be placed here when the files are provided.",
+            "Example deliverable ~ Project Omni Global.",
+            "Live screenshots of the published landing page, desktop at 1440 and mobile at 390. The site is at ownyourweb.xyz/demos/omni-global-solutions.html.",
         ],
         leading=15,
     )
-    y -= 8
-    slot_h = 420
-    doc.placeholder(
+    y -= 10
+    gap = 12
+    # Side by side: desktop (wide) and mobile (tall), top-aligned, height set by the mobile frame.
+    mobile_h = 430
+    iw, ih = logo_size(OMNI_SCREENS["mobile"])
+    mobile_w = mobile_h * (iw / ih)
+    desktop_w = CONTENT_W - gap - mobile_w
+    dw, dh = logo_size(OMNI_SCREENS["desktop"])
+    desktop_h = desktop_w * (dh / dw)
+    doc.placed_photo(c, OMNI_SCREENS["desktop"], MARGIN, y - desktop_h, desktop_w, desktop_h, fill="#0B0B0B")
+    doc.placed_photo(c, OMNI_SCREENS["mobile"], MARGIN + desktop_w + gap, y - mobile_h, mobile_w, mobile_h, fill="#0B0B0B")
+    doc.caption(
         c,
         MARGIN,
-        y - slot_h,
-        CONTENT_W,
-        slot_h,
-        "Landing page mockup. Placeholder.",
-        "No landing page or website mockup for a Launch Package is in the public ShopNasGfx repository or the ShopNasGfx portfolio. This plate should show a real homepage and key site views from a completed project: hero, contact, and the page structure used for digital ownership.",
+        y - desktop_h - 14,
+        "Desktop, 1440. Example deliverable ~ Project Omni Global.",
+        desktop_w,
     )
-    doc.caption(c, MARGIN, y - slot_h - 16, "Missing from the public archive: a finished landing page or website mockup.", CONTENT_W)
+    doc.caption(
+        c,
+        MARGIN + desktop_w + gap,
+        y - mobile_h - 14,
+        "Mobile, 390. Example deliverable ~ Project Omni Global.",
+        mobile_w,
+    )
 
     c = doc.start_page()
     y = doc.header(c, H - 36)
@@ -442,24 +493,47 @@ def build_launch() -> None:
         y,
         [
             "Digital ownership included in the Launch Package: domain, mailing list, contact, forms, and automation.",
-            "None of these items are in the public ShopNasGfx or portfolio file set as finished examples. Each slot below is reserved for a real screen or document from a completed project.",
+            "Only what exists on the live Project Omni Global site is shown here. Anything the site does not include stays a marked placeholder.",
         ],
         leading=15,
     )
     y -= 10
+    iw, ih = logo_size(OMNI_SCREENS["contact"])
+    contact_h = CONTENT_W * (ih / iw)
+    doc.placed_photo(c, OMNI_SCREENS["contact"], MARGIN, y - contact_h, CONTENT_W, contact_h, fill="#0B0B0B")
+    y = doc.caption(
+        c,
+        MARGIN,
+        y - contact_h - 14,
+        "Contact on the live site. Phone, email, and a Request Quote mailto button. Example deliverable ~ Project Omni Global.",
+        CONTENT_W,
+    )
+    y -= 18
     gap = 12
     col_w = (CONTENT_W - gap) / 2
-    row_h = 200
+    row_h = 88
     slots = [
-        ("Domain. Placeholder.", "A real domain setup record or launch screenshot will be placed here."),
-        ("Mailing list. Placeholder.", "A real mailing list or signup view will be placed here."),
-        ("Contact and forms. Placeholder.", "A real contact page or form from a completed site will be placed here."),
-        ("Automation. Placeholder.", "A real automation or intake flow from a completed project will be placed here."),
+        (
+            "Domain. Placeholder.",
+            "A custom domain pointed at this site is not part of the live example. The page is published at ownyourweb.xyz/demos/omni-global-solutions.html.",
+        ),
+        (
+            "Mailing list. Placeholder.",
+            "The live site does not include a mailing list or signup.",
+        ),
+        (
+            "Forms. Placeholder.",
+            "The live site has no form. Quote requests use the mailto button shown in the contact example above.",
+        ),
+        (
+            "Automation. Placeholder.",
+            "The live site does not include an automation or intake flow.",
+        ),
     ]
     for i, (title, body) in enumerate(slots):
         col, row = i % 2, i // 2
         x = MARGIN + col * (col_w + gap)
-        top = y - row * (row_h + 16)
+        top = y - row * (row_h + 8)
         doc.placeholder(c, x, top - row_h, col_w, row_h, title, body)
     doc.save()
 
@@ -473,6 +547,9 @@ def main() -> None:
     for key, path in HONEY.items():
         if not path.exists():
             raise SystemExit(f"Missing Honey & Friends artwork: {path}")
+    for key, path in {**OMNI, **OMNI_SCREENS}.items():
+        if not path.exists():
+            raise SystemExit(f"Missing Omni Global artwork or screenshot: {path}")
     build_logo_starter()
     build_brand_kit()
     build_launch()
