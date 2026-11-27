@@ -1,5 +1,6 @@
-// Prices approved by Mr G 2026-10-23. Edit all prices here only; the home page renders from this file.
-// Sources: Niche Lab pricing research, 2026-10-23 (18 public comparables, linked in the PR).
+// Logo packages: interim +$50 through end of 2026, chosen by Mr G 2026-11-27.
+// Workshops, graphics, and agents unchanged from the 2026-10-23 catalog.
+// Edit prices here; the home page and calculator render from this file.
 window.SHOPNASGFX_OFFERS = {
   pricesAreProposed: false,
   workshops: [
@@ -13,9 +14,9 @@ window.SHOPNASGFX_OFFERS = {
     { id: "single", name: "Single graphic", price: "$15", for: "One need", deliverables: ["One promotional graphic for a product, special, or event."] },
     { id: "pack", name: "Graphics pack", price: "$35", for: "Weekly posts", deliverables: ["A set of social graphics for a small business that posts often."] },
     { id: "flyer", name: "Flyer + social", price: "$45", for: "Promote it", deliverables: ["A flyer and a social graphic for a local business or event."] },
-    { id: "logo", name: "Logo Starter", price: "$50", for: "First identity", deliverables: ["A clear logo and the files needed to start showing up."] },
-    { id: "kit", name: "Brand Starter Kit", price: "$150", for: "Identity", deliverables: ["Logo, variation, colors, type, profile graphics, and a basic guide."] },
-    { id: "launch", name: "Launch Package", price: "$250", for: "Launch base", deliverables: ["Branding and the first digital assets for a small business launch."] },
+    { id: "logo", name: "Logo Starter", price: "$100", for: "First identity", deliverables: ["A clear logo and the files needed to start showing up."] },
+    { id: "kit", name: "Brand Starter Kit", price: "$200", for: "Identity", deliverables: ["Logo, variation, colors, type, profile graphics, and a basic guide."] },
+    { id: "launch", name: "Launch Package", price: "$300", for: "Launch base", deliverables: ["Branding and the first digital assets for a small business launch."] },
     { id: "flyer-agent", name: "Flyer Agent", price: "$9/mo", for: "Monthly agent", deliverables: ["For barbers, beauty work, promoters, vendors, and neighborhood businesses. Pay per design is also available."] },
     { id: "brand-agent", name: "Brand Agent", price: "$15/mo", for: "Monthly agent", deliverables: ["Colors, type, logo use, and reusable social templates for one identity."] },
     { id: "creative-agent", name: "Creative Business Agent", price: "$29/mo", for: "Monthly agent", deliverables: ["Flyers, social graphics, promo copy, and campaign variations."] }
