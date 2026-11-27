@@ -3,7 +3,7 @@
   var offers = window.SHOPNASGFX_OFFERS;
   var host = document.getElementById('calculator-items');
   if (!offers || !host) return;
-  var items = offers.buyToday.map(function (item) {
+  var items = offers.buyToday.filter(function (item) { return ['logo', 'kit', 'launch'].indexOf(item.id) !== -1; }).map(function (item) {
     return { id: item.id, name: item.name, price: Number(item.price.replace(/[^\d.]/g, '')), monthly: item.price.indexOf('/mo') !== -1, count: item.id === 'logo' ? 1 : 0 };
   });
   var money = function (n) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: n % 1 ? 2 : 0 }).format(n); };
@@ -20,13 +20,13 @@
     item.set = set; stepper.append(minus, input, plus); row.append(label, stepper); host.appendChild(row); minus.disabled = item.count === 0;
   });
   function totals() { return items.reduce(function (t, i) { t[i.monthly ? 'monthly' : 'project'] += i.count * i.price; return t; }, { project: 0, monthly: 0 }); }
-  function update() { var t = totals(); document.getElementById('calculator-total').textContent = money(t.project); document.getElementById('calculator-deposit').textContent = money(t.project * .25); document.getElementById('calculator-monthly').textContent = money(t.monthly) + '/mo'; document.getElementById('calculator-status').textContent = ''; }
+  function update() { var t = totals(); document.getElementById('calculator-total').textContent = money(t.project); document.getElementById('calculator-deposit').textContent = money(t.project * .25); document.getElementById('calculator-status').textContent = ''; }
   document.getElementById('calculator-reset').addEventListener('click', function () { items.forEach(function (i) { i.set(i.id === 'logo' ? 1 : 0); }); });
   document.getElementById('calculator-continue').addEventListener('click', function (e) {
     var selected = items.filter(function (i) { return i.count > 0; });
     if (!selected.length) { e.preventDefault(); document.getElementById('calculator-status').textContent = 'Add at least one service to discuss your estimate.'; return; }
     var form = document.getElementById('brand-intake-form'); var t = totals();
-    var summary = 'Estimate: ' + selected.map(function (i) { return i.count + ' × ' + i.name; }).join(', ') + '. Project ' + money(t.project) + '; 25% deposit ' + money(t.project * .25) + '; monthly ' + money(t.monthly) + '/mo. Final scope to confirm.';
+    var summary = 'Estimate: ' + selected.map(function (i) { return i.count + ' × ' + i.name; }).join(', ') + '. Project ' + money(t.project) + '; 25% deposit ' + money(t.project * .25) + '. Final scope to confirm.';
     var field = form.elements.details;
     // Preserve anything the visitor has already written; update only our previous estimate.
     var previous = field.dataset.estimate || '';
