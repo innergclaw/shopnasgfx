@@ -4,13 +4,13 @@ export const SERVICES = ["Brand design", "Not sure yet"];
 export const BUDGETS = ["Under $500", "$500 to $1,500", "$1,500 to $3,500", "$3,500+"];
 export const DELIVERY = ["ASAP", "A few weeks", "1 to 2 months", "Not sure"];
 export const AGREEMENT = "I understand that by submitting this form or texting, a 50% deposit is required on logo and identity projects before any work begins, with the remaining 50% due before final files.";
-export const DEPOSIT_ERROR = "Please check the deposit agreement box before sending your details.";
+export const DEPOSIT_ERROR = "Confirm the deposit agreement before sending your details.";
 
 export function validateDetails(d) {
   const e = {};
   for (const [k, label, max] of [["firstName", "first name", 60], ["lastName", "last name", 60], ["details", "project details", 500]]) {
     const v = String(d[k] || "").trim();
-    if (!v) e[k] = `Enter your ${label}.`;
+    if (!v) e[k] = `Enter the ${label}.`;
     else if (String(d[k]).length > max) e[k] = `Keep ${label} to ${max} characters or fewer.`;
   }
   if (!SERVICES.includes(d.serviceType)) e.serviceType = "Select the service you need.";
@@ -23,7 +23,7 @@ export function validateDetails(d) {
 export function buildMessage(d) {
   if (Object.keys(validateDetails(d)).length) throw new Error("Complete the project details before preparing a text.");
   const name = `${d.firstName.trim()} ${d.lastName.trim()}`.replace(/[\r\n]+/g, " ");
-  return `Hi Nasirr, I'd like to discuss a brand project.\n\nName: ${name}\nService: ${d.serviceType}\nProject details: ${d.details.trim()}\nBudget: ${d.budget}\nTimeframe: ${d.delivery}\nDeposit agreement: Agreed. ${AGREEMENT}\n\nSent from shopnasgfx.com`;
+  return `Hello Nasirr, I would like to discuss a brand project.\n\nName: ${name}\nService: ${d.serviceType}\nProject details: ${d.details.trim()}\nBudget: ${d.budget}\nTimeframe: ${d.delivery}\nDeposit agreement: Agreed. ${AGREEMENT}\n\nSent from shopnasgfx.com`;
 }
 
 export const buildSmsHref = m => `sms:${PHONE}?&body=${encodeURIComponent(m)}`;
@@ -56,11 +56,11 @@ export function initIntake(form) {
     e.preventDefault();
     const m = prepare(); if (!m) return;
     window.location.href = buildSmsHref(m);
-    status.textContent = `Your text is ready. Tap send in your messaging app. If it did not open, use Copy details instead.`;
+    status.textContent = `The text is ready. Send it from your messaging app. If it did not open, use Copy details instead.`;
   });
   form.querySelector("#brand-intake-copy").addEventListener("click", async () => {
     const m = prepare(); if (!m) return;
-    try { await navigator.clipboard.writeText(m); status.textContent = `Details copied. Paste them into a text to ${PHONE_DISPLAY}, then tap send.`; }
+    try { await navigator.clipboard.writeText(m); status.textContent = `Details copied. Paste them into a text to ${PHONE_DISPLAY}, then send.`; }
     catch { preview.value = m; manual.hidden = false; preview.focus(); preview.select(); status.textContent = `Copy the message below, then text it to ${PHONE_DISPLAY}.`; }
   });
 }

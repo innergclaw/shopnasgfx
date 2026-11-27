@@ -10,10 +10,10 @@ const reviews = await readFile(new URL("./reviews.html", import.meta.url), "utf8
 const fileFix = await readFile(new URL("./si-design-file-fix.html", import.meta.url), "utf8");
 
 test("Quick designs page leads with the builder path", () => {
-  assert.match(html, /Built for the builders\. Priced for real life\./);
-  assert.match(html, /What are you trying to sell or promote\?/);
-  assert.match(html, /See services from \$15/);
-  assert.match(html, /Text about my project/);
+  assert.match(html, /Professional work for owners who are ready to be taken seriously\./);
+  assert.match(html, /What do you need designed\?/);
+  assert.match(html, /View services from \$15/);
+  assert.match(html, /Text me about a project/);
   assert.doesNotMatch(html, /AI-Powered/i);
 });
 
@@ -47,7 +47,7 @@ test("SHOPNASGFX speaks in the lead designer's first-person voice", () => {
 
   assert.match(html, /I'm Nasirr, the lead designer behind SHOPNASGFX\./);
   assert.match(html, /Introductory prices/);
-  assert.match(faq, /starting a project with me/);
+  assert.match(faq, /Practical terms for working with me on a SHOPNASGFX project/);
   assert.match(reviews, /working with me and my SHOPNASGFX team/);
   assert.match(fileFix, /send it to me\. I clean it up/);
 });
@@ -56,7 +56,7 @@ const offers = await readFile(new URL("./offers.js", import.meta.url), "utf8");
 const intake = await import("./brand-intake.mjs");
 
 test("Home leads with brand systems and links to quick designs", () => {
-  assert.match(home, /I build brands that run with SI behind them\./);
+  assert.match(home, /Ten years in practice\. Brands built to scale\./);
   assert.match(home, /500\+/);
   assert.match(home, /2015/);
   assert.match(html, /href="\.\.\/"/);
@@ -104,7 +104,7 @@ test("Site copy avoids AI wording, em dashes, and emoji glyphs", async () => {
 });
 
 test("How I work headline can wrap and packages use dropdowns", () => {
-  assert.match(home, /id="how-title">A human designer, with superintelligence doing the busywork\.</);
+  assert.match(home, /id="how-title">I direct the work\. SI carries the repetition\.</);
   assert.match(home, /<details class="soft-details"><summary><b>01<\/b> Strategy<\/summary>/);
   assert.match(home, /id="package-details"/);
   assert.match(home, /<details class="soft-details calculator-terms"><summary>Payment terms<\/summary>/);
@@ -132,4 +132,20 @@ test("Discuss this project opens a prefilled SMS to 267 473 0397", async () => {
   assert.match(pricing, /\?body=/);
   assert.match(pricing, /encodeURIComponent/);
   assert.match(pricing, /\+12674730397/);
+});
+
+test("Package examples open PDFs in a new tab", async () => {
+  const { stat } = await import("node:fs/promises");
+  const pricing = await readFile(new URL("./pricing.js", import.meta.url), "utf8");
+  const paths = [
+    "/examples/logo-starter.pdf",
+    "/examples/brand-starter-kit.pdf",
+    "/examples/launch-package.pdf",
+  ];
+  for (const href of paths) {
+    const info = await stat(new URL("." + href, import.meta.url));
+    assert.ok(info.size > 1000, href);
+    assert.ok(info.size < 3 * 1024 * 1024, href);
+  }
+  // The 2027 identity packages are a different catalog than the current starter example PDFs, so those links are not attached here. The files themselves ship with main.
 });

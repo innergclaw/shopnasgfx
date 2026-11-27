@@ -18,7 +18,7 @@
   var detailsHost = document.getElementById('package-details');
   if (detailsHost) {
     detailsHost.innerHTML = list.map(function (item) {
-      return '<details class="soft-details"><summary>' + esc(item.name) + ' \u00b7 ' + esc(item.price) + '</summary><p>' + esc((item.deliverables || []).join(' ')) + '</p></details>';
+      return '<details class="soft-details"><summary>' + esc(item.name) + ' · ' + esc(item.price) + '</summary><p>' + esc((item.deliverables || []).join(' ')) + '</p></details>';
     }).join('');
   }
   items.forEach(function (item) {
@@ -40,7 +40,7 @@
   });
   function totals() { return items.reduce(function (t, i) { t.project += i.count * i.price; t.due += i.count * i.price * 0.5; return t; }, { project: 0, due: 0 }); }
   function smsBody(selected, t) {
-    return "Hi Nasirr, I'd like to discuss a project.\n\n" +
+    return "Hello Nasirr, I would like to discuss a project.\n\n" +
       selected.map(function (i) { return i.count + ' \u00d7 ' + i.name; }).join('\n') +
       '\n\nProject total: ' + money(t.project) + '\n50% deposit: ' + money(t.due) +
       '\n\nSent from shopnasgfx.com';
@@ -64,7 +64,7 @@
     var selected = items.filter(function (i) { return i.count > 0; });
     if (!selected.length) {
       e.preventDefault();
-      document.getElementById('calculator-status').textContent = 'Add at least one service to discuss your estimate.';
+      document.getElementById('calculator-status').textContent = 'Select at least one service to discuss this estimate.';
       return;
     }
     syncSms();
