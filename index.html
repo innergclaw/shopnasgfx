@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="ecosystem.css?v=builders-1" />
   <link rel="stylesheet" href="brand-home.css?v=4" />
-  <link rel="stylesheet" href="pricing.css?v=2">
+  <link rel="stylesheet" href="pricing.css?v=3">
 </head>
 <body class="home-page">
   <a class="skip-link" href="#start">Skip to project intake</a>
@@ -46,7 +46,17 @@
     </section>
 
     <section class="package-section" id="services" aria-label="Services" data-reveal="left">
-      <div class="pricing-intro"><p class="eyebrow">The SHOPNASGFX price list</p><h2>YOUR VISION.<br>CLEAR PRICING.</h2><p>Start with one design. Build out your brand. Choose what you need and see your estimate before your consultation.</p><a class="btn" href="#calculator">Build your project</a></div><div class="offer-groups">
+      <div class="pricing-intro"><p class="eyebrow">The SHOPNASGFX price list</p><h2>YOUR VISION.<br>CLEAR PRICING.</h2><p>Start with a logo, or build a full identity. Brand Mark is the recommended package. Choose what you need and see your estimate before your consultation.</p><a class="btn" href="#calculator">Build your project</a></div><div class="offer-groups">
+      <div class="offer-group" id="identity-offers">
+        <div class="section-heading tier-subhead">
+          <div>
+            <p class="eyebrow">Logo and identity</p>
+            <h2>Three fixed packages</h2>
+          </div>
+          <p id="identity-note"></p>
+        </div>
+        <div class="offer-list" id="offers-identity"></div>
+      </div>
       <div class="offer-group" id="teach">
         <div class="section-heading tier-subhead">
           <div>
@@ -63,7 +73,7 @@
 
     <section class="project-calculator" id="calculator" aria-labelledby="calculator-title">
       <div><p class="eyebrow">Project calculator · USD</p><h2 id="calculator-title">BUILD YOUR<br>NEXT MOVE.</h2><p>Add designs to your project. Your estimate updates as you go.</p><p class="price-meta">Each item uses its listed rate. Packages include their listed deliverables; only add separate items when you need extra work.</p></div>
-      <div class="calculator-panel"><div id="calculator-items"></div><div class="calculator-summary" aria-live="polite" aria-atomic="true"><p>Estimated project total <strong id="calculator-total">$50</strong></p><p>25% project deposit <strong id="calculator-deposit">$12.50</strong></p></div><p class="price-meta">An estimate, subject to scope confirmation. No payment is collected here.</p><a class="btn" id="calculator-continue" href="#start">Discuss this project</a><button class="calculator-reset" type="button" id="calculator-reset">Reset selection</button><p id="calculator-status" role="status"></p></div>
+      <div class="calculator-panel"><div id="calculator-items"></div><div class="calculator-summary" aria-live="polite" aria-atomic="true"><p>Estimated project total <strong id="calculator-total">$1,200</strong></p><p>50% project deposit <strong id="calculator-deposit">$600</strong></p></div><p class="price-meta">An estimate, subject to scope confirmation. No payment is collected here.</p><p class="price-meta">Rush: +25% to pull the timeline in by about a week, or +40% to deliver in about half the listed time, only if the calendar allows, quoted in writing before work starts. Extra revision rounds are $150 on Logo Essentials and Brand Mark, and $200 on Full Identity. A new direction after a concept is approved is quoted as new scope.</p><a class="btn" id="calculator-continue" href="#start">Discuss this project</a><button class="calculator-reset" type="button" id="calculator-reset">Reset selection</button><p id="calculator-status" role="status"></p></div>
     </section>
 
     <section class="process-section reveal-section" id="how" aria-labelledby="how-title" data-reveal="right">
@@ -126,7 +136,7 @@
           <label><span>Budget</span><select name="budget" required><option value="">Choose one</option><option>Under $500</option><option>$500 to $1,500</option><option>$1,500 to $3,500</option><option>$3,500+</option></select></label>
           <label><span>Timeframe</span><select name="delivery" required><option value="">Choose one</option><option>ASAP</option><option>A few weeks</option><option>1 to 2 months</option><option>Not sure</option></select></label>
         </div>
-        <label class="deposit-check"><input type="checkbox" name="depositAgreement" value="agreed" required><span>I understand that by submitting this form or texting, a 25% deposit is required on all projects discussed before any work begins.</span></label>
+        <label class="deposit-check"><input type="checkbox" name="depositAgreement" value="agreed" required><span>I understand that by submitting this form or texting, a 50% deposit is required on logo and identity projects before any work begins, with the remaining 50% due before final files.</span></label>
         <p class="form-note error" id="brand-deposit-error" hidden>Please check the deposit agreement box before sending your details.</p>
         <div class="copy-row">
           <button class="btn primary" type="submit">Prepare my text</button>
@@ -158,9 +168,9 @@
 
   <a class="mobile-quote-cta" href="#start">Start a project</a>
 
-  <script src="offers.js?v=2"></script>
-  <script src="brand-home.js?v=4"></script>
-  <script src="pricing.js?v=3"></script>
+  <script src="offers.js?v=3"></script>
+  <script src="brand-home.js?v=5"></script>
+  <script src="pricing.js?v=4"></script>
   <script type="module" src="./brand-intake.mjs?v=3"></script>
   <script type="module" src="./interaction-sounds.js"></script>
   <script src="script.js?v=2"></script>
