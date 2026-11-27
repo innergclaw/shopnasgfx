@@ -1,14 +1,9 @@
 // Logo packages: interim +$50 through end of 2026, chosen by Mr G 2026-11-27.
-// Workshops, graphics, and agents unchanged from the 2026-10-23 catalog.
+// SI brand workshops were taken off the public site on 2026-11-27. The catalog is in /archived/workshops.js.
+// Graphics and agents are unchanged from the 2026-10-23 catalog, aside from the year-end logo bump.
 // Edit prices here; the home page and calculator render from this file.
 window.SHOPNASGFX_OFFERS = {
   pricesAreProposed: false,
-  workshops: [
-    { id: "seat", name: "SI Brand Workshop seat", price: "$97 ($79 early)", turnaround: "Live group session", for: "Owners and solo founders", deliverables: ["Use SI without losing your identity", "Prompt templates to keep"] },
-    { id: "series", name: "4 session series", price: "$297", turnaround: "4 weeks", for: "Done-with-you setup", deliverables: ["Build your own brand prompt kit", "Weekly review"] },
-    { id: "half", name: "Private half day", price: "$1,800", turnaround: "Scheduled", for: "Your team", deliverables: ["On-brand SI workflow for your team"] },
-    { id: "full", name: "Private full day", price: "$3,200", turnaround: "Scheduled", for: "Your team", deliverables: ["Strategy, prompts, and workflow build"] }
-  ],
   buyToday: [
     // EXISTING live prices (not proposed). Order on /quick-designs/.
     { id: "single", name: "Single graphic", price: "$15", for: "One need", deliverables: ["One promotional graphic for a product, special, or event."] },

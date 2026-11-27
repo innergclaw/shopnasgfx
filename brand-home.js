@@ -11,7 +11,7 @@
     return '<article class="price-row" data-offer="' + esc(t.id) + '"><div class="price-description"><p class="eyebrow">' + esc(t.for) + '</p><h3>' + esc(t.name) + '</h3><p>' + t.deliverables.map(esc).join(' ') + '</p>' + (t.turnaround ? '<p class="price-meta">' + esc(t.turnaround) + '</p>' : '') + '</div><div class="price-action"><strong data-price="' + esc(t.id) + '">' + esc(t.price) + '</strong>' + cta + '</div></article>';
   }
   function fill(id, list, opts) { var el = document.getElementById(id); if (el && list) el.innerHTML = list.map(function (t) { return item(t, opts); }).join(''); }
-  fill("offers-workshop", o.workshops, { proposed: true, service: "SI Brand Workshop" });
+  if (o.workshops && o.workshops.length) fill("offers-workshop", o.workshops, { proposed: true, service: "SI Brand Workshop" });
   fill("offers-buy", o.buyToday, { proposed: false, href: "quick-designs/#quote", cta: "Order on quick designs" });
   [["workshop-note", o.workshopNote], ["buy-note", o.buyTodayNote]].forEach(function (p) { var el = document.getElementById(p[0]); if (el) el.textContent = p[1]; });
   document.addEventListener("click", function (e) {
