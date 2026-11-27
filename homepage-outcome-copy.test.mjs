@@ -73,7 +73,6 @@ test("Prices live in offers.js and are marked proposed", () => {
   for (const p of ["$15\"", "$35\"", "$45\"", "$450\"", "$1,200\"", "$2,800\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
   assert.ok(!/retainer/i.test(home) && !/retainer/i.test(offers));
 });
-
 test("SI brand workshops are archived and off the public site", () => {
   for (const p of ["$97 ($79 early)", "$297", "$1,800", "$3,200"]) assert.ok(archivedWorkshops.includes(p), p);
   assert.match(archivedWorkshops, /SI Brand Workshop seat/);
