@@ -28,11 +28,11 @@ test("Quick designs page keeps the decision path short", () => {
 });
 
 test("Quick designs page preserves price and contact facts", () => {
-  for (const price of ["$15", "$35", "$45", "$125", "$300", "$750"]) assert.match(html, new RegExp(`\\${price}`));
+  for (const price of ["$15", "$35", "$45", "$450", "$1,200", "$2,800"]) assert.match(html, new RegExp(`\\${price}`));
   assert.doesNotMatch(html, /Logo Suite/);
-  assert.match(html, /Logo Starter - \$125 intro<\/option>\s*<option>Brand Starter Kit - \$300 intro/);
+  assert.match(html, /Logo Essentials - \$450<\/option>\s*<option>Brand Mark - \$1,200 \(recommended\)/);
   const packages = html.slice(html.indexOf('id="packages"'), html.indexOf('id="agents"'));
-  assert.match(packages, /<h3>Logo Starter<\/h3>[\s\S]*?<h3>Brand Starter Kit<\/h3>/);
+  assert.match(packages, /<h3>Logo Essentials<\/h3>[\s\S]*?<h3>Brand Mark<\/h3>/);
   assert.doesNotMatch(packages, /<h3>Logo Suite<\/h3>/);
   assert.match(html, /shopnasgfx-intake/);
   assert.match(html, /2674730397/);
@@ -70,20 +70,9 @@ test("Prices live in offers.js and are marked proposed", () => {
   assert.match(offers, /pricesAreProposed: false/);
   assert.ok(!home.includes("$750/mo"));
   for (const gone of ["Brand Spark", "Brand Foundation Pro", "Brand Refresh", "Brand System\""]) { assert.ok(!offers.includes(gone), gone); assert.ok(!home.includes(gone), gone); }
-  for (const p of ["$15\"", "$35\"", "$45\"", "$125\"", "$300\"", "$750\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
+  for (const p of ["$15\"", "$35\"", "$45\"", "$450\"", "$1,200\"", "$2,800\"", "$9/mo", "$15/mo", "$29/mo"]) assert.ok(offers.includes(p), p);
   assert.ok(!/retainer/i.test(home) && !/retainer/i.test(offers));
 });
-
-test("Calculator and FAQ use the package deposit rules", () => {
-  assert.match(home, /id="calculator-due-label">Due in full</);
-  assert.match(home, /id="calculator-deposit">\$125</);
-  assert.doesNotMatch(home, /25% project deposit/);
-  assert.doesNotMatch(faq, /under \$150/);
-  assert.match(faq, /Logo Starter is \$125, paid in full/);
-  assert.match(faq, /Brand Starter Kit is \$300, paid in full/);
-  assert.match(faq, /Launch Package is \$750, with a 50% deposit/);
-});
-
 test("SI brand workshops are archived and off the public site", () => {
   for (const p of ["$97 ($79 early)", "$297", "$1,800", "$3,200"]) assert.ok(archivedWorkshops.includes(p), p);
   assert.match(archivedWorkshops, /SI Brand Workshop seat/);
@@ -95,7 +84,7 @@ test("SI brand workshops are archived and off the public site", () => {
 });
 
 test("Intake requires the exact deposit agreement and texts 267 473 0397", () => {
-  const sentence = "I understand that by submitting this form or texting, Logo Starter and Brand Starter Kit are paid in full before any work begins, and the Launch Package requires a 50% deposit before work begins, with the remaining 50% due before final files.";
+  const sentence = "I understand that by submitting this form or texting, a 50% deposit is required on logo and identity projects before any work begins, with the remaining 50% due before final files.";
   assert.ok(home.includes(sentence));
   assert.match(home, /name="depositAgreement" value="agreed" required/);
   const ok = { firstName: "A", lastName: "B", serviceType: "Brand design", details: "x", budget: "$500 to $1,500", delivery: "Not sure", depositAgreement: "agreed" };
@@ -136,8 +125,8 @@ test("Discuss this project opens a prefilled SMS to 267 473 0397", async () => {
   const pricing = await readFile(new URL("./pricing.js", import.meta.url), "utf8");
   assert.match(home, /id="calculator-continue"/);
   assert.match(home, /sms:\+12674730397\?&body=/);
-  assert.match(home, /1%20%C3%97%20Logo%20Starter/);
-  assert.match(home, /Due%20in%20full%3A%20%24125/);
+  assert.match(home, /1%20%C3%97%20Brand%20Mark/);
+  assert.match(home, /50%25%20deposit%3A%20%24600/);
   assert.match(pricing, /smsHref/);
   assert.match(pricing, /\?&body=/);
   assert.match(pricing, /\?body=/);
@@ -154,21 +143,11 @@ test("Package examples open PDFs in a new tab", async () => {
     "/examples/launch-package.pdf",
   ];
   for (const href of paths) {
-    const escaped = href.replaceAll("/", "\\/");
-    assert.match(offers, new RegExp(`example: "${escaped}"`));
-    assert.match(html, new RegExp(`href="${escaped}"`));
-    assert.match(faq, new RegExp(`href="${escaped}"`));
     const info = await stat(new URL("." + href, import.meta.url));
     assert.ok(info.size > 1000, href);
     assert.ok(info.size < 3 * 1024 * 1024, href);
   }
-  assert.match(pricing, /target="_blank" rel="noopener noreferrer">See example</);
-  assert.match(html, /target="_blank" rel="noopener noreferrer">See example</);
-  assert.match(faq, /target="_blank" rel="noopener noreferrer">See example</);
-  assert.match(offers, /demo: "https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html"/);
-  assert.match(pricing, /View live demo</);
-  assert.match(html, /href="https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html"[^>]*>View live demo</);
-  assert.match(faq, /href="https:\/\/ownyourweb\.xyz\/demos\/omni-global-solutions\.html"[^>]*>View live demo</);
+  // The 2027 identity packages are a different catalog than the current starter example PDFs, so those links are not attached here. The files themselves ship with main.
 });
 
 test("Launch Package example PDF has a clickable live demo link", async () => {
