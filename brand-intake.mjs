@@ -3,7 +3,7 @@ export const PHONE_DISPLAY = "267 473 0397";
 export const SERVICES = ["Brand design", "Not sure yet"];
 export const BUDGETS = ["Under $500", "$500 to $1,500", "$1,500 to $3,500", "$3,500+"];
 export const DELIVERY = ["ASAP", "A few weeks", "1 to 2 months", "Not sure"];
-export const AGREEMENT = "I understand that by submitting this form or texting, a 25% deposit is required on all projects discussed before any work begins.";
+export const AGREEMENT = "I understand that by submitting this form or texting, a 50% deposit is required on logo and identity projects before any work begins, with the remaining 50% due before final files.";
 export const DEPOSIT_ERROR = "Please check the deposit agreement box before sending your details.";
 
 export function validateDetails(d) {
