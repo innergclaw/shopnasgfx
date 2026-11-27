@@ -144,3 +144,25 @@ test("Discuss this project opens a prefilled SMS to 267 473 0397", async () => {
   assert.match(pricing, /encodeURIComponent/);
   assert.match(pricing, /\+12674730397/);
 });
+
+test("Package examples open PDFs in a new tab", async () => {
+  const { stat } = await import("node:fs/promises");
+  const pricing = await readFile(new URL("./pricing.js", import.meta.url), "utf8");
+  const paths = [
+    "/examples/logo-starter.pdf",
+    "/examples/brand-starter-kit.pdf",
+    "/examples/launch-package.pdf",
+  ];
+  for (const href of paths) {
+    const escaped = href.replaceAll("/", "\\/");
+    assert.match(offers, new RegExp(`example: "${escaped}"`));
+    assert.match(html, new RegExp(`href="${escaped}"`));
+    assert.match(faq, new RegExp(`href="${escaped}"`));
+    const info = await stat(new URL("." + href, import.meta.url));
+    assert.ok(info.size > 1000, href);
+    assert.ok(info.size < 3 * 1024 * 1024, href);
+  }
+  assert.match(pricing, /target="_blank" rel="noopener noreferrer">See example</);
+  assert.match(html, /target="_blank" rel="noopener noreferrer">See example</);
+  assert.match(faq, /target="_blank" rel="noopener noreferrer">See example</);
+});
