@@ -9,6 +9,18 @@
     return { id: item.id, name: item.name, price: Number(item.price.replace(/[^\d.]/g, '')), recommended: !!item.recommended, count: item.id === 'mark' ? 1 : 0 };
   });
   var money = function (n) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: n % 1 ? 2 : 0 }).format(n); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var smsHref = function (phone, body) {
+    var encoded = encodeURIComponent(body);
+    var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    return 'sms:' + phone + (ios ? '?&body=' : '?body=') + encoded;
+  };
+  var detailsHost = document.getElementById('package-details');
+  if (detailsHost) {
+    detailsHost.innerHTML = list.map(function (item) {
+      return '<details class="soft-details"><summary>' + esc(item.name) + ' \u00b7 ' + esc(item.price) + '</summary><p>' + esc((item.deliverables || []).join(' ')) + '</p></details>';
+    }).join('');
+  }
   items.forEach(function (item) {
     var row = document.createElement('div'); row.className = 'calculator-item';
     var label = document.createElement('label'); label.htmlFor = 'calc-' + item.id;
@@ -26,20 +38,36 @@
     minus.addEventListener('click', function () { set(item.count - 1); }); plus.addEventListener('click', function () { set(item.count + 1); }); input.addEventListener('input', function () { set(input.value); });
     item.set = set; stepper.append(minus, input, plus); row.append(label, stepper); host.appendChild(row); minus.disabled = item.count === 0;
   });
-  function totals() { return items.reduce(function (t, i) { t.project += i.count * i.price; return t; }, { project: 0 }); }
-  function update() { var t = totals(); document.getElementById('calculator-total').textContent = money(t.project); document.getElementById('calculator-deposit').textContent = money(t.project * .5); document.getElementById('calculator-status').textContent = ''; }
+  function totals() { return items.reduce(function (t, i) { t.project += i.count * i.price; t.due += i.count * i.price * 0.5; return t; }, { project: 0, due: 0 }); }
+  function smsBody(selected, t) {
+    return "Hi Nasirr, I'd like to discuss a project.\n\n" +
+      selected.map(function (i) { return i.count + ' \u00d7 ' + i.name; }).join('\n') +
+      '\n\nProject total: ' + money(t.project) + '\n50% deposit: ' + money(t.due) +
+      '\n\nSent from shopnasgfx.com';
+  }
+  function syncSms() {
+    var btn = document.getElementById('calculator-continue');
+    var selected = items.filter(function (i) { return i.count > 0; });
+    var t = totals();
+    if (!selected.length) { btn.removeAttribute('href'); return; }
+    btn.setAttribute('href', smsHref('+12674730397', smsBody(selected, t)));
+  }
+  function update() {
+    var t = totals();
+    document.getElementById('calculator-total').textContent = money(t.project);
+    document.getElementById('calculator-deposit').textContent = money(t.due);
+    document.getElementById('calculator-status').textContent = '';
+    syncSms();
+  }
   document.getElementById('calculator-reset').addEventListener('click', function () { items.forEach(function (i) { i.set(i.id === 'mark' ? 1 : 0); }); });
   document.getElementById('calculator-continue').addEventListener('click', function (e) {
     var selected = items.filter(function (i) { return i.count > 0; });
-    if (!selected.length) { e.preventDefault(); document.getElementById('calculator-status').textContent = 'Add at least one service to discuss your estimate.'; return; }
-    var form = document.getElementById('brand-intake-form'); var t = totals();
-    var summary = 'Estimate: ' + selected.map(function (i) { return i.count + ' \u00d7 ' + i.name; }).join(', ') + '. Project ' + money(t.project) + '; 50% deposit ' + money(t.project * .5) + '. Final scope to confirm.';
-    var field = form.elements.details;
-    var previous = field.dataset.estimate || '';
-    var original = previous && field.value.indexOf(previous) === 0 ? field.value.slice(previous.length).trim() : field.value.trim();
-    if ((summary + '\n' + original).length > field.maxLength) { e.preventDefault(); document.getElementById('calculator-status').textContent = 'Your project notes are too long to add this estimate. Shorten the notes below and try again.'; return; }
-    field.value = summary + (original ? '\n' + original : ''); field.dataset.estimate = summary;
-    field.dispatchEvent(new Event('input', { bubbles: true })); form.elements.serviceType.value = 'Brand design';
+    if (!selected.length) {
+      e.preventDefault();
+      document.getElementById('calculator-status').textContent = 'Add at least one service to discuss your estimate.';
+      return;
+    }
+    syncSms();
   });
   update();
 })();

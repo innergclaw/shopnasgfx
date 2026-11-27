@@ -6,3 +6,4 @@
 .calculator-item .offer-flag{display:block;color:#c7ff38;margin-top:4px}
 .price-description .offer-deliverables{margin:8px 0 0;padding-left:1.2em}
 .price-description .offer-deliverables li{margin:4px 0;font-size:16px;line-height:1.55}
+.calculator-panel .soft-details{border-color:#444;background:transparent;color:#fafafa;margin:8px 0 4px}.calculator-panel .soft-details summary{color:#fafafa}.calculator-panel .soft-details summary:where(:not([aria-disabled="true"])):hover{background:rgba(255,255,255,.06)}.calculator-panel .soft-details[open] summary{border-bottom-color:#444}.calculator-panel .soft-details p{color:#ccc;font-size:14px;line-height:1.6}.package-details .soft-details summary{font-size:15px}

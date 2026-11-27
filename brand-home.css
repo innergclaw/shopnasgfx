@@ -89,3 +89,57 @@
 @media (min-width: 900px) { .offer-groups { grid-template-columns: 1fr 1fr; align-items: start; } .offer-groups .offer-group { margin-top: 18px; } }
 .offer-groups .section-heading { display: grid; grid-template-columns: 1fr; gap: 8px; align-items: start; }
 .offer-groups .section-heading p:empty { display: none; }
+
+.package-details { margin-top: 18px; display: grid; gap: 8px; }
+.soft-details {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .72);
+  min-width: 0;
+}
+.soft-details summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.soft-details summary:where(:not([aria-disabled="true"])):hover {
+  background: rgba(199, 255, 56, .16);
+}
+.soft-details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+.soft-details > p,
+.soft-details > ul {
+  margin: 0;
+  padding: 12px 14px 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.si-steps li { padding: 16px 18px; }
+.si-steps .soft-details {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.si-steps .soft-details summary {
+  display: list-item;
+  padding: 0 0 0 4px;
+  font-weight: 800;
+}
+.si-steps .soft-details summary b {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.si-steps .soft-details summary:where(:not([aria-disabled="true"])):hover {
+  background: transparent;
+}
+.si-steps .soft-details[open] summary { border-bottom: 0; }
+.si-steps .soft-details p { padding: 10px 0 0; }
+#how-title {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
