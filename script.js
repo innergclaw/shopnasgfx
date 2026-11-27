@@ -29,12 +29,14 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'Intersect
   });
 }
 
-if (quoteForm && mobileQuoteCta && 'IntersectionObserver' in window) {
+const startForm = document.getElementById('brand-intake-form') || document.getElementById('start');
+const hideMobileQuoteOver = quoteForm || startForm;
+if (mobileQuoteCta && hideMobileQuoteOver && 'IntersectionObserver' in window) {
   const quoteVisibilityObserver = new IntersectionObserver(([entry]) => {
     mobileQuoteCta.classList.toggle('is-hidden', entry.isIntersecting);
   }, { threshold: 0.12 });
 
-  quoteVisibilityObserver.observe(quoteForm);
+  quoteVisibilityObserver.observe(hideMobileQuoteOver);
 }
 
 document.querySelectorAll('[data-quote-trigger]').forEach((trigger) => {

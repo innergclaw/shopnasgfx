@@ -602,7 +602,7 @@ h2 {
 
 .field-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -623,12 +623,15 @@ input,
 select,
 textarea {
   width: 100%;
-  min-height: 50px;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 48px;
   border: 3px solid var(--line);
   background: var(--white);
   color: var(--ink);
   padding: 11px 12px;
   font-weight: 750;
+  font-size: max(1rem, 1em);
   outline: none;
 }
 
@@ -649,12 +652,17 @@ textarea:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: .85rem 1.25rem;
   border: 3px solid var(--line);
   background: var(--ink);
   color: var(--white);
   box-shadow: 8px 8px 0 var(--gold);
   font-weight: 1000;
   text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
   cursor: pointer;
   transition: transform .16s ease, box-shadow .16s ease;
 }
@@ -1347,7 +1355,7 @@ footer {
 
 @media (max-width: 700px) {
   .home-page {
-    padding-bottom: 78px;
+    padding-bottom: calc(10.75rem + env(safe-area-inset-bottom, 0px));
   }
 
   .home-page .page-shell {
@@ -1417,9 +1425,15 @@ footer {
     padding: 22px 16px;
   }
 
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
   .form-heading h2 {
-    max-width: 9ch;
-    font-size: clamp(2.8rem, 15vw, 4rem);
+    max-width: 100%;
+    font-size: clamp(1.7rem, 1rem + 4.2vw, 2.75rem);
+    line-height: 1.18;
+    overflow-wrap: anywhere;
   }
 
   .trust-strip,

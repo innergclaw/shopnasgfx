@@ -21,9 +21,67 @@
 .showcase-marks div { height: 100px; }
 .showcase-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .showcase-item figcaption { font-weight: 700; }
-.brand-intake .deposit-check { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
-.brand-intake .deposit-check input { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; }
-.brand-intake .copy-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.brand-intake,
+.brand-intake .lead-form,
+#start {
+  min-width: 0;
+  max-width: 100%;
+}
+.brand-intake .lead-form {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+}
+.brand-intake .form-heading h2,
+#start-title {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.brand-intake .lead-form label,
+.brand-intake .field-row,
+.brand-intake .copy-row {
+  min-width: 0;
+  max-width: 100%;
+}
+.brand-intake .lead-form input,
+.brand-intake .lead-form select,
+.brand-intake .lead-form textarea {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  font-size: max(1rem, 1em);
+}
+.brand-intake .deposit-check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.5;
+  min-width: 0;
+  max-width: 100%;
+}
+.brand-intake .deposit-check input { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; accent-color: #111; }
+.brand-intake .deposit-check span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+.brand-intake .copy-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  min-width: 0;
+}
+.brand-intake .copy-row .btn {
+  width: 100%;
+  min-width: 0;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 701px) {
+  .brand-intake .copy-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .quick-link-band { border: 2px solid var(--line); border-radius: 18px; background: var(--gold-soft); padding: 20px; display: grid; gap: 12px; }
 @media (min-width: 720px) {
   .si-steps { grid-template-columns: repeat(4, 1fr); }
