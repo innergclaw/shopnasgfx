@@ -1122,15 +1122,22 @@ footer {
   margin-bottom: 28px;
 }
 
+.section-heading > * {
+  min-width: 0;
+}
+
 .section-heading .eyebrow {
   margin-bottom: 18px;
 }
 
 .section-heading h2 {
-  max-width: 13ch;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  line-height: .9;
+  max-width: 100%;
+  min-width: 0;
+  font-size: clamp(1.75rem, 1.05rem + 3.4vw, 4rem);
+  line-height: 1.15;
   text-wrap: balance;
+  overflow-wrap: anywhere;
+  overflow: visible;
 }
 
 .section-heading > p {
@@ -1426,7 +1433,10 @@ footer {
   }
 
   .section-heading h2 {
-    font-size: clamp(2.8rem, 14vw, 4.5rem);
+    max-width: 100%;
+    font-size: clamp(1.7rem, 1rem + 4.2vw, 2.75rem);
+    line-height: 1.18;
+    overflow-wrap: anywhere;
   }
 
   .conversion-pricing .pricing-card {
@@ -1491,4 +1501,37 @@ footer {
     filter: none !important;
     transform: none !important;
   }
+}
+
+.package-details { margin-top: 18px; display: grid; gap: 8px; }
+.soft-details {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .72);
+  min-width: 0;
+}
+.soft-details summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.soft-details summary:where(:not([aria-disabled="true"])):hover {
+  background: rgba(199, 255, 56, .16);
+}
+.soft-details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+.soft-details > p,
+.soft-details > ul {
+  margin: 0;
+  padding: 12px 14px 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.pricing-card .soft-details {
+  margin-top: 10px;
+  background: rgba(255, 255, 255, .5);
 }

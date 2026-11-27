@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../ecosystem.css?v=builders-1" />
+  <link rel="stylesheet" href="../styles.css?v=2" />
+  <link rel="stylesheet" href="../ecosystem.css?v=builders-2" />
 </head>
 <body class="home-page quick-designs-page">
   <a class="skip-link" href="#quote">Skip to project quote</a>
@@ -109,7 +109,8 @@
         </label>
 
         <button class="btn primary" type="submit">Get my project quote</button>
-        <p class="form-note" id="quoteFormNote">No payment today. Logo Starter and Brand Starter Kit are paid in full. The Launch Package uses a 50% deposit, with the remaining 50% due before final files. I confirm the deliverables and price before you pay.</p>
+        <details class="soft-details"><summary>Payment terms</summary><p>No payment today. Logo Starter and Brand Starter Kit are paid in full. The Launch Package uses a 50% deposit, with the remaining 50% due before final files. I confirm the deliverables and price before you pay.</p></details>
+        <p class="form-note" id="quoteFormNote"></p>
       </form>
     </section>
 
@@ -163,25 +164,25 @@
           <span>First identity</span>
           <h3>Logo Starter</h3>
           <strong>$100</strong>
-          <p>A clear logo and the files needed to start showing up. Paid in full.</p>
+          <details class="soft-details"><summary>What's included</summary><p>A clear logo and the files needed to start showing up. Paid in full.</p></details>
           <a href="#quote" data-package="Logo Starter - $100 intro" data-quote-trigger="logo-starter">Choose Logo Starter</a>
         </article>
         <article class="pricing-card reveal-item">
           <span>Identity</span>
           <h3>Brand Starter Kit</h3>
           <strong>$250</strong>
-          <p>Main, secondary, and icon/mark. Paid in full.</p>
+          <details class="soft-details"><summary>What's included</summary><p>Main, secondary, and icon/mark. Paid in full.</p></details>
           <a href="#quote" data-package="Brand Starter Kit - $250 intro" data-quote-trigger="brand-kit">Choose Brand Kit</a>
         </article>
         <article class="pricing-card reveal-item">
           <span>Launch base</span>
           <h3>Launch Package</h3>
           <strong>$500</strong>
-          <p>Everything in the Brand Starter Kit, plus a landing page / website for digital ownership: domain, mailing list, contact, forms, and automation. 50% deposit.</p>
+          <details class="soft-details"><summary>What's included</summary><p>Everything in the Brand Starter Kit, plus a landing page / website for digital ownership: domain, mailing list, contact, forms, and automation. 50% deposit.</p></details>
           <a href="#quote" data-package="Launch Package - $500 intro" data-quote-trigger="launch-package">Choose Launch Package</a>
         </article>
       </div>
-      <p class="pricing-note">Introductory prices. Logo Starter and Brand Starter Kit are paid in full. The Launch Package uses a 50% deposit to start, with the remaining 50% due before final files. I confirm what is included before you pay. You receive common files you can use outside this site.</p>
+      <details class="soft-details"><summary>Payment terms</summary><p>Introductory prices. Logo Starter and Brand Starter Kit are paid in full. The Launch Package uses a 50% deposit to start, with the remaining 50% due before final files. I confirm what is included before you pay. You receive common files you can use outside this site.</p></details>
     </section>
 
     <section class="package-section reveal-section" id="agents" aria-labelledby="agents-title" data-reveal="right">
